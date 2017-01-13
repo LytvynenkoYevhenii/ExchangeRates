@@ -8,17 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		88E56A60D25E80522E332134 /* libPods-ExchangeRates.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1E12045F10EA753316AB6 /* libPods-ExchangeRates.a */; };
+		B6A077291E29116A0058676D /* ELBankNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077271E29116A0058676D /* ELBankNameView.m */; };
+		B6A0772A1E29116A0058676D /* ELBankNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A077281E29116A0058676D /* ELBankNameView.xib */; };
 		B6E0E7431E290A0B002A53F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E7421E290A0B002A53F8 /* main.m */; };
 		B6E0E74E1E290A0B002A53F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */; };
 		B6E0E7511E290A0B002A53F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74F1E290A0B002A53F8 /* LaunchScreen.storyboard */; };
 		B6E0E75B1E290DFE002A53F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E75A1E290DFE002A53F8 /* AppDelegate.m */; };
-		B6E0E75D1E290E14002A53F8 /* CurrencyApp.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E75C1E290E14002A53F8 /* CurrencyApp.xcdatamodel */; };
+		B6E0E75D1E290E14002A53F8 /* ExchangeRate.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E75C1E290E14002A53F8 /* ExchangeRate.xcdatamodel */; };
 		B6E0E75F1E290EA2002A53F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E75E1E290EA2002A53F8 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		034FA619E00771B2AB61A8AC /* Pods-ExchangeRates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRates.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangeRates/Pods-ExchangeRates.debug.xcconfig"; sourceTree = "<group>"; };
 		13C1E12045F10EA753316AB6 /* libPods-ExchangeRates.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExchangeRates.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A077261E29116A0058676D /* ELBankNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELBankNameView.h; sourceTree = "<group>"; };
+		B6A077271E29116A0058676D /* ELBankNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELBankNameView.m; sourceTree = "<group>"; };
+		B6A077281E29116A0058676D /* ELBankNameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELBankNameView.xib; sourceTree = "<group>"; };
 		B6E0E73E1E290A0B002A53F8 /* ExchangeRates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E0E7421E290A0B002A53F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -27,7 +32,7 @@
 		B6E0E7581E290CCA002A53F8 /* ExchangeRate-PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ExchangeRate-PrefixHeader.pch"; sourceTree = "<group>"; };
 		B6E0E7591E290DFE002A53F8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B6E0E75A1E290DFE002A53F8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B6E0E75C1E290E14002A53F8 /* CurrencyApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CurrencyApp.xcdatamodel; sourceTree = "<group>"; };
+		B6E0E75C1E290E14002A53F8 /* ExchangeRate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExchangeRate.xcdatamodel; sourceTree = "<group>"; };
 		B6E0E75E1E290EA2002A53F8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DBBA371DA1D756DC7774957D /* Pods-ExchangeRates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRates.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangeRates/Pods-ExchangeRates.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +78,9 @@
 		B6E0E7401E290A0B002A53F8 /* ExchangeRates */ = {
 			isa = PBXGroup;
 			children = (
+				B6A077261E29116A0058676D /* ELBankNameView.h */,
+				B6A077271E29116A0058676D /* ELBankNameView.m */,
+				B6A077281E29116A0058676D /* ELBankNameView.xib */,
 				B6E0E75E1E290EA2002A53F8 /* Main.storyboard */,
 				B6E0E74F1E290A0B002A53F8 /* LaunchScreen.storyboard */,
 				B6E0E7411E290A0B002A53F8 /* Supporting Files */,
@@ -86,7 +94,7 @@
 				B6E0E7581E290CCA002A53F8 /* ExchangeRate-PrefixHeader.pch */,
 				B6E0E7521E290A0B002A53F8 /* Info.plist */,
 				B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */,
-				B6E0E75C1E290E14002A53F8 /* CurrencyApp.xcdatamodel */,
+				B6E0E75C1E290E14002A53F8 /* ExchangeRate.xcdatamodel */,
 				B6E0E7591E290DFE002A53F8 /* AppDelegate.h */,
 				B6E0E75A1E290DFE002A53F8 /* AppDelegate.m */,
 				B6E0E7421E290A0B002A53F8 /* main.m */,
@@ -164,6 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6A0772A1E29116A0058676D /* ELBankNameView.xib in Resources */,
 				B6E0E75F1E290EA2002A53F8 /* Main.storyboard in Resources */,
 				B6E0E7511E290A0B002A53F8 /* LaunchScreen.storyboard in Resources */,
 				B6E0E74E1E290A0B002A53F8 /* Assets.xcassets in Resources */,
@@ -225,8 +234,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6A077291E29116A0058676D /* ELBankNameView.m in Sources */,
 				B6E0E75B1E290DFE002A53F8 /* AppDelegate.m in Sources */,
-				B6E0E75D1E290E14002A53F8 /* CurrencyApp.xcdatamodel in Sources */,
+				B6E0E75D1E290E14002A53F8 /* ExchangeRate.xcdatamodel in Sources */,
 				B6E0E7431E290A0B002A53F8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ELBankNameView">
+            <connections>
+                <outlet property="bankNameLabel" destination="fee-mt-ehe" id="6g3-9N-kS7"/>
+                <outlet property="calendarIconImageView" destination="kSz-xJ-tLE" id="igt-Nq-gdA"/>
+                <outlet property="dateButton" destination="UhL-Xk-WIW" id="Z8W-K3-Bwl"/>
+                <outlet property="dateLabel" destination="o2W-Gs-OsA" id="p3j-l8-x6e"/>
+                <outlet property="xibView" destination="iN0-l3-epB" id="Vgr-tf-bxz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="537" height="159"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.01.2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="o2W-Gs-OsA">
+                    <rect key="frame" x="425.5" y="0.0" width="95.5" height="159"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                    <color key="textColor" red="1" green="0.57706925129999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПриватБанк" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="fee-mt-ehe">
+                    <rect key="frame" x="16" y="0.0" width="116.5" height="159"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Passive_calendar_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="kSz-xJ-tLE">
+                    <rect key="frame" x="397.5" y="70" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="JA7-ht-Zvi"/>
+                        <constraint firstAttribute="width" constant="20" id="st2-6R-ap2"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhL-Xk-WIW">
+                    <rect key="frame" x="425.5" y="0.0" width="95.5" height="159"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="UWQ-Ph-UHW"/>
+                    </constraints>
+                    <state key="normal" title=""/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="kSz-xJ-tLE" firstAttribute="centerY" secondItem="UhL-Xk-WIW" secondAttribute="centerY" id="1YG-90-hMD"/>
+                <constraint firstItem="UhL-Xk-WIW" firstAttribute="width" secondItem="o2W-Gs-OsA" secondAttribute="width" id="6hK-Wk-E36"/>
+                <constraint firstAttribute="bottom" secondItem="UhL-Xk-WIW" secondAttribute="bottom" id="Fjm-QJ-ANe"/>
+                <constraint firstAttribute="bottom" secondItem="fee-mt-ehe" secondAttribute="bottom" id="Itt-xG-kZ0"/>
+                <constraint firstItem="fee-mt-ehe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="RBi-dT-ynu"/>
+                <constraint firstAttribute="trailing" secondItem="o2W-Gs-OsA" secondAttribute="trailing" constant="16" id="Vq6-hz-ACa"/>
+                <constraint firstItem="UhL-Xk-WIW" firstAttribute="leading" secondItem="kSz-xJ-tLE" secondAttribute="trailing" constant="8" id="YGY-42-njg"/>
+                <constraint firstItem="fee-mt-ehe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YYX-q1-TCZ"/>
+                <constraint firstItem="o2W-Gs-OsA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hH3-Qj-LvL"/>
+                <constraint firstAttribute="trailing" secondItem="UhL-Xk-WIW" secondAttribute="trailing" constant="16" id="nPZ-3N-VmZ"/>
+                <constraint firstAttribute="bottom" secondItem="o2W-Gs-OsA" secondAttribute="bottom" id="pwl-LD-6mf"/>
+                <constraint firstItem="UhL-Xk-WIW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="q8X-Si-Ef2"/>
+                <constraint firstItem="kSz-xJ-tLE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fee-mt-ehe" secondAttribute="trailing" constant="16" id="wja-VJ-tBK"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="214.5" y="-184.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Passive_calendar_Icon" width="24" height="24"/>
+    </resources>
+</document>
