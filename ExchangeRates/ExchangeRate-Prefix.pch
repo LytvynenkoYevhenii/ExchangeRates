@@ -6,8 +6,10 @@
 //  Copyright © 2017 Lytvynenko Yevhenii. All rights reserved.
 //
 
-#ifndef ExchangeRate_PrefixHeader_pch
-#define ExchangeRate_PrefixHeader_pch
+#ifndef ExchangeRate_Prefix_pch
+#define ExchangeRate_Prefix_pch
+
+#import <MagicalRecord/MagicalRecord.h>
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
