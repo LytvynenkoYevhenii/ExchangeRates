@@ -14,6 +14,8 @@
 		B6A0772F1E29119F0058676D /* ELDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A0772D1E29119F0058676D /* ELDatePickerView.xib */; };
 		B6A077331E2911D50058676D /* ELPrivatBankTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077311E2911D50058676D /* ELPrivatBankTableHeaderView.m */; };
 		B6A077341E2911D50058676D /* ELPrivatBankTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A077321E2911D50058676D /* ELPrivatBankTableHeaderView.xib */; };
+		B6A077391E29122B0058676D /* ELNBUTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077371E29122B0058676D /* ELNBUTableViewCell.m */; };
+		B6A0773A1E29122B0058676D /* ELNBUTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A077381E29122B0058676D /* ELNBUTableViewCell.xib */; };
 		B6E0E7431E290A0B002A53F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E7421E290A0B002A53F8 /* main.m */; };
 		B6E0E74E1E290A0B002A53F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */; };
 		B6E0E7511E290A0B002A53F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74F1E290A0B002A53F8 /* LaunchScreen.storyboard */; };
@@ -34,6 +36,9 @@
 		B6A077301E2911D50058676D /* ELPrivatBankTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELPrivatBankTableHeaderView.h; sourceTree = "<group>"; };
 		B6A077311E2911D50058676D /* ELPrivatBankTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELPrivatBankTableHeaderView.m; sourceTree = "<group>"; };
 		B6A077321E2911D50058676D /* ELPrivatBankTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELPrivatBankTableHeaderView.xib; sourceTree = "<group>"; };
+		B6A077361E29122B0058676D /* ELNBUTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELNBUTableViewCell.h; sourceTree = "<group>"; };
+		B6A077371E29122B0058676D /* ELNBUTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELNBUTableViewCell.m; sourceTree = "<group>"; };
+		B6A077381E29122B0058676D /* ELNBUTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELNBUTableViewCell.xib; sourceTree = "<group>"; };
 		B6E0E73E1E290A0B002A53F8 /* ExchangeRates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E0E7421E290A0B002A53F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +72,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B6A077351E2912080058676D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B6A077261E29116A0058676D /* ELBankNameView.h */,
+				B6A077271E29116A0058676D /* ELBankNameView.m */,
+				B6A077281E29116A0058676D /* ELBankNameView.xib */,
+				B6A0772B1E29119F0058676D /* ELDatePickerView.h */,
+				B6A0772C1E29119F0058676D /* ELDatePickerView.m */,
+				B6A0772D1E29119F0058676D /* ELDatePickerView.xib */,
+				B6A077301E2911D50058676D /* ELPrivatBankTableHeaderView.h */,
+				B6A077311E2911D50058676D /* ELPrivatBankTableHeaderView.m */,
+				B6A077321E2911D50058676D /* ELPrivatBankTableHeaderView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		B6E0E7351E290A0A002A53F8 = {
 			isa = PBXGroup;
 			children = (
@@ -88,15 +109,10 @@
 		B6E0E7401E290A0B002A53F8 /* ExchangeRates */ = {
 			isa = PBXGroup;
 			children = (
-				B6A077261E29116A0058676D /* ELBankNameView.h */,
-				B6A077271E29116A0058676D /* ELBankNameView.m */,
-				B6A077281E29116A0058676D /* ELBankNameView.xib */,
-				B6A0772B1E29119F0058676D /* ELDatePickerView.h */,
-				B6A0772C1E29119F0058676D /* ELDatePickerView.m */,
-				B6A0772D1E29119F0058676D /* ELDatePickerView.xib */,
-				B6A077301E2911D50058676D /* ELPrivatBankTableHeaderView.h */,
-				B6A077311E2911D50058676D /* ELPrivatBankTableHeaderView.m */,
-				B6A077321E2911D50058676D /* ELPrivatBankTableHeaderView.xib */,
+				B6A077361E29122B0058676D /* ELNBUTableViewCell.h */,
+				B6A077371E29122B0058676D /* ELNBUTableViewCell.m */,
+				B6A077381E29122B0058676D /* ELNBUTableViewCell.xib */,
+				B6A077351E2912080058676D /* Views */,
 				B6E0E75E1E290EA2002A53F8 /* Main.storyboard */,
 				B6E0E74F1E290A0B002A53F8 /* LaunchScreen.storyboard */,
 				B6E0E7411E290A0B002A53F8 /* Supporting Files */,
@@ -194,6 +210,7 @@
 				B6E0E7511E290A0B002A53F8 /* LaunchScreen.storyboard in Resources */,
 				B6E0E74E1E290A0B002A53F8 /* Assets.xcassets in Resources */,
 				B6A0772F1E29119F0058676D /* ELDatePickerView.xib in Resources */,
+				B6A0773A1E29122B0058676D /* ELNBUTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +272,7 @@
 				B6A077291E29116A0058676D /* ELBankNameView.m in Sources */,
 				B6A077331E2911D50058676D /* ELPrivatBankTableHeaderView.m in Sources */,
 				B6A0772E1E29119F0058676D /* ELDatePickerView.m in Sources */,
+				B6A077391E29122B0058676D /* ELNBUTableViewCell.m in Sources */,
 				B6E0E75B1E290DFE002A53F8 /* AppDelegate.m in Sources */,
 				B6E0E75D1E290E14002A53F8 /* ExchangeRate.xcdatamodel in Sources */,
 				B6E0E7431E290A0B002A53F8 /* main.m in Sources */,
