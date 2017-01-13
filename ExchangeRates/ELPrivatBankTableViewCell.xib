@@ -19,39 +19,39 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.300" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="CD4-zd-gG5">
-                        <rect key="frame" x="138" y="12.5" width="78" height="33"/>
-                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                        <rect key="frame" x="145" y="14.5" width="65" height="28"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.425" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="3oc-0t-JaY">
-                        <rect key="frame" x="260" y="12.5" width="78" height="33"/>
+                        <rect key="frame" x="273" y="14.5" width="65" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="3oc-0t-JaY" secondAttribute="height" multiplier="26:11" id="eEM-rG-jt7"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="N5J-un-F0R">
-                        <rect key="frame" x="16" y="12.5" width="49.5" height="33"/>
+                        <rect key="frame" x="16" y="14.5" width="41.5" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="N5J-un-F0R" secondAttribute="height" multiplier="49:33" id="Ogz-Kc-ZAK"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="CD4-zd-gG5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N5J-un-F0R" secondAttribute="trailing" constant="16" id="0Zt-ku-8iu"/>
+                    <constraint firstItem="CD4-zd-gG5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N5J-un-F0R" secondAttribute="trailing" constant="24" id="0Zt-ku-8iu"/>
                     <constraint firstItem="CD4-zd-gG5" firstAttribute="height" secondItem="N5J-un-F0R" secondAttribute="height" id="LWw-59-S13"/>
                     <constraint firstItem="N5J-un-F0R" firstAttribute="centerY" secondItem="py4-vd-4Vt" secondAttribute="centerY" id="OmQ-MT-BTc"/>
                     <constraint firstItem="CD4-zd-gG5" firstAttribute="width" secondItem="3oc-0t-JaY" secondAttribute="width" id="PuW-lm-4v6"/>
                     <constraint firstAttribute="trailing" secondItem="3oc-0t-JaY" secondAttribute="trailing" constant="16" id="TYl-Zn-WJe"/>
                     <constraint firstItem="CD4-zd-gG5" firstAttribute="centerX" secondItem="py4-vd-4Vt" secondAttribute="centerX" id="V0b-BM-JLH"/>
                     <constraint firstItem="CD4-zd-gG5" firstAttribute="centerY" secondItem="py4-vd-4Vt" secondAttribute="centerY" id="b99-qA-8AA"/>
-                    <constraint firstItem="3oc-0t-JaY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CD4-zd-gG5" secondAttribute="trailing" constant="16" id="n90-Cf-cxs"/>
+                    <constraint firstItem="3oc-0t-JaY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CD4-zd-gG5" secondAttribute="trailing" constant="24" id="n90-Cf-cxs"/>
                     <constraint firstItem="3oc-0t-JaY" firstAttribute="centerY" secondItem="py4-vd-4Vt" secondAttribute="centerY" id="nnT-cE-q6y"/>
                     <constraint firstItem="3oc-0t-JaY" firstAttribute="height" secondItem="N5J-un-F0R" secondAttribute="height" id="qoc-AI-Yit"/>
                     <constraint firstItem="N5J-un-F0R" firstAttribute="leading" secondItem="py4-vd-4Vt" secondAttribute="leading" constant="16" id="sd3-od-R5u"/>

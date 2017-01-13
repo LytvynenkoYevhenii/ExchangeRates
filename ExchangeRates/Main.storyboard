@@ -20,11 +20,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0Cl-37-ITV">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0Cl-37-ITV">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PF8-17-R4t">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="302"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUK-4B-ZBU" customClass="ELBankNameView">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -49,11 +49,12 @@
                                             <constraint firstAttribute="trailing" secondItem="aUK-4B-ZBU" secondAttribute="trailing" id="e0h-dR-Tpu"/>
                                             <constraint firstItem="aUK-4B-ZBU" firstAttribute="top" secondItem="PF8-17-R4t" secondAttribute="top" id="fKl-Qs-Cmw"/>
                                             <constraint firstItem="iZR-rK-bJM" firstAttribute="leading" secondItem="PF8-17-R4t" secondAttribute="leading" id="l5I-oS-aoT"/>
+                                            <constraint firstItem="iZR-rK-bJM" firstAttribute="bottom" secondItem="PF8-17-R4t" secondAttribute="bottom" id="mo2-3M-gOv"/>
                                             <constraint firstItem="iZR-rK-bJM" firstAttribute="top" secondItem="aUK-4B-ZBU" secondAttribute="bottom" id="w7O-GH-Q95"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7E-gM-Snb">
-                                        <rect key="frame" x="0.0" y="302" width="375" height="301"/>
+                                        <rect key="frame" x="0.0" y="201" width="375" height="402"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4E7-bi-aXY" customClass="ELBankNameView">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -62,8 +63,8 @@
                                                     <constraint firstAttribute="height" constant="44" id="I37-hZ-3na"/>
                                                 </constraints>
                                             </view>
-                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-iR-mZM">
-                                                <rect key="frame" x="0.0" y="44" width="375" height="356"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-iR-mZM">
+                                                <rect key="frame" x="0.0" y="44" width="375" height="358"/>
                                                 <connections>
                                                     <segue destination="5Q5-tT-xfW" kind="embed" id="lpW-sW-f8z"/>
                                                 </connections>
@@ -81,9 +82,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="v7E-gM-Snb" firstAttribute="top" secondItem="PF8-17-R4t" secondAttribute="bottom" id="wnn-at-ZQM"/>
-                                </constraints>
+                                <variation key="heightClass=compact-widthClass=compact" distribution="fillEqually"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -110,7 +109,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3sw-wd-L7A" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hth-t2-Fcn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hth-t2-Fcn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.41176470590000003" green="0.60392156860000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,7 +128,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ELNBUTableViewController" id="5Q5-tT-xfW" customClass="ELNBUTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="43Z-vu-3mI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="356"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>

@@ -10,6 +10,8 @@
 #import "ELPrivatBankTableViewCell.h"
 #import "ELCurrency+CoreDataProperties.h"
 
+NSString * const privatBankName = @"PrivatBank";
+
 @interface ELPrivatBankViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *currenciesArray;
@@ -36,6 +38,17 @@ static NSString * const cellNibName = @"ELPrivatBankTableViewCell";
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Custom accessor
+
+- (NSArray *)currenciesArray
+{
+    if (!_currenciesArray) {
+        NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"bank.name == %@", privatBankName];
+        _currenciesArray = [ELCurrency MR_findAllWithPredicate:pbPredicate];
+    }
+    return _currenciesArray;
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -60,7 +73,7 @@ static NSString * const cellNibName = @"ELPrivatBankTableViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ELCurrency *currency = [self.currenciesArray objectAtIndex:indexPath.row];
-    [self.delegate privatBankViewController:self didSelectCurrency:currency];
+    [self.delegate privatBankViewController:self didSelectCurrencyWithCode:currency.code];
 }
 
 @end

@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class ELCurrency;
-
 @protocol ELPrivatBankViewControllerDelegate;
+
+extern NSString * const privatBankName;
 
 @interface ELPrivatBankViewController : UIViewController
 @property (weak, nonatomic) id <ELPrivatBankViewControllerDelegate> delegate;
 @end
 
 @protocol ELPrivatBankViewControllerDelegate <NSObject>
-- (void) privatBankViewController:(ELPrivatBankViewController *)privatBankViewController didSelectCurrency:(ELCurrency *)currency;
+- (void) privatBankViewController:(ELPrivatBankViewController *)privatBankViewController didSelectCurrencyWithCode:(NSString *)currency;
 @end

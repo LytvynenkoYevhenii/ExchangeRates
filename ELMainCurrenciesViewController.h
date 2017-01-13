@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ELMainCurrenciesViewController : UIViewController
+@interface ELMainCurrenciesViewController : UIViewController 
 
 
 @end

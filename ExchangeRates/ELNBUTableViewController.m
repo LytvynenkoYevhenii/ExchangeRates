@@ -10,8 +10,11 @@
 #import "ELNBUTableViewCell.h"
 #import "ELCalculator.h"
 #import "ELUtils.h"
+#import "ELPrivatBankViewController.h"
 
 #import "ELCurrency+CoreDataProperties.h"
+
+NSString * const nbuBankName = @"NBU";
 
 @interface ELNBUTableViewController ()
 @property (strong, nonatomic) NSArray *currenciesArray;
@@ -39,25 +42,36 @@ static NSString * const basicCurrencyCode = @"UAH";
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Custom accessor
+
+- (NSArray *)currenciesArray
+{
+    if (!_currenciesArray) {
+        NSPredicate *nbuPredicate = [NSPredicate predicateWithFormat:@"bank.name == %@", nbuBankName];
+        _currenciesArray = [ELCurrency MR_findAllWithPredicate:nbuPredicate];
+    }
+    return _currenciesArray;
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 9;//[self.currenciesArray count];
+    return [self.currenciesArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ELNBUTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
     
-//    ELCurrency *currency = [self.currenciesArray objectAtIndex:indexPath.row];
-//    CGFloat rate = currency.saleRate;
-//    NSInteger coefficient = 0;
-//    [ELCalculator optimizeRate:&rate withExchangeCoefficient:&coefficient];
-//    
-//    cell.saleRateLabel.text = [NSString stringWithFormat:@"%1.3f", rate];
-//    cell.exchangeСoefficientLabel.text = [NSString stringWithFormat:@"%d%@", coefficient, basicCurrencyCode] ;
-//    cell.currencyNameLabel.text = [ELUtils currencyLocalizedNameWithCode:currency.code];
+    ELCurrency *currency = [self.currenciesArray objectAtIndex:indexPath.row];
+    CGFloat rate = currency.saleRate;
+    NSInteger coefficient = 0;
+    [ELCalculator optimizeRate:&rate withExchangeCoefficient:&coefficient];
+    
+    cell.saleRateLabel.text = [NSString stringWithFormat:@"%1.3f", rate];
+    cell.exchangeСoefficientLabel.text = [NSString stringWithFormat:@"%d%@", coefficient, basicCurrencyCode] ;
+    cell.currencyNameLabel.text = [ELUtils currencyLocalizedNameWithCode:currency.code];
     
     return cell;
 }
@@ -67,6 +81,22 @@ static NSString * const basicCurrencyCode = @"UAH";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 44.f;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+#pragma mark - Public API
+
+- (void)selectRowWithCurrency:(NSString *)code
+{
+    NSPredicate *currencyCodePredicate = [NSPredicate predicateWithFormat:@"code == %@", code];
+    ELCurrency *selectedCurrency = [[self.currenciesArray filteredArrayUsingPredicate:currencyCodePredicate] firstObject];
+    NSInteger row = [self.currenciesArray indexOfObject:selectedCurrency];
+    NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    [self.tableView selectRowAtIndexPath:selectedIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 }
 
 
