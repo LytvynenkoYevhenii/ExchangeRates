@@ -19,6 +19,7 @@
 		B6A0773E1E29126E0058676D /* ELPrivatBankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A0773C1E29126E0058676D /* ELPrivatBankTableViewCell.m */; };
 		B6A0773F1E29126E0058676D /* ELPrivatBankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A0773D1E29126E0058676D /* ELPrivatBankTableViewCell.xib */; };
 		B6A077421E2912B80058676D /* ELMainCurrenciesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */; };
+		B6A077471E2913360058676D /* ELNBUTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077461E2913360058676D /* ELNBUTableViewController.m */; };
 		B6E0E7431E290A0B002A53F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E7421E290A0B002A53F8 /* main.m */; };
 		B6E0E74E1E290A0B002A53F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */; };
 		B6E0E7511E290A0B002A53F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74F1E290A0B002A53F8 /* LaunchScreen.storyboard */; };
@@ -45,8 +46,10 @@
 		B6A0773B1E29126E0058676D /* ELPrivatBankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELPrivatBankTableViewCell.h; sourceTree = "<group>"; };
 		B6A0773C1E29126E0058676D /* ELPrivatBankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELPrivatBankTableViewCell.m; sourceTree = "<group>"; };
 		B6A0773D1E29126E0058676D /* ELPrivatBankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELPrivatBankTableViewCell.xib; sourceTree = "<group>"; };
-		B6A077401E2912B80058676D /* ELMainCurrenciesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELMainCurrenciesViewController.h; sourceTree = "<group>"; };
-		B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELMainCurrenciesViewController.m; sourceTree = "<group>"; };
+		B6A077401E2912B80058676D /* ELMainCurrenciesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELMainCurrenciesViewController.h; path = ../ELMainCurrenciesViewController.h; sourceTree = "<group>"; };
+		B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ELMainCurrenciesViewController.m; path = ../ELMainCurrenciesViewController.m; sourceTree = "<group>"; };
+		B6A077451E2913360058676D /* ELNBUTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELNBUTableViewController.h; sourceTree = "<group>"; };
+		B6A077461E2913360058676D /* ELNBUTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELNBUTableViewController.m; sourceTree = "<group>"; };
 		B6E0E73E1E290A0B002A53F8 /* ExchangeRates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E0E7421E290A0B002A53F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,11 +99,31 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		B6A077431E2912E00058676D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B6A077361E29122B0058676D /* ELNBUTableViewCell.h */,
+				B6A077371E29122B0058676D /* ELNBUTableViewCell.m */,
+				B6A077381E29122B0058676D /* ELNBUTableViewCell.xib */,
+				B6A0773B1E29126E0058676D /* ELPrivatBankTableViewCell.h */,
+				B6A0773C1E29126E0058676D /* ELPrivatBankTableViewCell.m */,
+				B6A0773D1E29126E0058676D /* ELPrivatBankTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B6A077441E2912FB0058676D /* Universal view controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B6A077451E2913360058676D /* ELNBUTableViewController.h */,
+				B6A077461E2913360058676D /* ELNBUTableViewController.m */,
+			);
+			name = "Universal view controllers";
+			sourceTree = "<group>";
+		};
 		B6E0E7351E290A0A002A53F8 = {
 			isa = PBXGroup;
 			children = (
-				B6A077401E2912B80058676D /* ELMainCurrenciesViewController.h */,
-				B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */,
 				B6E0E7401E290A0B002A53F8 /* ExchangeRates */,
 				B6E0E73F1E290A0B002A53F8 /* Products */,
 				CD957823736F2AD3F1009BE2 /* Pods */,
@@ -119,12 +142,10 @@
 		B6E0E7401E290A0B002A53F8 /* ExchangeRates */ = {
 			isa = PBXGroup;
 			children = (
-				B6A077361E29122B0058676D /* ELNBUTableViewCell.h */,
-				B6A077371E29122B0058676D /* ELNBUTableViewCell.m */,
-				B6A077381E29122B0058676D /* ELNBUTableViewCell.xib */,
-				B6A0773B1E29126E0058676D /* ELPrivatBankTableViewCell.h */,
-				B6A0773C1E29126E0058676D /* ELPrivatBankTableViewCell.m */,
-				B6A0773D1E29126E0058676D /* ELPrivatBankTableViewCell.xib */,
+				B6A077401E2912B80058676D /* ELMainCurrenciesViewController.h */,
+				B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */,
+				B6A077441E2912FB0058676D /* Universal view controllers */,
+				B6A077431E2912E00058676D /* Cells */,
 				B6A077351E2912080058676D /* Views */,
 				B6E0E75E1E290EA2002A53F8 /* Main.storyboard */,
 				B6E0E74F1E290A0B002A53F8 /* LaunchScreen.storyboard */,
@@ -291,6 +312,7 @@
 				B6E0E75B1E290DFE002A53F8 /* AppDelegate.m in Sources */,
 				B6E0E75D1E290E14002A53F8 /* ExchangeRate.xcdatamodel in Sources */,
 				B6A077421E2912B80058676D /* ELMainCurrenciesViewController.m in Sources */,
+				B6A077471E2913360058676D /* ELNBUTableViewController.m in Sources */,
 				B6E0E7431E290A0B002A53F8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
