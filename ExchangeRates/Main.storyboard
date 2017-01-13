@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3sw-wd-L7A">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Курс валют-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ELMainCurrenciesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0Cl-37-ITV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PF8-17-R4t">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="302"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUK-4B-ZBU" customClass="ELBankNameView">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="2YZ-Xg-2pq"/>
+                                                </constraints>
+                                            </view>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZR-rK-bJM">
+                                                <rect key="frame" x="0.0" y="44" width="375" height="157"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="157" id="Td8-As-Cmg"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="mCN-1V-4Ew" kind="embed" id="ugt-Jy-TXw"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="aUK-4B-ZBU" firstAttribute="leading" secondItem="PF8-17-R4t" secondAttribute="leading" id="1yI-Dn-B3N"/>
+                                            <constraint firstAttribute="trailing" secondItem="iZR-rK-bJM" secondAttribute="trailing" id="FwB-VT-HB6"/>
+                                            <constraint firstAttribute="trailing" secondItem="aUK-4B-ZBU" secondAttribute="trailing" id="e0h-dR-Tpu"/>
+                                            <constraint firstItem="aUK-4B-ZBU" firstAttribute="top" secondItem="PF8-17-R4t" secondAttribute="top" id="fKl-Qs-Cmw"/>
+                                            <constraint firstItem="iZR-rK-bJM" firstAttribute="leading" secondItem="PF8-17-R4t" secondAttribute="leading" id="l5I-oS-aoT"/>
+                                            <constraint firstItem="iZR-rK-bJM" firstAttribute="top" secondItem="aUK-4B-ZBU" secondAttribute="bottom" id="w7O-GH-Q95"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7E-gM-Snb">
+                                        <rect key="frame" x="0.0" y="302" width="375" height="301"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4E7-bi-aXY" customClass="ELBankNameView">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="I37-hZ-3na"/>
+                                                </constraints>
+                                            </view>
+                                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-iR-mZM">
+                                                <rect key="frame" x="0.0" y="44" width="375" height="356"/>
+                                                <connections>
+                                                    <segue destination="5Q5-tT-xfW" kind="embed" id="lpW-sW-f8z"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Mnr-iR-mZM" firstAttribute="top" secondItem="4E7-bi-aXY" secondAttribute="bottom" id="64a-Fr-PJ1"/>
+                                            <constraint firstAttribute="trailing" secondItem="4E7-bi-aXY" secondAttribute="trailing" id="Gfj-8V-4Ur"/>
+                                            <constraint firstItem="4E7-bi-aXY" firstAttribute="top" secondItem="v7E-gM-Snb" secondAttribute="top" id="Hmr-jU-JDq"/>
+                                            <constraint firstAttribute="trailing" secondItem="Mnr-iR-mZM" secondAttribute="trailing" id="e2j-ZE-P4V"/>
+                                            <constraint firstItem="Mnr-iR-mZM" firstAttribute="leading" secondItem="v7E-gM-Snb" secondAttribute="leading" id="r5q-2C-E3i"/>
+                                            <constraint firstItem="4E7-bi-aXY" firstAttribute="leading" secondItem="v7E-gM-Snb" secondAttribute="leading" id="rD0-sw-18O"/>
+                                            <constraint firstAttribute="bottom" secondItem="Mnr-iR-mZM" secondAttribute="bottom" id="yFn-6G-wlj"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="v7E-gM-Snb" firstAttribute="top" secondItem="PF8-17-R4t" secondAttribute="bottom" id="wnn-at-ZQM"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0Cl-37-ITV" secondAttribute="bottom" id="53L-Na-6X6"/>
+                            <constraint firstItem="0Cl-37-ITV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ucz-Ss-0Y1"/>
+                            <constraint firstItem="0Cl-37-ITV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fZ1-ee-4xs"/>
+                            <constraint firstAttribute="trailing" secondItem="0Cl-37-ITV" secondAttribute="trailing" id="vIh-IG-oID"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Курс валют" id="yya-EI-Fm1"/>
+                    <connections>
+                        <outlet property="nbuActivityView" destination="4E7-bi-aXY" id="3q4-Gv-B4p"/>
+                        <outlet property="privatBankActivityView" destination="aUK-4B-ZBU" id="1am-sE-xhI"/>
+                        <outlet property="stackView" destination="0Cl-37-ITV" id="76X-UZ-AgU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1077.5999999999999" y="138.0809595202399"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="n6c-fq-b8w">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3sw-wd-L7A" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hth-t2-Fcn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.41176470590000003" green="0.60392156860000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="JQW-Mb-mKZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u0w-fq-HIw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="138.98050974512745"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Sou-y8-ILe">
+            <objects>
+                <tableViewController storyboardIdentifier="ELNBUTableViewController" id="5Q5-tT-xfW" customClass="ELNBUTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="43Z-vu-3mI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="356"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="5Q5-tT-xfW" id="fob-C2-Ej8"/>
+                            <outlet property="delegate" destination="5Q5-tT-xfW" id="HJm-tI-Yxc"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Th1-Zo-oJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="759"/>
+        </scene>
+        <!--Privat Bank View Controller-->
+        <scene sceneID="Fy9-yj-Qge">
+            <objects>
+                <viewController id="mCN-1V-4Ew" customClass="ELPrivatBankViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sAA-AU-hUG"/>
+                        <viewControllerLayoutGuide type="bottom" id="P0M-Kz-KcE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GUU-Pa-DZf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7d-w4-Klz" customClass="ELPrivatBankTableHeaderView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="9U8-ta-epS"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F8L-Eo-jMH">
+                                <rect key="frame" x="0.0" y="25" width="375" height="132"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="mCN-1V-4Ew" id="DTd-e3-IS5"/>
+                                    <outlet property="delegate" destination="mCN-1V-4Ew" id="jky-uU-8Uo"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="j7d-w4-Klz" firstAttribute="leading" secondItem="GUU-Pa-DZf" secondAttribute="leading" id="AWa-uy-a5y"/>
+                            <constraint firstItem="P0M-Kz-KcE" firstAttribute="top" secondItem="F8L-Eo-jMH" secondAttribute="bottom" id="AdJ-W9-SEa"/>
+                            <constraint firstAttribute="trailing" secondItem="F8L-Eo-jMH" secondAttribute="trailing" id="HAv-5q-Dqt"/>
+                            <constraint firstItem="j7d-w4-Klz" firstAttribute="top" secondItem="sAA-AU-hUG" secondAttribute="bottom" id="Ip7-wV-uKq"/>
+                            <constraint firstItem="F8L-Eo-jMH" firstAttribute="top" secondItem="j7d-w4-Klz" secondAttribute="bottom" id="cIp-ej-Qft"/>
+                            <constraint firstAttribute="trailing" secondItem="j7d-w4-Klz" secondAttribute="trailing" id="ujC-CI-97Z"/>
+                            <constraint firstItem="F8L-Eo-jMH" firstAttribute="leading" secondItem="GUU-Pa-DZf" secondAttribute="leading" id="zsY-QP-mSG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="F8L-Eo-jMH" id="NJA-1G-scd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FTg-kb-jHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="-316"/>
+        </scene>
+    </scenes>
+</document>

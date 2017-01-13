@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="ELBank" representedClassName="ELBank" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="currencies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ELCurrency" inverseName="bank" inverseEntity="ELCurrency" syncable="YES"/>
+    </entity>
+    <entity name="ELCurrency" representedClassName="ELCurrency" syncable="YES" codeGenerationType="class">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="purchaseRate" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="saleRate" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="bank" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ELBank" inverseName="currencies" inverseEntity="ELBank" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ELBank" positionX="-288" positionY="-9" width="128" height="73"/>
+        <element name="ELCurrency" positionX="-54" positionY="-9" width="128" height="118"/>
+    </elements>
+</model>

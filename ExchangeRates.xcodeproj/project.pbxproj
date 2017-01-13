@@ -7,25 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88E56A60D25E80522E332134 /* libPods-ExchangeRates.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1E12045F10EA753316AB6 /* libPods-ExchangeRates.a */; };
 		B6E0E7431E290A0B002A53F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E7421E290A0B002A53F8 /* main.m */; };
-		B6E0E7461E290A0B002A53F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E7451E290A0B002A53F8 /* AppDelegate.m */; };
-		B6E0E7491E290A0B002A53F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E7481E290A0B002A53F8 /* ViewController.m */; };
-		B6E0E74C1E290A0B002A53F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74A1E290A0B002A53F8 /* Main.storyboard */; };
 		B6E0E74E1E290A0B002A53F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */; };
 		B6E0E7511E290A0B002A53F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74F1E290A0B002A53F8 /* LaunchScreen.storyboard */; };
+		B6E0E75B1E290DFE002A53F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E75A1E290DFE002A53F8 /* AppDelegate.m */; };
+		B6E0E75D1E290E14002A53F8 /* CurrencyApp.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E75C1E290E14002A53F8 /* CurrencyApp.xcdatamodel */; };
+		B6E0E75F1E290EA2002A53F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E75E1E290EA2002A53F8 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		034FA619E00771B2AB61A8AC /* Pods-ExchangeRates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRates.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangeRates/Pods-ExchangeRates.debug.xcconfig"; sourceTree = "<group>"; };
+		13C1E12045F10EA753316AB6 /* libPods-ExchangeRates.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExchangeRates.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E0E73E1E290A0B002A53F8 /* ExchangeRates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E0E7421E290A0B002A53F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B6E0E7441E290A0B002A53F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B6E0E7451E290A0B002A53F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B6E0E7471E290A0B002A53F8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B6E0E7481E290A0B002A53F8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B6E0E74B1E290A0B002A53F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6E0E7501E290A0B002A53F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6E0E7521E290A0B002A53F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6E0E7581E290CCA002A53F8 /* ExchangeRate-PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ExchangeRate-PrefixHeader.pch"; sourceTree = "<group>"; };
+		B6E0E7591E290DFE002A53F8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B6E0E75A1E290DFE002A53F8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B6E0E75C1E290E14002A53F8 /* CurrencyApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CurrencyApp.xcdatamodel; sourceTree = "<group>"; };
+		B6E0E75E1E290EA2002A53F8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DBBA371DA1D756DC7774957D /* Pods-ExchangeRates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRates.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangeRates/Pods-ExchangeRates.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88E56A60D25E80522E332134 /* libPods-ExchangeRates.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FE8BC059B88EEBDEB4CFC4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13C1E12045F10EA753316AB6 /* libPods-ExchangeRates.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B6E0E7351E290A0A002A53F8 = {
 			isa = PBXGroup;
 			children = (
 				B6E0E7401E290A0B002A53F8 /* ExchangeRates */,
 				B6E0E73F1E290A0B002A53F8 /* Products */,
+				CD957823736F2AD3F1009BE2 /* Pods */,
+				2FE8BC059B88EEBDEB4CFC4D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,14 +73,8 @@
 		B6E0E7401E290A0B002A53F8 /* ExchangeRates */ = {
 			isa = PBXGroup;
 			children = (
-				B6E0E7441E290A0B002A53F8 /* AppDelegate.h */,
-				B6E0E7451E290A0B002A53F8 /* AppDelegate.m */,
-				B6E0E7471E290A0B002A53F8 /* ViewController.h */,
-				B6E0E7481E290A0B002A53F8 /* ViewController.m */,
-				B6E0E74A1E290A0B002A53F8 /* Main.storyboard */,
-				B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */,
+				B6E0E75E1E290EA2002A53F8 /* Main.storyboard */,
 				B6E0E74F1E290A0B002A53F8 /* LaunchScreen.storyboard */,
-				B6E0E7521E290A0B002A53F8 /* Info.plist */,
 				B6E0E7411E290A0B002A53F8 /* Supporting Files */,
 			);
 			path = ExchangeRates;
@@ -74,9 +83,24 @@
 		B6E0E7411E290A0B002A53F8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B6E0E7581E290CCA002A53F8 /* ExchangeRate-PrefixHeader.pch */,
+				B6E0E7521E290A0B002A53F8 /* Info.plist */,
+				B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */,
+				B6E0E75C1E290E14002A53F8 /* CurrencyApp.xcdatamodel */,
+				B6E0E7591E290DFE002A53F8 /* AppDelegate.h */,
+				B6E0E75A1E290DFE002A53F8 /* AppDelegate.m */,
 				B6E0E7421E290A0B002A53F8 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD957823736F2AD3F1009BE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				034FA619E00771B2AB61A8AC /* Pods-ExchangeRates.debug.xcconfig */,
+				DBBA371DA1D756DC7774957D /* Pods-ExchangeRates.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6E0E7551E290A0B002A53F8 /* Build configuration list for PBXNativeTarget "ExchangeRates" */;
 			buildPhases = (
+				F04CFC903EF08A81531F02B0 /* [CP] Check Pods Manifest.lock */,
 				B6E0E73A1E290A0B002A53F8 /* Sources */,
 				B6E0E73B1E290A0B002A53F8 /* Frameworks */,
 				B6E0E73C1E290A0B002A53F8 /* Resources */,
+				AC8AEACFE12ED10A7A44A442 /* [CP] Embed Pods Frameworks */,
+				2A01E83F110D1B2ADA75A10C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,21 +164,69 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6E0E75F1E290EA2002A53F8 /* Main.storyboard in Resources */,
 				B6E0E7511E290A0B002A53F8 /* LaunchScreen.storyboard in Resources */,
 				B6E0E74E1E290A0B002A53F8 /* Assets.xcassets in Resources */,
-				B6E0E74C1E290A0B002A53F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A01E83F110D1B2ADA75A10C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExchangeRates/Pods-ExchangeRates-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC8AEACFE12ED10A7A44A442 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExchangeRates/Pods-ExchangeRates-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F04CFC903EF08A81531F02B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B6E0E73A1E290A0B002A53F8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6E0E7491E290A0B002A53F8 /* ViewController.m in Sources */,
-				B6E0E7461E290A0B002A53F8 /* AppDelegate.m in Sources */,
+				B6E0E75B1E290DFE002A53F8 /* AppDelegate.m in Sources */,
+				B6E0E75D1E290E14002A53F8 /* CurrencyApp.xcdatamodel in Sources */,
 				B6E0E7431E290A0B002A53F8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,14 +234,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B6E0E74A1E290A0B002A53F8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B6E0E74B1E290A0B002A53F8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B6E0E74F1E290A0B002A53F8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -270,9 +337,12 @@
 		};
 		B6E0E7561E290A0B002A53F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 034FA619E00771B2AB61A8AC /* Pods-ExchangeRates.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/ExchangeRate-Prefix.pch";
 				INFOPLIST_FILE = ExchangeRates/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EL.ExchangeRates;
@@ -282,9 +352,12 @@
 		};
 		B6E0E7571E290A0B002A53F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBBA371DA1D756DC7774957D /* Pods-ExchangeRates.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/ExchangeRate-Prefix.pch";
 				INFOPLIST_FILE = ExchangeRates/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EL.ExchangeRates;
@@ -311,6 +384,7 @@
 				B6E0E7571E290A0B002A53F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

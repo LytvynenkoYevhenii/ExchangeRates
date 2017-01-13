@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  ExchangeRates
+//  CurrenciesApp
 //
-//  Created by Lytvynenko Yevhenii on 13.01.17.
+//  Created by Lytvynenko Yevhenii on 10.01.17.
 //  Copyright © 2017 Lytvynenko Yevhenii. All rights reserved.
 //
 
@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [MagicalRecord setupCoreDataStack];
     return YES;
 }
 

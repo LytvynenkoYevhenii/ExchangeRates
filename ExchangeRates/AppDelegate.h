@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  ExchangeRates
+//  CurrenciesApp
 //
-//  Created by Lytvynenko Yevhenii on 13.01.17.
+//  Created by Lytvynenko Yevhenii on 10.01.17.
 //  Copyright © 2017 Lytvynenko Yevhenii. All rights reserved.
 //
 
