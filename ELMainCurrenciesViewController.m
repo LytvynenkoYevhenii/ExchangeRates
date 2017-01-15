@@ -77,30 +77,23 @@
 
 - (void)addTestCurrencies
 {
-    NSArray *currencyCodes = @[@"USD", @"EUR", @"RUR", @"CHF", @"GBP", @"PLZ", @"SEC", @"XAU", @"CAD"];
-    NSArray *bankNames = @[ELPrivatBankName, ELNBUBankName];
-    
-    for (NSString *bankName in bankNames) {
-        ELBank *bank = [ELBank MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
-        bank.name = bankName;
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
+        NSArray *currencyCodes = @[@"USD", @"EUR", @"RUR", @"CHF", @"GBP", @"PLZ", @"SEC", @"XAU", @"CAD"];
+        NSArray *bankNames = @[ELPrivatBankName, ELNBUBankName];
         
-        for (NSString *key in currencyCodes) {
-            ELCurrency *currency = [ELCurrency MR_createEntity];
+        for (NSString *bankName in bankNames) {
+            ELBank *bank = [ELBank MR_createEntityInContext:localContext];
+            bank.name = bankName;
             
-            currency.code = key;
-            currency.saleRate = arc4random() % 40001 /1000.f + 10.f; //10.f...50.f
-            currency.purchaseRate = currency.saleRate * ((arc4random() % 21) / 100.f + 0.8f); //0.8...1.0
-            currency.bank = bank;
+            for (NSString *key in currencyCodes) {
+                ELCurrency *currency = [ELCurrency MR_createEntityInContext:localContext];
+                currency.code = key;
+                currency.saleRate = arc4random() % 40001 /1000.f + 10.f; //10.f...50.f
+                currency.purchaseRate = currency.saleRate * ((arc4random() % 21) / 100.f + 0.8f); //0.8...1.0
+                currency.bank = bank;
+            }
         }
-    }
-    
-    NSError *error = nil;
-    
-    [[NSManagedObjectContext MR_defaultContext] save:&error];
-    
-    if (error) {
-        NSLog(@"Error with saving context = %@", [error localizedDescription]);
-    }
+    }];
 }
 
 - (void) changeDateForBankNameView:(ELBankNameView *)view

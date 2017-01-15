@@ -13,9 +13,9 @@ extern NSString * const ELBankNameViewNibName;
 @interface ELBankNameView : UIView
 
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;
-@property (strong, nonatomic) NSDate *date;
 @property (weak, nonatomic) IBOutlet UILabel *bankNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *calendarIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) NSDate *date;
 
 @end
