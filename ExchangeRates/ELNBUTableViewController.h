@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const ELNBUBankName;
+extern NSString * const ELNBUBankFullName;
+extern NSString * const ELNBUBankShortName;
 
 @interface ELNBUTableViewController : UITableViewController 
 - (void)selectRowWithCurrency:(NSString *)code;

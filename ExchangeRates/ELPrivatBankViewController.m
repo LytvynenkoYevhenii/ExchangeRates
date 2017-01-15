@@ -10,7 +10,8 @@
 #import "ELPrivatBankTableViewCell.h"
 #import "ELCurrency+CoreDataProperties.h"
 
-NSString * const ELPrivatBankName = @"PrivatBank";
+NSString * const ELPrivatBankFullName = @"PrivatBank";
+NSString * const ELPrivatBankShortName = @"PB";
 
 @interface ELPrivatBankViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -43,7 +44,7 @@ static NSString * const cellNibName = @"ELPrivatBankTableViewCell";
 - (NSArray *)currenciesArray
 {
     if (!_currenciesArray) {
-        NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"bank.name == %@", ELPrivatBankName];
+        NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"bank.name == %@", ELPrivatBankFullName];
         _currenciesArray = [ELCurrency MR_findAllWithPredicate:pbPredicate];
     }
     return _currenciesArray;

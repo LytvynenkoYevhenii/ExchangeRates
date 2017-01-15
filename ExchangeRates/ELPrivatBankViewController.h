@@ -10,7 +10,8 @@
 
 @protocol ELPrivatBankViewControllerDelegate;
 
-extern NSString * const ELPrivatBankName;
+extern NSString * const ELPrivatBankFullName;
+extern NSString * const ELPrivatBankShortName;
 
 @interface ELPrivatBankViewController : UIViewController
 @property (weak, nonatomic) id <ELPrivatBankViewControllerDelegate> delegate;

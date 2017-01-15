@@ -13,7 +13,8 @@
 
 #import "ELCurrency+CoreDataProperties.h"
 
-NSString * const ELNBUBankName = @"NBU";
+NSString * const ELNBUBankFullName = @"National Bank";
+NSString * const ELNBUBankShortName = @"NBU";
 
 @interface ELNBUTableViewController ()
 @property (strong, nonatomic) NSArray *currenciesArray;
@@ -46,7 +47,7 @@ static NSString * const basicCurrencyCode = @"UAH";
 - (NSArray *)currenciesArray
 {
     if (!_currenciesArray) {
-        NSPredicate *nbuPredicate = [NSPredicate predicateWithFormat:@"bank.name == %@", ELNBUBankName];
+        NSPredicate *nbuPredicate = [NSPredicate predicateWithFormat:@"bank.name == %@", ELNBUBankFullName];
         _currenciesArray = [ELCurrency MR_findAllWithPredicate:nbuPredicate];
     }
     return _currenciesArray;

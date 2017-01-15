@@ -52,8 +52,8 @@
     [self.privatBankActivityView.dateButton addTarget:self action:@selector(actionChangeDateForPrivatBank:) forControlEvents:UIControlEventTouchUpInside];
     
     //Set bank names
-    self.privatBankActivityView.bankNameLabel.text = NSLocalizedString(ELPrivatBankName, nil);
-    self.nbuActivityView.bankNameLabel.text = NSLocalizedString(ELNBUBankName, nil);
+    self.privatBankActivityView.bankNameLabel.text = NSLocalizedString(ELPrivatBankFullName, nil);
+    self.nbuActivityView.bankNameLabel.text = NSLocalizedString(ELNBUBankFullName, nil);
 
     //Set nav bar title
     self.navigationItem.title = NSLocalizedString(@"Exchange Rate", nil);
@@ -61,9 +61,22 @@
     //Add date picker view
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(orientationChanged:)    name:UIDeviceOrientationDidChangeNotification  object:nil];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 #pragma mark - <ELPrivatBankViewControllerDelegate>
@@ -79,7 +92,7 @@
 {
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
         NSArray *currencyCodes = @[@"USD", @"EUR", @"RUR", @"CHF", @"GBP", @"PLZ", @"SEC", @"XAU", @"CAD"];
-        NSArray *bankNames = @[ELPrivatBankName, ELNBUBankName];
+        NSArray *bankNames = @[ELPrivatBankFullName, ELNBUBankFullName];
         
         for (NSString *bankName in bankNames) {
             ELBank *bank = [ELBank MR_createEntityInContext:localContext];
@@ -98,10 +111,18 @@
 
 - (void) changeDateForBankNameView:(ELBankNameView *)view
 {
+    NSString *bankName = nil;
+    
+    if ([view isEqual:self.privatBankActivityView]) {
+        bankName = NSLocalizedString(ELPrivatBankFullName, nil);
+    } else {
+        bankName = NSLocalizedString(ELNBUBankFullName, nil);
+    }
+    
     [ELUtils changeTintColor:[ELTheme iconInActiveStateColor]
               forImageInView:view.calendarIconImageView];
     
-    ELDatePicker *datePicker = [[ELDatePicker alloc] initWithPresentingController:self startingDate:view.date andBankName:view.bankNameLabel.text];
+    ELDatePicker *datePicker = [[ELDatePicker alloc] initWithPresentingController:self startingDate:view.date andBankName:bankName];
     
     [datePicker showDatePickerWithConfirmDataBlock:^(BOOL confirm, BOOL sync, NSDate *date) {
         [ELUtils changeTintColor:[ELTheme iconInPassiveStateColor] forImageInView:view.calendarIconImageView];
@@ -126,6 +147,22 @@
 - (void)actionChangeDateForNBU:(UIButton *)sender
 {
     [self changeDateForBankNameView:self.nbuActivityView];
+}
+
+#pragma mark - Rotation
+
+- (void)orientationChanged:(NSNotification *)notification
+{
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    if (orientation == UIDeviceOrientationPortrait) {
+        self.privatBankActivityView.bankNameLabel.text = NSLocalizedString(ELPrivatBankFullName, nil);
+        self.nbuActivityView.bankNameLabel.text = NSLocalizedString(ELNBUBankFullName, nil);
+
+    } else {
+        self.privatBankActivityView.bankNameLabel.text = NSLocalizedString(ELPrivatBankShortName, nil);
+        self.nbuActivityView.bankNameLabel.text = NSLocalizedString(ELNBUBankShortName, nil);
+    }
 }
 
 

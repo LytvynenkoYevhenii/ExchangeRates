@@ -26,6 +26,7 @@ NSString * const ELDatePickerViewControllerStoryboardID = @"ELDatePickerViewCont
     [super viewDidLoad];
     self.datePicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:0];
     self.datePicker.date = self.startingDate;
+    self.bankNameLabel.text = self.bankName;
     // Do any additional setup after loading the view.
 }
 
@@ -40,12 +41,6 @@ NSString * const ELDatePickerViewControllerStoryboardID = @"ELDatePickerViewCont
 {
     _startingDate = startingDate;
     [self.datePicker setDate:startingDate animated:YES];
-}
-
-- (void) setBankName:(NSString *)bankName
-{
-    _bankName = bankName;
-    self.bankNameLabel.text = bankName;
 }
 
 #pragma mark - Actions
