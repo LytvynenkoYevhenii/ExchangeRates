@@ -11,9 +11,9 @@
 #import "ELPrivatBankViewController.h"
 #import "ELNBUTableViewController.h"
 #import "ELDatePicker.h"
+#import "ELServerManager.h"
 
 #import "ELCurrency+CoreDataProperties.h"
-#import "ELBank+CoreDataProperties.h"
 
 @interface ELMainCurrenciesViewController ()<ELPrivatBankViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self addTestCurrencies];
+    [self addTestCurrencies];
     
     //Child view controllers
     NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"class == %@", [ELPrivatBankViewController class]];
@@ -58,7 +58,8 @@
     //Set nav bar title
     self.navigationItem.title = NSLocalizedString(@"Exchange Rate", nil);
     
-    //Add date picker view
+    [[ELServerManager sharedManager]getCurrenciesWithDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,15 +96,13 @@
         NSArray *bankNames = @[ELPrivatBankFullName, ELNBUBankFullName];
         
         for (NSString *bankName in bankNames) {
-            ELBank *bank = [ELBank MR_createEntityInContext:localContext];
-            bank.name = bankName;
-            
+           
             for (NSString *key in currencyCodes) {
                 ELCurrency *currency = [ELCurrency MR_createEntityInContext:localContext];
                 currency.code = key;
                 currency.saleRate = arc4random() % 40001 /1000.f + 10.f; //10.f...50.f
                 currency.purchaseRate = currency.saleRate * ((arc4random() % 21) / 100.f + 0.8f); //0.8...1.0
-                currency.bank = bank;
+                currency.bankName = bankName;
             }
         }
     }];
