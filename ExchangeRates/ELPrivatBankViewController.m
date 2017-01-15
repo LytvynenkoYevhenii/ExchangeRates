@@ -44,7 +44,7 @@ static NSString * const cellNibName = @"ELPrivatBankTableViewCell";
 - (NSArray *)currenciesArray
 {
     if (!_currenciesArray) {
-        NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"bank.name == %@", ELPrivatBankFullName];
+        NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"bankName == %@", ELPrivatBankFullName];
         _currenciesArray = [ELCurrency MR_findAllWithPredicate:pbPredicate];
     }
     return _currenciesArray;

@@ -11,7 +11,6 @@
 #import "ELPrivatBankViewController.h"
 #import "ELNBUTableViewController.h"
 #import "ELDatePicker.h"
-#import "ELServerManager.h"
 
 #import "ELCurrency+CoreDataProperties.h"
 
@@ -35,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self addTestCurrencies];
+//    [self addTestCurrencies];
     
     //Child view controllers
     NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"class == %@", [ELPrivatBankViewController class]];
@@ -57,8 +56,6 @@
 
     //Set nav bar title
     self.navigationItem.title = NSLocalizedString(@"Exchange Rate", nil);
-    
-    [[ELServerManager sharedManager]getCurrenciesWithDate:[NSDate dateWithTimeIntervalSinceNow:0]];
     
 }
 
