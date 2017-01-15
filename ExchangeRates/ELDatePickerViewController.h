@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^ELDatePickerCompletionBlock)(BOOL sync, NSDate *date);
+typedef void(^ELDatePickerCompletionBlock)(BOOL confirm, BOOL sync, NSDate *date);
 
 extern NSString * const ELDatePickerViewControllerStoryboardID;
 

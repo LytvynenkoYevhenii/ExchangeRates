@@ -50,17 +50,17 @@ NSString * const ELDatePickerViewControllerStoryboardID = @"ELDatePickerViewCont
 
 #pragma mark - Actions
 
-
 - (IBAction)actionConfirm:(UIButton *)sender
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        self.completionBlock(self.syncSwitch.isOn, self.datePicker.date);
+        self.completionBlock(YES, self.syncSwitch.isOn, self.datePicker.date);
     }];
 }
 
 - (IBAction)actionCancel:(UIButton *)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.completionBlock(NO, self.syncSwitch.isOn, self.datePicker.date);
+    }];}
 
 @end

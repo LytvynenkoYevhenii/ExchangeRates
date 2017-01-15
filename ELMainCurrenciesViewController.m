@@ -73,6 +73,8 @@
     [self.nbuViewController selectRowWithCurrency:currency];
 }
 
+#pragma mark - Private methods
+
 - (void)addTestCurrencies
 {
     NSArray *currencyCodes = @[@"USD", @"EUR", @"RUR", @"CHF", @"GBP", @"PLZ", @"SEC", @"XAU", @"CAD"];
@@ -101,26 +103,36 @@
     }
 }
 
+- (void) changeDateForBankNameView:(ELBankNameView *)view
+{
+    [ELUtils changeTintColor:[ELTheme iconInActiveStateColor]
+              forImageInView:view.calendarIconImageView];
+    
+    ELDatePicker *datePicker = [[ELDatePicker alloc] initWithPresentingController:self startingDate:view.date andBankName:view.bankNameLabel.text];
+    
+    [datePicker showDatePickerWithConfirmDataBlock:^(BOOL confirm, BOOL sync, NSDate *date) {
+        [ELUtils changeTintColor:[ELTheme iconInPassiveStateColor] forImageInView:view.calendarIconImageView];
+        if (confirm) {
+            if (sync) {
+                self.privatBankActivityView.date = date;
+                self.nbuActivityView.date = date;
+            } else {
+                view.date = date;
+            }
+        }
+    }];
+}
+
 #pragma mark - Actions
 
 - (void)actionChangeDateForPrivatBank:(UIButton *)sender
 {
-    [ELUtils changeTintColor:[ELTheme iconInActiveStateColor] forImageInView:self.privatBankActivityView.calendarIconImageView];
+    [self changeDateForBankNameView:self.privatBankActivityView];
 }
-
 
 - (void)actionChangeDateForNBU:(UIButton *)sender
 {
-    [ELUtils changeTintColor:[ELTheme iconInActiveStateColor] forImageInView:self.nbuActivityView.calendarIconImageView];
-    
-    ELDatePicker *datePicker = [[ELDatePicker alloc] initWithPresentingController:self startingDate:self.nbuActivityView.date andBankName:ELNBUBankName];
-    
-    [datePicker showDatePickerWithConfirmDataBlock:^(BOOL sync, NSDate *date) {
-        self.nbuActivityView.date = date;
-        if (sync) {
-            self.privatBankActivityView.date = date;
-        }
-    }];
+    [self changeDateForBankNameView:self.nbuActivityView];
 }
 
 
