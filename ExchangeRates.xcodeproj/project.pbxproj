@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		88E56A60D25E80522E332134 /* libPods-ExchangeRates.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1E12045F10EA753316AB6 /* libPods-ExchangeRates.a */; };
+		B646DBA61E2B0521000A5BDF /* ELDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B646DBA51E2B0521000A5BDF /* ELDatePickerViewController.m */; };
+		B646DBAC1E2B0F0A000A5BDF /* ELDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B646DBAB1E2B0F0A000A5BDF /* ELDatePicker.m */; };
 		B6A077291E29116A0058676D /* ELBankNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077271E29116A0058676D /* ELBankNameView.m */; };
 		B6A0772A1E29116A0058676D /* ELBankNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A077281E29116A0058676D /* ELBankNameView.xib */; };
 		B6A0772E1E29119F0058676D /* ELDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A0772C1E29119F0058676D /* ELDatePickerView.m */; };
@@ -35,6 +37,10 @@
 /* Begin PBXFileReference section */
 		034FA619E00771B2AB61A8AC /* Pods-ExchangeRates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRates.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangeRates/Pods-ExchangeRates.debug.xcconfig"; sourceTree = "<group>"; };
 		13C1E12045F10EA753316AB6 /* libPods-ExchangeRates.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExchangeRates.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B646DBA41E2B0521000A5BDF /* ELDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELDatePickerViewController.h; sourceTree = "<group>"; };
+		B646DBA51E2B0521000A5BDF /* ELDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELDatePickerViewController.m; sourceTree = "<group>"; };
+		B646DBAA1E2B0F0A000A5BDF /* ELDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELDatePicker.h; sourceTree = "<group>"; };
+		B646DBAB1E2B0F0A000A5BDF /* ELDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELDatePicker.m; sourceTree = "<group>"; };
 		B6A077261E29116A0058676D /* ELBankNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELBankNameView.h; sourceTree = "<group>"; };
 		B6A077271E29116A0058676D /* ELBankNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELBankNameView.m; sourceTree = "<group>"; };
 		B6A077281E29116A0058676D /* ELBankNameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELBankNameView.xib; sourceTree = "<group>"; };
@@ -164,6 +170,10 @@
 				B6A077501E2913A50058676D /* ELUtils.m */,
 				B6A077401E2912B80058676D /* ELMainCurrenciesViewController.h */,
 				B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */,
+				B646DBA41E2B0521000A5BDF /* ELDatePickerViewController.h */,
+				B646DBA51E2B0521000A5BDF /* ELDatePickerViewController.m */,
+				B646DBAA1E2B0F0A000A5BDF /* ELDatePicker.h */,
+				B646DBAB1E2B0F0A000A5BDF /* ELDatePicker.m */,
 				B6A077441E2912FB0058676D /* Universal view controllers */,
 				B6A077431E2912E00058676D /* Cells */,
 				B6A077351E2912080058676D /* Views */,
@@ -331,11 +341,13 @@
 				B6A077331E2911D50058676D /* ELPrivatBankTableHeaderView.m in Sources */,
 				B6A0772E1E29119F0058676D /* ELDatePickerView.m in Sources */,
 				B6A077521E2913A50058676D /* ELTheme.m in Sources */,
+				B646DBAC1E2B0F0A000A5BDF /* ELDatePicker.m in Sources */,
 				B6A077391E29122B0058676D /* ELNBUTableViewCell.m in Sources */,
 				B6A0773E1E29126E0058676D /* ELPrivatBankTableViewCell.m in Sources */,
 				B6E0E75B1E290DFE002A53F8 /* AppDelegate.m in Sources */,
 				B6E0E75D1E290E14002A53F8 /* ExchangeRate.xcdatamodel in Sources */,
 				B6A077421E2912B80058676D /* ELMainCurrenciesViewController.m in Sources */,
+				B646DBA61E2B0521000A5BDF /* ELDatePickerViewController.m in Sources */,
 				B6A0774A1E29135C0058676D /* ELPrivatBankViewController.m in Sources */,
 				B6A077471E2913360058676D /* ELNBUTableViewController.m in Sources */,
 				B6E0E7431E290A0B002A53F8 /* main.m in Sources */,

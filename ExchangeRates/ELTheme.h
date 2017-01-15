@@ -10,6 +10,8 @@
 
 @class UIColor;
 
+extern NSString * const ELMainFontName;
+
 #define RGBA(r, g, b, a) [UIColor colorWithRed:r / 255.f green:g / 255.f blue:b / 255.f alpha:a / 100.f]
 
 @interface ELTheme : NSObject
@@ -19,7 +21,11 @@
 + (UIColor *)passiveInteractTextColor;
 + (UIColor *)privatBankCurrencyTextColor;
 + (UIColor *)bankNameTextColor;
++ (UIColor *)pairedCellBackgroundColor;
 + (UIColor *)iconInPassiveStateColor;
 + (UIColor *)iconInActiveStateColor;
+
+//Text attributes
++ (NSDictionary *)textAttributesForNavigationBarTitle;
 
 @end

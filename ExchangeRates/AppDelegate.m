@@ -17,8 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [MagicalRecord setupCoreDataStack];
+    [MagicalRecord setupCoreDataStackWithInMemoryStore];
 
+    [[UINavigationBar appearance] setTitleTextAttributes:[ELTheme textAttributesForNavigationBarTitle]];
+    
     return YES;
 }
 

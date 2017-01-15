@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -22,11 +22,27 @@
             <rect key="frame" x="0.0" y="0.0" width="537" height="159"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01.01.2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="o2W-Gs-OsA">
-                    <rect key="frame" x="425.5" y="0.0" width="95.5" height="159"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
-                    <color key="textColor" red="1" green="0.57706925129999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2W-Gs-OsA">
+                    <rect key="frame" x="436.5" y="0.0" width="84.5" height="159"/>
+                    <attributedString key="attributedText">
+                        <fragment content="01.01.2015">
+                            <attributes>
+                                <color key="NSColor" red="1" green="0.57706925129999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="18" name="AvenirNext-Medium"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <nil key="highlightedColor"/>
+                    <variation key="heightClass=compact-widthClass=compact">
+                        <attributedString key="attributedText">
+                            <fragment content="01.01.2015">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="0.57706925129999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="16" name="AvenirNext-Medium"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </variation>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПриватБанк" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="fee-mt-ehe">
                     <rect key="frame" x="16" y="0.0" width="116.5" height="159"/>
@@ -35,17 +51,18 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Passive_calendar_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="kSz-xJ-tLE">
-                    <rect key="frame" x="397.5" y="70" width="20" height="20"/>
+                    <rect key="frame" x="408.5" y="70" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="JA7-ht-Zvi"/>
                         <constraint firstAttribute="width" constant="20" id="st2-6R-ap2"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhL-Xk-WIW">
-                    <rect key="frame" x="425.5" y="0.0" width="95.5" height="159"/>
+                    <rect key="frame" x="436.5" y="0.0" width="84.5" height="159"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="UWQ-Ph-UHW"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                     <state key="normal" title=""/>
                 </button>
             </subviews>

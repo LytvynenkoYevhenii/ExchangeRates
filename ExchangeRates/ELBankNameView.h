@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const ELBankNameViewNibName;
+
 @interface ELBankNameView : UIView
 
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;

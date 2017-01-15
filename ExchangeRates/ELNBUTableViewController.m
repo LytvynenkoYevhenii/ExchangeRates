@@ -9,12 +9,11 @@
 #import "ELNBUTableViewController.h"
 #import "ELNBUTableViewCell.h"
 #import "ELCalculator.h"
-#import "ELUtils.h"
 #import "ELPrivatBankViewController.h"
 
 #import "ELCurrency+CoreDataProperties.h"
 
-NSString * const nbuBankName = @"NBU";
+NSString * const ELNBUBankName = @"NBU";
 
 @interface ELNBUTableViewController ()
 @property (strong, nonatomic) NSArray *currenciesArray;
@@ -47,7 +46,7 @@ static NSString * const basicCurrencyCode = @"UAH";
 - (NSArray *)currenciesArray
 {
     if (!_currenciesArray) {
-        NSPredicate *nbuPredicate = [NSPredicate predicateWithFormat:@"bank.name == %@", nbuBankName];
+        NSPredicate *nbuPredicate = [NSPredicate predicateWithFormat:@"bank.name == %@", ELNBUBankName];
         _currenciesArray = [ELCurrency MR_findAllWithPredicate:nbuPredicate];
     }
     return _currenciesArray;
@@ -64,6 +63,14 @@ static NSString * const basicCurrencyCode = @"UAH";
 {
     ELNBUTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
     
+    if (!cell.selected) {
+        if (indexPath.row % 2) {
+            cell.contentView.backgroundColor = [ELTheme pairedCellBackgroundColor];
+        } else {
+            cell.contentView.backgroundColor = [UIColor whiteColor];
+        }
+    }
+    
     ELCurrency *currency = [self.currenciesArray objectAtIndex:indexPath.row];
     CGFloat rate = currency.saleRate;
     NSInteger coefficient = 0;
@@ -72,7 +79,7 @@ static NSString * const basicCurrencyCode = @"UAH";
     cell.saleRateLabel.text = [NSString stringWithFormat:@"%1.3f", rate];
     cell.exchangeСoefficientLabel.text = [NSString stringWithFormat:@"%d%@", coefficient, basicCurrencyCode] ;
     cell.currencyNameLabel.text = [ELUtils currencyLocalizedNameWithCode:currency.code];
-    
+
     return cell;
 }
 
@@ -86,6 +93,12 @@ static NSString * const basicCurrencyCode = @"UAH";
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return NO;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
 }
 
 #pragma mark - Public API

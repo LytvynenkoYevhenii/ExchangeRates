@@ -10,15 +10,17 @@
 #import "ELBankNameView.h"
 #import "ELPrivatBankViewController.h"
 #import "ELNBUTableViewController.h"
+#import "ELDatePicker.h"
 
 #import "ELCurrency+CoreDataProperties.h"
 #import "ELBank+CoreDataProperties.h"
-//#import "ELUtils.h"
 
 @interface ELMainCurrenciesViewController ()<ELPrivatBankViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
 @property (weak, nonatomic) IBOutlet ELBankNameView *privatBankActivityView;
 @property (weak, nonatomic) IBOutlet ELBankNameView *nbuActivityView;
+@property (weak, nonatomic) IBOutlet UIView *pbSectorView;
+@property (weak, nonatomic) IBOutlet UIView *nbuSectorView;
 
 //Child view controllers
 @property (strong, nonatomic) ELPrivatBankViewController *pbViewController;
@@ -33,16 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self addTestCurrencies];
-}
-- (void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(orientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
-   
+//    [self addTestCurrencies];
+    
     //Child view controllers
     NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"class == %@", [ELPrivatBankViewController class]];
     self.pbViewController = [[self.childViewControllers filteredArrayUsingPredicate:pbPredicate]firstObject];
@@ -57,32 +51,19 @@
     [self.nbuActivityView.dateButton addTarget:self action:@selector(actionChangeDateForNBU:) forControlEvents:UIControlEventTouchUpInside];
     [self.privatBankActivityView.dateButton addTarget:self action:@selector(actionChangeDateForPrivatBank:) forControlEvents:UIControlEventTouchUpInside];
     
-    //Add date picker view
-    
-}
+    //Set bank names
+    self.privatBankActivityView.bankNameLabel.text = NSLocalizedString(ELPrivatBankName, nil);
+    self.nbuActivityView.bankNameLabel.text = NSLocalizedString(ELNBUBankName, nil);
 
-- (void) viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:UIDeviceOrientationDidChangeNotification
-                                                 object:nil];
+    //Set nav bar title
+    self.navigationItem.title = NSLocalizedString(@"Exchange Rate", nil);
+    
+    //Add date picker view
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Observing
-
-- (void)orientationChanged:(NSNotification *)notification
-{
-    if ([[UIApplication sharedApplication]statusBarOrientation] == UIInterfaceOrientationPortrait) {
-        self.stackView.axis = UILayoutConstraintAxisVertical;
-    } else {
-        self.stackView.axis = UILayoutConstraintAxisHorizontal;
-    }
 }
 
 #pragma mark - <ELPrivatBankViewControllerDelegate>
@@ -95,10 +76,10 @@
 - (void)addTestCurrencies
 {
     NSArray *currencyCodes = @[@"USD", @"EUR", @"RUR", @"CHF", @"GBP", @"PLZ", @"SEC", @"XAU", @"CAD"];
-    NSArray *bankNames = @[privatBankName, nbuBankName];
+    NSArray *bankNames = @[ELPrivatBankName, ELNBUBankName];
     
     for (NSString *bankName in bankNames) {
-        ELBank *bank = [ELBank MR_createEntity];
+        ELBank *bank = [ELBank MR_createEntityInContext:[NSManagedObjectContext MR_defaultContext]];
         bank.name = bankName;
         
         for (NSString *key in currencyCodes) {
@@ -122,14 +103,25 @@
 
 #pragma mark - Actions
 
-- (void)actionChangeDateForNBU:(UIButton *)sender
-{
-    
-}
-
 - (void)actionChangeDateForPrivatBank:(UIButton *)sender
 {
-    
+    [ELUtils changeTintColor:[ELTheme iconInActiveStateColor] forImageInView:self.privatBankActivityView.calendarIconImageView];
 }
+
+
+- (void)actionChangeDateForNBU:(UIButton *)sender
+{
+    [ELUtils changeTintColor:[ELTheme iconInActiveStateColor] forImageInView:self.nbuActivityView.calendarIconImageView];
+    
+    ELDatePicker *datePicker = [[ELDatePicker alloc] initWithPresentingController:self startingDate:self.nbuActivityView.date andBankName:ELNBUBankName];
+    
+    [datePicker showDatePickerWithConfirmDataBlock:^(BOOL sync, NSDate *date) {
+        self.nbuActivityView.date = date;
+        if (sync) {
+            self.privatBankActivityView.date = date;
+        }
+    }];
+}
+
 
 @end

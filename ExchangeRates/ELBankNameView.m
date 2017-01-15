@@ -7,7 +7,8 @@
 //
 
 #import "ELBankNameView.h"
-#import "ELUtils.h"
+
+NSString * const ELBankNameViewNibName = @"ELBankNameView";
 
 @interface ELBankNameView()
 @property (strong, nonatomic) IBOutlet UIView *xibView;
@@ -15,15 +16,15 @@
 
 @implementation ELBankNameView
 
-static NSString * const nibName = @"ELBankNameView";
+@synthesize date = _date;
 
-#pragma mark - Custom Accessor
+#pragma mark - Initialization
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self) {
-        UINib *nib = [UINib nibWithNibName:nibName bundle:nil];
+        UINib *nib = [UINib nibWithNibName:ELBankNameViewNibName bundle:nil];
         [nib instantiateWithOwner:self options:nil];
         [self addSubview:self.xibView];
         self.xibView.frame = self.bounds;
@@ -33,14 +34,22 @@ static NSString * const nibName = @"ELBankNameView";
     return self;
 }
 
+#pragma mark - Custom Accessor
+
 - (void) setDate:(NSDate *)date
 {
     _date = date;
-
+    
     NSAttributedString *attributedTitle = [ELUtils attributedTitleForActiveStateWithDate:date];
-//    [self.dateButton setAttributedTitle:attributedTitle forState:UIControlStateNormal];
     self.dateLabel.attributedText = attributedTitle;
 }
 
+- (NSDate *)date
+{
+    if (!_date) {
+        _date = [NSDate dateWithTimeIntervalSinceNow:0];
+    }
+    return _date;
+}
 
 @end

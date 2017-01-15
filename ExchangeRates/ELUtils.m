@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ELUtils.h"
-
 @implementation ELUtils
 
 #pragma mark - Attributed titles
@@ -18,7 +16,6 @@
 {
     UIColor *activeStateColor = [UIColor orangeColor];
     return [self attributedTitleWithDate:date andColor:activeStateColor];
-    
 }
 
 + (NSAttributedString *)attributedTitleForUnactiveStateWithDate:(NSDate *)date
@@ -31,7 +28,14 @@
 
 + (void)changeTintColor:(UIColor *)color forImageInView:(UIImageView *)imageView
 {
-    imageView.image = [imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    if (imageView.image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
+        imageView.image = [imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+    
+    if ([imageView.tintColor isEqual:color]) {
+        return;
+    }
+    
     [imageView setTintColor:color];
 }
 
@@ -70,7 +74,7 @@
     [formatter setDateFormat:@"dd.MM.yyyy"];
     
     NSString *title = [formatter stringFromDate:date];
-    UIFont *font = [UIFont fontWithName:@"AvenirNext-Medium" size:16.f];
+    UIFont *font = [UIFont fontWithName:ELMainFontName size:16.f];
     NSDictionary *attributes = @{NSFontAttributeName : font,
                                  NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle),
                                  NSForegroundColorAttributeName : color};

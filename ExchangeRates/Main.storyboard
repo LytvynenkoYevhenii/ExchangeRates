@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3sw-wd-L7A">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Курс валют-->
+        <!--Main Currencies View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ELMainCurrenciesViewController" sceneMemberID="viewController">
@@ -17,24 +17,24 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0Cl-37-ITV">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Cl-37-ITV">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PF8-17-R4t">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUK-4B-ZBU" customClass="ELBankNameView">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="2YZ-Xg-2pq"/>
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZR-rK-bJM">
-                                                <rect key="frame" x="0.0" y="44" width="375" height="157"/>
+                                                <rect key="frame" x="0.0" y="44" width="320" height="157"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="157" id="Td8-As-Cmg"/>
                                                 </constraints>
@@ -54,17 +54,17 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7E-gM-Snb">
-                                        <rect key="frame" x="0.0" y="201" width="375" height="402"/>
+                                        <rect key="frame" x="0.0" y="209" width="320" height="207"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4E7-bi-aXY" customClass="ELBankNameView">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="I37-hZ-3na"/>
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-iR-mZM">
-                                                <rect key="frame" x="0.0" y="44" width="375" height="358"/>
+                                                <rect key="frame" x="0.0" y="44" width="320" height="163"/>
                                                 <connections>
                                                     <segue destination="5Q5-tT-xfW" kind="embed" id="lpW-sW-f8z"/>
                                                 </connections>
@@ -82,7 +82,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <variation key="heightClass=compact-widthClass=compact" distribution="fillEqually"/>
+                                <variation key="heightClass=compact-widthClass=compact" axis="horizontal" distribution="fillEqually" spacing="8"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -93,9 +93,11 @@
                             <constraint firstAttribute="trailing" secondItem="0Cl-37-ITV" secondAttribute="trailing" id="vIh-IG-oID"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Курс валют" id="yya-EI-Fm1"/>
+                    <navigationItem key="navigationItem" id="yya-EI-Fm1"/>
                     <connections>
                         <outlet property="nbuActivityView" destination="4E7-bi-aXY" id="3q4-Gv-B4p"/>
+                        <outlet property="nbuSectorView" destination="v7E-gM-Snb" id="SoY-Jw-Lzg"/>
+                        <outlet property="pbSectorView" destination="PF8-17-R4t" id="Dvm-cn-KRc"/>
                         <outlet property="privatBankActivityView" destination="aUK-4B-ZBU" id="1am-sE-xhI"/>
                         <outlet property="stackView" destination="0Cl-37-ITV" id="76X-UZ-AgU"/>
                     </connections>
@@ -112,7 +114,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hth-t2-Fcn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.41176470590000003" green="0.60392156860000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.22237715136299122" green="0.55961538461538463" blue="0.40923203421326049" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -127,8 +129,8 @@
         <scene sceneID="Sou-y8-ILe">
             <objects>
                 <tableViewController storyboardIdentifier="ELNBUTableViewController" id="5Q5-tT-xfW" customClass="ELNBUTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="43Z-vu-3mI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="43Z-vu-3mI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -150,18 +152,18 @@
                         <viewControllerLayoutGuide type="bottom" id="P0M-Kz-KcE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GUU-Pa-DZf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7d-w4-Klz" customClass="ELPrivatBankTableHeaderView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="9U8-ta-epS"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F8L-Eo-jMH">
-                                <rect key="frame" x="0.0" y="25" width="375" height="132"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F8L-Eo-jMH">
+                                <rect key="frame" x="0.0" y="25" width="320" height="132"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="mCN-1V-4Ew" id="DTd-e3-IS5"/>
@@ -188,5 +190,259 @@
             </objects>
             <point key="canvasLocation" x="1078" y="-316"/>
         </scene>
+        <!--Date Picker View Controller-->
+        <scene sceneID="tqw-V6-IXG">
+            <objects>
+                <viewController storyboardIdentifier="ELDatePickerViewController" id="dhV-bX-6He" customClass="ELDatePickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4U5-TX-vie"/>
+                        <viewControllerLayoutGuide type="bottom" id="pTK-N8-dDL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rk7-it-01H">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПриватБанк" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6O-wu-jtq">
+                                <rect key="frame" x="60" y="36" width="200" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="SNr-kI-b6H">
+                                        <variation key="heightClass=compact-widthClass=regular" constant="220"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="200"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="300"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="33" id="zfe-9Q-1Zb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                                <color key="textColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="23"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="35"/>
+                                </variation>
+                            </label>
+                            <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpH-8q-kox">
+                                <rect key="frame" x="0.0" y="155" width="320" height="265"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="990" constant="400" id="DvC-i9-J4S">
+                                        <variation key="heightClass=compact-widthClass=regular" constant="260"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="659"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="300"/>
+                                    </constraint>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="506124054.20859402">
+                                    <!--2017-01-14 22:00:54 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="441806400">
+                                    <!--2015-01-01 12:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pLG-rf-TN6">
+                                <rect key="frame" x="45" y="86" width="230" height="60"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wqq-HL-0rx">
+                                        <rect key="frame" x="90.5" y="0.0" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.30980392159999998" green="0.61568627450000002" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Синхронизировать даты" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="thG-S5-mQc">
+                                        <rect key="frame" x="0.0" y="31" width="230" height="29"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                        <color key="textColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=compact-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="750" constant="280" id="eS9-xi-7j2">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="340"/>
+                                        <variation key="heightClass=compact-widthClass=regular" constant="450"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="320"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="60" id="l4S-4P-5Y1">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                                    </constraint>
+                                </constraints>
+                                <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
+                                <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
+                            </stackView>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ko1-wa-Sd1">
+                                <rect key="frame" x="10" y="154" width="300" height="1"/>
+                                <color key="backgroundColor" red="0.30980392156862746" green="0.61568627450980395" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="CGZ-b1-izV"/>
+                                </constraints>
+                            </view>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RpG-aV-hDg">
+                                <rect key="frame" x="10" y="77" width="300" height="1"/>
+                                <color key="backgroundColor" red="0.30980392156862746" green="0.61568627450980395" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="2Vi-7h-axC"/>
+                                    <constraint firstAttribute="height" constant="1" id="r21-Cf-SSo"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsE-kD-Fqy">
+                                <rect key="frame" x="216" y="420" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="GOy-ht-Sd5"/>
+                                    <constraint firstAttribute="width" constant="44" id="R51-Dc-Kiz"/>
+                                </constraints>
+                                <state key="normal" title="Ok" image="ConfirmButton"/>
+                                <connections>
+                                    <action selector="actionConfirm:" destination="dhV-bX-6He" eventType="touchUpInside" id="683-kM-rV0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZr-Ip-Aze">
+                                <rect key="frame" x="60" y="420" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="9od-4Z-G7d"/>
+                                    <constraint firstAttribute="height" constant="44" id="ZEv-2g-nT1"/>
+                                </constraints>
+                                <state key="normal" title="Cancel" image="cancelButton"/>
+                                <connections>
+                                    <action selector="actionCancel:" destination="dhV-bX-6He" eventType="touchUpInside" id="2iG-k4-zpg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SZr-Ip-Aze" firstAttribute="centerY" secondItem="bpH-8q-kox" secondAttribute="centerY" id="1fD-eo-oGZ"/>
+                            <constraint firstItem="wsE-kD-Fqy" firstAttribute="leading" secondItem="bpH-8q-kox" secondAttribute="trailing" priority="750" constant="50" id="3Hl-uL-ndo"/>
+                            <constraint firstItem="bpH-8q-kox" firstAttribute="width" secondItem="Rk7-it-01H" secondAttribute="width" id="Aah-K2-RUl">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="pLG-rf-TN6" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Rk7-it-01H" secondAttribute="leading" constant="150" id="Ben-hD-O6B"/>
+                            <constraint firstItem="wsE-kD-Fqy" firstAttribute="centerY" secondItem="SZr-Ip-Aze" secondAttribute="centerY" id="ErV-2j-YTd"/>
+                            <constraint firstItem="SZr-Ip-Aze" firstAttribute="top" secondItem="bpH-8q-kox" secondAttribute="bottom" constant="16" id="HNf-bQ-wMi">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="bpH-8q-kox" firstAttribute="top" secondItem="ko1-wa-Sd1" secondAttribute="bottom" constant="8" id="HdQ-zx-wJY">
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="16"/>
+                            </constraint>
+                            <constraint firstItem="G6O-wu-jtq" firstAttribute="centerX" secondItem="Rk7-it-01H" secondAttribute="centerX" id="IAq-3g-Zam"/>
+                            <constraint firstItem="pLG-rf-TN6" firstAttribute="leading" secondItem="Rk7-it-01H" secondAttribute="leading" constant="45" id="Iau-AB-mdR"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="pLG-rf-TN6" secondAttribute="trailing" constant="150" id="Jdc-WC-x8h"/>
+                            <constraint firstItem="pTK-N8-dDL" firstAttribute="top" secondItem="SZr-Ip-Aze" secondAttribute="bottom" constant="150" id="KvZ-K0-AGv">
+                                <variation key="heightClass=regular-widthClass=compact" constant="16"/>
+                            </constraint>
+                            <constraint firstItem="ko1-wa-Sd1" firstAttribute="width" secondItem="RpG-aV-hDg" secondAttribute="width" id="LVs-t3-vu6"/>
+                            <constraint firstItem="RpG-aV-hDg" firstAttribute="top" secondItem="G6O-wu-jtq" secondAttribute="bottom" constant="8" symbolic="YES" id="PFA-ie-Q6t">
+                                <variation key="heightClass=compact-widthClass=compact" constant="8"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="SZr-Ip-Aze" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rk7-it-01H" secondAttribute="leading" constant="20" symbolic="YES" id="PdP-hi-bfg">
+                                <variation key="heightClass=compact-widthClass=compact" constant="20"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="wsE-kD-Fqy" secondAttribute="trailing" priority="250" constant="60" id="Vat-Y4-TQd"/>
+                            <constraint firstItem="SZr-Ip-Aze" firstAttribute="centerY" secondItem="Rk7-it-01H" secondAttribute="centerY" id="VuO-dS-fca"/>
+                            <constraint firstItem="SZr-Ip-Aze" firstAttribute="leading" secondItem="Rk7-it-01H" secondAttribute="leading" priority="250" constant="60" id="XDt-ZQ-7Oa"/>
+                            <constraint firstAttribute="trailing" secondItem="pLG-rf-TN6" secondAttribute="trailing" constant="45" id="YpW-li-wrI"/>
+                            <constraint firstItem="G6O-wu-jtq" firstAttribute="top" secondItem="4U5-TX-vie" secondAttribute="bottom" constant="8" symbolic="YES" id="cVL-UQ-DrN">
+                                <variation key="heightClass=regular-widthClass=compact" constant="16"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="pLG-rf-TN6" firstAttribute="top" secondItem="RpG-aV-hDg" secondAttribute="bottom" constant="8" symbolic="YES" id="cXb-3B-s3A">
+                                <variation key="heightClass=compact-widthClass=compact" constant="8"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="16"/>
+                            </constraint>
+                            <constraint firstItem="ko1-wa-Sd1" firstAttribute="top" secondItem="pLG-rf-TN6" secondAttribute="bottom" constant="8" symbolic="YES" id="fLD-gx-q06">
+                                <variation key="heightClass=compact-widthClass=compact" constant="8"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="16"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="bpH-8q-kox" secondAttribute="bottom" id="fPp-LV-XTZ">
+                                <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="RpG-aV-hDg" firstAttribute="centerX" secondItem="Rk7-it-01H" secondAttribute="centerX" id="iTv-o5-IkG"/>
+                            <constraint firstItem="bpH-8q-kox" firstAttribute="width" secondItem="pLG-rf-TN6" secondAttribute="width" id="iyw-hn-46s"/>
+                            <constraint firstItem="bpH-8q-kox" firstAttribute="centerX" secondItem="Rk7-it-01H" secondAttribute="centerX" id="jCE-Ok-Y0Y"/>
+                            <constraint firstItem="pLG-rf-TN6" firstAttribute="centerX" secondItem="Rk7-it-01H" secondAttribute="centerX" id="kSg-77-INQ"/>
+                            <constraint firstItem="bpH-8q-kox" firstAttribute="leading" secondItem="SZr-Ip-Aze" secondAttribute="trailing" priority="750" constant="50" id="q7R-v9-cnF"/>
+                            <constraint firstItem="ko1-wa-Sd1" firstAttribute="centerX" secondItem="Rk7-it-01H" secondAttribute="centerX" id="uyS-5G-Hjg"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wsE-kD-Fqy" secondAttribute="trailing" constant="20" id="z4v-dp-QqA">
+                                <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Iau-AB-mdR"/>
+                                <exclude reference="YpW-li-wrI"/>
+                                <exclude reference="fPp-LV-XTZ"/>
+                                <exclude reference="iyw-hn-46s"/>
+                                <exclude reference="q7R-v9-cnF"/>
+                                <exclude reference="1fD-eo-oGZ"/>
+                                <exclude reference="HNf-bQ-wMi"/>
+                                <exclude reference="PdP-hi-bfg"/>
+                                <exclude reference="VuO-dS-fca"/>
+                                <exclude reference="KvZ-K0-AGv"/>
+                                <exclude reference="3Hl-uL-ndo"/>
+                                <exclude reference="z4v-dp-QqA"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="Aah-K2-RUl"/>
+                                <include reference="fPp-LV-XTZ"/>
+                                <include reference="q7R-v9-cnF"/>
+                                <include reference="1fD-eo-oGZ"/>
+                                <include reference="PdP-hi-bfg"/>
+                                <include reference="3Hl-uL-ndo"/>
+                                <include reference="z4v-dp-QqA"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="Aah-K2-RUl"/>
+                                <include reference="iyw-hn-46s"/>
+                                <include reference="q7R-v9-cnF"/>
+                                <include reference="VuO-dS-fca"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Iau-AB-mdR"/>
+                                <include reference="YpW-li-wrI"/>
+                                <include reference="HNf-bQ-wMi"/>
+                                <include reference="KvZ-K0-AGv"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="Aah-K2-RUl"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="bankNameLabel" destination="G6O-wu-jtq" id="wpm-3R-w6d"/>
+                        <outlet property="datePicker" destination="bpH-8q-kox" id="Yg1-IL-VHf"/>
+                        <outlet property="syncSwitch" destination="Wqq-HL-0rx" id="f8y-DQ-Lz6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nph-UG-Qnh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1944.9275362318842" y="-96.195652173913047"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="ConfirmButton" width="46" height="46"/>
+        <image name="cancelButton" width="46" height="46"/>
+    </resources>
 </document>
