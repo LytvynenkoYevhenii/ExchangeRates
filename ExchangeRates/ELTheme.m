@@ -59,6 +59,12 @@ NSString * const ELMainFontName = @"AvenirNext-Medium";
     return [UIColor whiteColor];
 }
 
++ (UIColor *)selectedCellBackgroundColor
+{
+    UIColor *templateColor = [ELTheme navigationBarBackgroundColor];
+    return [templateColor colorWithAlphaComponent:0.2f];
+}
+
 #pragma mark - Text attributes
 
 + (NSDictionary *)textAttributesForNavigationBarTitle

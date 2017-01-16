@@ -61,7 +61,6 @@ static NSString * const cellNibName = @"ELPrivatBankTableViewCell";
     ELPrivatBankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
     
     ELCurrency *currency = [self.currenciesArray objectAtIndex:indexPath.row];
-    
     cell.currencyLabel.text = currency.code;
     cell.purchaseRateLabel.text = [NSString stringWithFormat:@"%1.3f", currency.purchaseRate];
     cell.saleRateLabel.text = [NSString stringWithFormat:@"%1.3f", currency.saleRate];
@@ -73,6 +72,7 @@ static NSString * const cellNibName = @"ELPrivatBankTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     ELCurrency *currency = [self.currenciesArray objectAtIndex:indexPath.row];
     [self.delegate privatBankViewController:self didSelectCurrencyWithCode:currency.code];
 }

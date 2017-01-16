@@ -162,12 +162,7 @@
 		B6E0E7401E290A0B002A53F8 /* ExchangeRates */ = {
 			isa = PBXGroup;
 			children = (
-				B6A0774B1E2913A50058676D /* ELCalculator.h */,
-				B6A0774C1E2913A50058676D /* ELCalculator.m */,
-				B6A0774D1E2913A50058676D /* ELTheme.h */,
-				B6A0774E1E2913A50058676D /* ELTheme.m */,
-				B6A0774F1E2913A50058676D /* ELUtils.h */,
-				B6A077501E2913A50058676D /* ELUtils.m */,
+				B6EB34C51E2C402F00A389E2 /* Handlers */,
 				B6A077401E2912B80058676D /* ELMainCurrenciesViewController.h */,
 				B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */,
 				B646DBA41E2B0521000A5BDF /* ELDatePickerViewController.h */,
@@ -196,6 +191,19 @@
 				B6E0E7421E290A0B002A53F8 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B6EB34C51E2C402F00A389E2 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				B6A0774B1E2913A50058676D /* ELCalculator.h */,
+				B6A0774C1E2913A50058676D /* ELCalculator.m */,
+				B6A0774D1E2913A50058676D /* ELTheme.h */,
+				B6A0774E1E2913A50058676D /* ELTheme.m */,
+				B6A0774F1E2913A50058676D /* ELUtils.h */,
+				B6A077501E2913A50058676D /* ELUtils.m */,
+			);
+			name = Handlers;
 			sourceTree = "<group>";
 		};
 		CD957823736F2AD3F1009BE2 /* Pods */ = {

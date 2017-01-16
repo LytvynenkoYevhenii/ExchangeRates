@@ -18,6 +18,7 @@ NSString * const ELNBUBankShortName = @"NBU";
 
 @interface ELNBUTableViewController ()
 @property (strong, nonatomic) NSArray *currenciesArray;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @end
 
 @implementation ELNBUTableViewController
@@ -53,6 +54,22 @@ static NSString * const basicCurrencyCode = @"UAH";
     return _currenciesArray;
 }
 
+- (void)setSelectedIndexPath:(NSIndexPath *)selectedIndexPath
+{
+    NSArray *selectedIndexPaths = nil;
+    
+    if (!self.selectedIndexPath) {
+        selectedIndexPaths = @[selectedIndexPath];
+    } else {
+        selectedIndexPaths = @[selectedIndexPath, self.selectedIndexPath];
+    }
+    
+    _selectedIndexPath = selectedIndexPath;
+
+    [self.tableView reloadRowsAtIndexPaths:selectedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+    
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -64,13 +81,7 @@ static NSString * const basicCurrencyCode = @"UAH";
 {
     ELNBUTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
     
-    if (!cell.selected) {
-        if (indexPath.row % 2) {
-            cell.contentView.backgroundColor = [ELTheme pairedCellBackgroundColor];
-        } else {
-            cell.contentView.backgroundColor = [UIColor whiteColor];
-        }
-    }
+    [self designCell:cell withIndexPath:indexPath];
     
     ELCurrency *currency = [self.currenciesArray objectAtIndex:indexPath.row];
     CGFloat rate = currency.saleRate;
@@ -81,7 +92,24 @@ static NSString * const basicCurrencyCode = @"UAH";
     cell.exchangeСoefficientLabel.text = [NSString stringWithFormat:@"%d%@", coefficient, basicCurrencyCode] ;
     cell.currencyNameLabel.text = [ELUtils currencyLocalizedNameWithCode:currency.code];
 
+    
+//    cell.contentView.layer.cornerRadius = 22.f;
     return cell;
+}
+
+- (void)designCell:(UITableViewCell *)cell withIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath isEqual:self.selectedIndexPath]) {
+        cell.contentView.backgroundColor = [ELTheme selectedCellBackgroundColor];
+    } else {
+        //Regarding to all non selected cells
+        if (indexPath.row % 2) {
+            cell.contentView.backgroundColor = [ELTheme pairedCellBackgroundColor];
+        } else {
+            cell.contentView.backgroundColor = [UIColor whiteColor];
+        }
+    }
+
 }
 
 #pragma mark - <UITableViewDelegate>
@@ -91,17 +119,6 @@ static NSString * const basicCurrencyCode = @"UAH";
     return 44.f;
 }
 
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NO;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
-}
-
 #pragma mark - Public API
 
 - (void)selectRowWithCurrency:(NSString *)code
@@ -109,8 +126,12 @@ static NSString * const basicCurrencyCode = @"UAH";
     NSPredicate *currencyCodePredicate = [NSPredicate predicateWithFormat:@"code == %@", code];
     ELCurrency *selectedCurrency = [[self.currenciesArray filteredArrayUsingPredicate:currencyCodePredicate] firstObject];
     NSInteger row = [self.currenciesArray indexOfObject:selectedCurrency];
-    NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    [self.tableView selectRowAtIndexPath:selectedIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    NSIndexPath *newSelectedIndexPath = [NSIndexPath indexPathForRow:row inSection:0];
+
+    if (![newSelectedIndexPath isEqual:self.selectedIndexPath]) {
+        self.selectedIndexPath = newSelectedIndexPath;
+        [self.tableView scrollToRowAtIndexPath:newSelectedIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
 }
 
 

@@ -24,6 +24,7 @@ extern NSString * const ELMainFontName;
 + (UIColor *)pairedCellBackgroundColor;
 + (UIColor *)iconInPassiveStateColor;
 + (UIColor *)iconInActiveStateColor;
++ (UIColor *)selectedCellBackgroundColor;
 
 //Text attributes
 + (NSDictionary *)textAttributesForNavigationBarTitle;
