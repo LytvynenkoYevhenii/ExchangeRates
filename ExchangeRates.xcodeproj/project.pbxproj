@@ -12,8 +12,6 @@
 		B646DBAC1E2B0F0A000A5BDF /* ELDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B646DBAB1E2B0F0A000A5BDF /* ELDatePicker.m */; };
 		B6A077291E29116A0058676D /* ELBankNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077271E29116A0058676D /* ELBankNameView.m */; };
 		B6A0772A1E29116A0058676D /* ELBankNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A077281E29116A0058676D /* ELBankNameView.xib */; };
-		B6A0772E1E29119F0058676D /* ELDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A0772C1E29119F0058676D /* ELDatePickerView.m */; };
-		B6A0772F1E29119F0058676D /* ELDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A0772D1E29119F0058676D /* ELDatePickerView.xib */; };
 		B6A077331E2911D50058676D /* ELPrivatBankTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077311E2911D50058676D /* ELPrivatBankTableHeaderView.m */; };
 		B6A077341E2911D50058676D /* ELPrivatBankTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A077321E2911D50058676D /* ELPrivatBankTableHeaderView.xib */; };
 		B6A077391E29122B0058676D /* ELNBUTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077371E29122B0058676D /* ELNBUTableViewCell.m */; };
@@ -32,6 +30,12 @@
 		B6E0E75B1E290DFE002A53F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E75A1E290DFE002A53F8 /* AppDelegate.m */; };
 		B6E0E75D1E290E14002A53F8 /* ExchangeRate.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E75C1E290E14002A53F8 /* ExchangeRate.xcdatamodel */; };
 		B6E0E75F1E290EA2002A53F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E75E1E290EA2002A53F8 /* Main.storyboard */; };
+		B6EB34C81E2C622100A389E2 /* ELDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EB34C71E2C622100A389E2 /* ELDataManager.m */; };
+		B6EB34CA1E2C658900A389E2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EB34C91E2C658900A389E2 /* SystemConfiguration.framework */; };
+		B6EB34CD1E2C670F00A389E2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EB34CC1E2C670F00A389E2 /* Reachability.m */; };
+		B6EB34D01E2C67C000A389E2 /* ELServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EB34CF1E2C67C000A389E2 /* ELServerManager.m */; };
+		B6FDACAC1E2E341600C83C58 /* ELAppStartConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FDACAB1E2E341600C83C58 /* ELAppStartConfigurator.m */; };
+		B6FDACB41E2E42F000C83C58 /* ResponseData_01.12.2014.json in Resources */ = {isa = PBXBuildFile; fileRef = B6FDACB31E2E42F000C83C58 /* ResponseData_01.12.2014.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,9 +48,6 @@
 		B6A077261E29116A0058676D /* ELBankNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELBankNameView.h; sourceTree = "<group>"; };
 		B6A077271E29116A0058676D /* ELBankNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELBankNameView.m; sourceTree = "<group>"; };
 		B6A077281E29116A0058676D /* ELBankNameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELBankNameView.xib; sourceTree = "<group>"; };
-		B6A0772B1E29119F0058676D /* ELDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELDatePickerView.h; sourceTree = "<group>"; };
-		B6A0772C1E29119F0058676D /* ELDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELDatePickerView.m; sourceTree = "<group>"; };
-		B6A0772D1E29119F0058676D /* ELDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELDatePickerView.xib; sourceTree = "<group>"; };
 		B6A077301E2911D50058676D /* ELPrivatBankTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELPrivatBankTableHeaderView.h; sourceTree = "<group>"; };
 		B6A077311E2911D50058676D /* ELPrivatBankTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELPrivatBankTableHeaderView.m; sourceTree = "<group>"; };
 		B6A077321E2911D50058676D /* ELPrivatBankTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELPrivatBankTableHeaderView.xib; sourceTree = "<group>"; };
@@ -78,6 +79,16 @@
 		B6E0E75A1E290DFE002A53F8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B6E0E75C1E290E14002A53F8 /* ExchangeRate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExchangeRate.xcdatamodel; sourceTree = "<group>"; };
 		B6E0E75E1E290EA2002A53F8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B6EB34C61E2C622100A389E2 /* ELDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELDataManager.h; sourceTree = "<group>"; };
+		B6EB34C71E2C622100A389E2 /* ELDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELDataManager.m; sourceTree = "<group>"; };
+		B6EB34C91E2C658900A389E2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B6EB34CB1E2C670F00A389E2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		B6EB34CC1E2C670F00A389E2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		B6EB34CE1E2C67C000A389E2 /* ELServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELServerManager.h; sourceTree = "<group>"; };
+		B6EB34CF1E2C67C000A389E2 /* ELServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELServerManager.m; sourceTree = "<group>"; };
+		B6FDACAA1E2E341600C83C58 /* ELAppStartConfigurator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELAppStartConfigurator.h; sourceTree = "<group>"; };
+		B6FDACAB1E2E341600C83C58 /* ELAppStartConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELAppStartConfigurator.m; sourceTree = "<group>"; };
+		B6FDACB31E2E42F000C83C58 /* ResponseData_01.12.2014.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ResponseData_01.12.2014.json; sourceTree = "<group>"; };
 		DBBA371DA1D756DC7774957D /* Pods-ExchangeRates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRates.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExchangeRates/Pods-ExchangeRates.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EB34CA1E2C658900A389E2 /* SystemConfiguration.framework in Frameworks */,
 				88E56A60D25E80522E332134 /* libPods-ExchangeRates.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,9 +108,32 @@
 		2FE8BC059B88EEBDEB4CFC4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6EB34C91E2C658900A389E2 /* SystemConfiguration.framework */,
 				13C1E12045F10EA753316AB6 /* libPods-ExchangeRates.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B62EFCAF1E2D0D41000C5E00 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B6A077441E2912FB0058676D /* Composite view controllers */,
+				B66418231E2FAF17004C3434 /* DatePicker */,
+				B6A077401E2912B80058676D /* ELMainCurrenciesViewController.h */,
+				B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B66418231E2FAF17004C3434 /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B646DBA41E2B0521000A5BDF /* ELDatePickerViewController.h */,
+				B646DBA51E2B0521000A5BDF /* ELDatePickerViewController.m */,
+				B646DBAA1E2B0F0A000A5BDF /* ELDatePicker.h */,
+				B646DBAB1E2B0F0A000A5BDF /* ELDatePicker.m */,
+			);
+			name = DatePicker;
 			sourceTree = "<group>";
 		};
 		B6A077351E2912080058676D /* Views */ = {
@@ -107,9 +142,6 @@
 				B6A077261E29116A0058676D /* ELBankNameView.h */,
 				B6A077271E29116A0058676D /* ELBankNameView.m */,
 				B6A077281E29116A0058676D /* ELBankNameView.xib */,
-				B6A0772B1E29119F0058676D /* ELDatePickerView.h */,
-				B6A0772C1E29119F0058676D /* ELDatePickerView.m */,
-				B6A0772D1E29119F0058676D /* ELDatePickerView.xib */,
 				B6A077301E2911D50058676D /* ELPrivatBankTableHeaderView.h */,
 				B6A077311E2911D50058676D /* ELPrivatBankTableHeaderView.m */,
 				B6A077321E2911D50058676D /* ELPrivatBankTableHeaderView.xib */,
@@ -130,7 +162,7 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
-		B6A077441E2912FB0058676D /* Universal view controllers */ = {
+		B6A077441E2912FB0058676D /* Composite view controllers */ = {
 			isa = PBXGroup;
 			children = (
 				B6A077451E2913360058676D /* ELNBUTableViewController.h */,
@@ -138,7 +170,7 @@
 				B6A077481E29135C0058676D /* ELPrivatBankViewController.h */,
 				B6A077491E29135C0058676D /* ELPrivatBankViewController.m */,
 			);
-			name = "Universal view controllers";
+			name = "Composite view controllers";
 			sourceTree = "<group>";
 		};
 		B6E0E7351E290A0A002A53F8 = {
@@ -163,13 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				B6EB34C51E2C402F00A389E2 /* Handlers */,
-				B6A077401E2912B80058676D /* ELMainCurrenciesViewController.h */,
-				B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */,
-				B646DBA41E2B0521000A5BDF /* ELDatePickerViewController.h */,
-				B646DBA51E2B0521000A5BDF /* ELDatePickerViewController.m */,
-				B646DBAA1E2B0F0A000A5BDF /* ELDatePicker.h */,
-				B646DBAB1E2B0F0A000A5BDF /* ELDatePicker.m */,
-				B6A077441E2912FB0058676D /* Universal view controllers */,
+				B62EFCAF1E2D0D41000C5E00 /* ViewControllers */,
 				B6A077431E2912E00058676D /* Cells */,
 				B6A077351E2912080058676D /* Views */,
 				B6E0E75E1E290EA2002A53F8 /* Main.storyboard */,
@@ -182,12 +208,17 @@
 		B6E0E7411E290A0B002A53F8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B6E0E7581E290CCA002A53F8 /* ExchangeRate-Prefix.pch */,
-				B6E0E7521E290A0B002A53F8 /* Info.plist */,
-				B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */,
-				B6E0E75C1E290E14002A53F8 /* ExchangeRate.xcdatamodel */,
+				B6FDACAA1E2E341600C83C58 /* ELAppStartConfigurator.h */,
+				B6FDACAB1E2E341600C83C58 /* ELAppStartConfigurator.m */,
+				B6FDACB31E2E42F000C83C58 /* ResponseData_01.12.2014.json */,
+				B6EB34CB1E2C670F00A389E2 /* Reachability.h */,
+				B6EB34CC1E2C670F00A389E2 /* Reachability.m */,
 				B6E0E7591E290DFE002A53F8 /* AppDelegate.h */,
 				B6E0E75A1E290DFE002A53F8 /* AppDelegate.m */,
+				B6E0E7581E290CCA002A53F8 /* ExchangeRate-Prefix.pch */,
+				B6E0E7521E290A0B002A53F8 /* Info.plist */,
+				B6E0E75C1E290E14002A53F8 /* ExchangeRate.xcdatamodel */,
+				B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */,
 				B6E0E7421E290A0B002A53F8 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -196,6 +227,10 @@
 		B6EB34C51E2C402F00A389E2 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				B6EB34CE1E2C67C000A389E2 /* ELServerManager.h */,
+				B6EB34CF1E2C67C000A389E2 /* ELServerManager.m */,
+				B6EB34C61E2C622100A389E2 /* ELDataManager.h */,
+				B6EB34C71E2C622100A389E2 /* ELDataManager.m */,
 				B6A0774B1E2913A50058676D /* ELCalculator.h */,
 				B6A0774C1E2913A50058676D /* ELCalculator.m */,
 				B6A0774D1E2913A50058676D /* ELTheme.h */,
@@ -283,7 +318,7 @@
 				B6E0E7511E290A0B002A53F8 /* LaunchScreen.storyboard in Resources */,
 				B6A0773F1E29126E0058676D /* ELPrivatBankTableViewCell.xib in Resources */,
 				B6E0E74E1E290A0B002A53F8 /* Assets.xcassets in Resources */,
-				B6A0772F1E29119F0058676D /* ELDatePickerView.xib in Resources */,
+				B6FDACB41E2E42F000C83C58 /* ResponseData_01.12.2014.json in Resources */,
 				B6A0773A1E29122B0058676D /* ELNBUTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,7 +382,7 @@
 				B6A077511E2913A50058676D /* ELCalculator.m in Sources */,
 				B6A077291E29116A0058676D /* ELBankNameView.m in Sources */,
 				B6A077331E2911D50058676D /* ELPrivatBankTableHeaderView.m in Sources */,
-				B6A0772E1E29119F0058676D /* ELDatePickerView.m in Sources */,
+				B6EB34C81E2C622100A389E2 /* ELDataManager.m in Sources */,
 				B6A077521E2913A50058676D /* ELTheme.m in Sources */,
 				B646DBAC1E2B0F0A000A5BDF /* ELDatePicker.m in Sources */,
 				B6A077391E29122B0058676D /* ELNBUTableViewCell.m in Sources */,
@@ -358,6 +393,9 @@
 				B646DBA61E2B0521000A5BDF /* ELDatePickerViewController.m in Sources */,
 				B6A0774A1E29135C0058676D /* ELPrivatBankViewController.m in Sources */,
 				B6A077471E2913360058676D /* ELNBUTableViewController.m in Sources */,
+				B6EB34D01E2C67C000A389E2 /* ELServerManager.m in Sources */,
+				B6EB34CD1E2C670F00A389E2 /* Reachability.m in Sources */,
+				B6FDACAC1E2E341600C83C58 /* ELAppStartConfigurator.m in Sources */,
 				B6E0E7431E290A0B002A53F8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,11 +513,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/ExchangeRate-Prefix.pch";
 				INFOPLIST_FILE = ExchangeRates/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EL.ExchangeRates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -492,11 +530,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/ExchangeRate-Prefix.pch";
 				INFOPLIST_FILE = ExchangeRates/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EL.ExchangeRates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

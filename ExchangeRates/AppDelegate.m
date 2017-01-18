@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ELAppStartConfigurator.h"
 
 @interface AppDelegate ()
 
@@ -14,12 +15,11 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    [MagicalRecord setupAutoMigratingCoreDataStack];
 
-    [[UINavigationBar appearance] setTitleTextAttributes:[ELTheme textAttributesForNavigationBarTitle]];
+    //Start app configure
+    ELAppStartConfigurator *configurator = [[ELAppStartConfigurator alloc]init];
+    [configurator configureApp];
     
     return YES;
 }

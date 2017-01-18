@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define NO_CONNECT_ERROR_STATUS_CODE 123
+
 @interface ELUtils : NSObject
 
 //Attributed title for date button when user interaction enabled

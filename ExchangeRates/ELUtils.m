@@ -49,12 +49,14 @@
         currencyCodeToNameDictionary = @{@"USD" : @"U.S. Dollar",
                                          @"EUR" : @"Euro",
                                          @"RUR" : @"Russian Ruble",
+                                         @"RUB" : @"Russian Ruble",
                                          @"CHF" : @"Swiss Frank",
                                          @"GBP" : @"British Pound",
                                          @"PLZ" : @"Polish Zloty",
                                          @"SEC" : @"Swedish Krona",
                                          @"XAU" : @"Gold",
-                                         @"CAD" : @"Canadian Dollar",};
+                                         @"CAD" : @"Canadian Dollar",
+                                         @"HUF" : @"Hungarian Forint"};
     }
     
     NSString *name = [currencyCodeToNameDictionary objectForKey:currencyCode];

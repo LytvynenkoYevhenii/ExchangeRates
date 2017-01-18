@@ -7,6 +7,8 @@
 //
 
 #import "ELServerManager.h"
+#import "Reachability.h"
+
 #import "ELCurrency+CoreDataProperties.h"
 
 @interface ELServerManager()
@@ -15,7 +17,7 @@
 
 @implementation ELServerManager
 
-static NSString * const privatBankApiBaseURL = @"https://api.privatbank.ua/p24api/";
+static NSString * const privatBankArchiveApiBaseURL = @"https://api.privatbank.ua/p24api/";
 
 #pragma mark - Initialization
 
@@ -41,74 +43,117 @@ static NSString * const privatBankApiBaseURL = @"https://api.privatbank.ua/p24ap
     return _dateFormatter;
 }
 
+#pragma mark - Public methods
+
+- (BOOL)connected
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return networkStatus != NotReachable;
+}
+
+- (void) getCurrenciesWithDate:(NSDate *)date
+                     inSuccess:(void (^)(NSArray<ELCurrency *> *))success
+                     inFailure:(void (^)(NSError *, NSInteger))failure
+{
+    if ([date isEqual:[NSDate date]]) { //if today - use todayAPI
+        
+    } else { //use archive API
+        [self getCurrenciesFromPrivateArchiveAPIWithDate:date inSuccess:success inFailure:failure];
+    }
+}
+
+- (void) asyncCreateNewCurrenciesFromPrivatArchiveAPIWithResponseData:(NSData *)data withCompletion:(void(^)(BOOL success, NSError *error))completion
+{
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
+        [self createNewCurrenciesFromPrivatArchiveAPIWithResponseData:data inContext:localContext];
+    } completion:completion];
+}
+
+- (void) syncCreateNewCurrenciesFromPrivatArchiveAPIWithResponseData:(NSData *)data
+{
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
+        [self createNewCurrenciesFromPrivatArchiveAPIWithResponseData:data inContext:localContext];
+    }];
+}
+
 #pragma mark - Request methods
 
-- (NSArray <ELCurrency *>*)getCurrenciesWithDate:(NSDate *)date
+- (void) getCurrenciesFromPrivateArchiveAPIWithDate:(NSDate *)date
+                                         inSuccess:(void(^)(NSArray <ELCurrency *>* currencies))success
+                                         inFailure:(void(^)(NSError *error, NSInteger statusCode))failure
 {
-    date = [NSDate dateWithTimeIntervalSinceNow:-60 * 60 * 24 * 30 * 2];
-    
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    NSURL *privatBankApiURL = [self privatBankArchiveApiURLWithDate:date];
     
-    NSURL *privatBankApiURL = [self privatBankApiURLWithDate:date];
+    __block NSArray *currenciesResultArray = nil;
     
     NSURLSessionDataTask *task = [session dataTaskWithURL:privatBankApiURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        NSLog(@"responseDict=%@",responseDict);
         
-        [self createNewCurrenciesFromResponseDictionary:responseDict];
+        if (data) {
+            [self asyncCreateNewCurrenciesFromPrivatArchiveAPIWithResponseData:data withCompletion:^(BOOL success, NSError *error) {
+                if (success) {
+                    NSPredicate *datePredicate = [NSPredicate predicateWithFormat:@"date == %@", date];
+                    currenciesResultArray = [ELCurrency MR_findAllWithPredicate:datePredicate];
+                } else if (error && failure) {
+                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                    failure(error, httpResponse.statusCode);
+                }
+            }];
+        }
     }];
-    
+
     [task resume];
-    
-    return nil;
 }
 
 #pragma mark - Private methods
 
-- (NSURL *)privatBankApiURLWithDate:(NSDate *)date
+- (NSURL *)privatBankArchiveApiURLWithDate:(NSDate *)date
 {
-    NSString *formattedDate = [self.dateFormatter stringFromDate:date];
-    
-    NSString *parameters = [NSString stringWithFormat:@"exchange_rates?json&date=%@", formattedDate];
-    NSString *urlString = [privatBankApiBaseURL stringByAppendingString:parameters];
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSString    *formattedDate  = [self.dateFormatter stringFromDate:date];
+    NSString    *parameters     = [NSString stringWithFormat:@"exchange_rates?json&date=%@", formattedDate];
+    NSString    *urlString      = [privatBankArchiveApiBaseURL stringByAppendingString:parameters];
+    NSURL       *url            = [NSURL URLWithString:urlString];
     
     return url;
 }
 
-- (void) createNewCurrenciesFromResponseDictionary:(NSDictionary *)dictionary
+- (void)createNewCurrenciesFromPrivatArchiveAPIWithResponseData:(NSData *)data inContext:(NSManagedObjectContext *)context
 {
-    [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
+    if (!context || !data) {
+        return;
+    }
+    
+    NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    NSString *dateString = [responseDict objectForKey:@"date"];
+    NSDate *currencyDate = [self.dateFormatter dateFromString:dateString];
+    
+    NSArray *exchangeRates = [responseDict objectForKey:@"exchangeRate"];
+    
+    for (NSDictionary *currencyDict in exchangeRates) {
         
-        NSString *dateString = [dictionary objectForKey:@"date"];
-        NSDate *currencyDate = [self.dateFormatter dateFromString:dateString];
-        
-        NSArray *exchangeRates = [dictionary objectForKey:@"exchangeRate"];
-        
-        NSArray *bankNames = @[@"PrivatBank", @"National Bank"];
-        
-        for (NSString *bankName in bankNames) {
-            
-            for (NSDictionary *currencyDict in exchangeRates) {
-            
-                ELCurrency *newCurrency = [ELCurrency MR_createEntityInContext:localContext];
-                newCurrency.date = currencyDate;
-                
-                NSString *purchaseRateKey = @"purchaseRate";
-                NSString *saleRateKey = @"saleRate";
-                
-                if ([bankName isEqualToString:@"National Bank"]) {
-                    purchaseRateKey = @"purchaseRateNB";
-                    saleRateKey = @"saleRateNB";
-                }
-                newCurrency.purchaseRate = [[currencyDict objectForKey:purchaseRateKey] floatValue];
-                newCurrency.saleRate = [[currencyDict objectForKey:saleRateKey] floatValue];
-                newCurrency.code = [currencyDict objectForKey:@"currency"];
-            }
+        if ([currencyDict objectForKey:@"purchaseRate"]) {
+            //Create PB currency
+            ELCurrency *pbCurrency = [ELCurrency MR_createEntityInContext:context];
+            pbCurrency.bankName = @"PrivatBank";
+            pbCurrency.code = [currencyDict objectForKey:@"currency"];
+            pbCurrency.purchaseRate = [[currencyDict objectForKey:@"purchaseRate"] floatValue];
+            pbCurrency.saleRate = [[currencyDict objectForKey:@"saleRate"] floatValue];
+            pbCurrency.date = currencyDate;
         }
-    }];
+        
+        if ([currencyDict objectForKey:@"purchaseRateNB"]) {
+            //Create NBU currency
+            ELCurrency *nbuCurrency = [ELCurrency MR_createEntityInContext:context];
+            nbuCurrency.bankName = @"National Bank";
+            nbuCurrency.code = [currencyDict objectForKey:@"currency"];
+            nbuCurrency.purchaseRate = [[currencyDict objectForKey:@"purchaseRateNB"] floatValue];
+            nbuCurrency.saleRate = [[currencyDict objectForKey:@"saleRateNB"] floatValue];
+            nbuCurrency.date = currencyDate;
+        }
+    }
 }
 
 @end

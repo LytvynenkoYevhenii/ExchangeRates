@@ -11,6 +11,7 @@
 #import "ELPrivatBankViewController.h"
 #import "ELNBUTableViewController.h"
 #import "ELDatePicker.h"
+#import "ELDataManager.h"
 
 #import "ELCurrency+CoreDataProperties.h"
 
@@ -87,21 +88,22 @@
 
 - (void)addTestCurrencies
 {
-    [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
-        NSArray *currencyCodes = @[@"USD", @"EUR", @"RUR", @"CHF", @"GBP", @"PLZ", @"SEC", @"XAU", @"CAD"];
-        NSArray *bankNames = @[ELPrivatBankFullName, ELNBUBankFullName];
-        
-        for (NSString *bankName in bankNames) {
-           
-            for (NSString *key in currencyCodes) {
-                ELCurrency *currency = [ELCurrency MR_createEntityInContext:localContext];
-                currency.code = key;
-                currency.saleRate = arc4random() % 40001 /1000.f + 10.f; //10.f...50.f
-                currency.purchaseRate = currency.saleRate * ((arc4random() % 21) / 100.f + 0.8f); //0.8...1.0
-                currency.bankName = bankName;
-            }
-        }
-    }];
+   
+//    [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
+//        NSArray *currencyCodes = @[@"USD", @"EUR", @"RUR", @"CHF", @"GBP", @"PLZ", @"SEC", @"XAU", @"CAD"];
+//        NSArray *bankNames = @[ELPrivatBankFullName, ELNBUBankFullName];
+//        
+//        for (NSString *bankName in bankNames) {
+//           
+//            for (NSString *key in currencyCodes) {
+//                ELCurrency *currency = [ELCurrency MR_createEntityInContext:localContext];
+//                currency.code = key;
+//                currency.saleRate = arc4random() % 40001 /1000.f + 10.f; //10.f...50.f
+//                currency.purchaseRate = currency.saleRate * ((arc4random() % 21) / 100.f + 0.8f); //0.8...1.0
+//                currency.bankName = bankName;
+//            }
+//        }
+//    }];
 }
 
 - (void) changeDateForBankNameView:(ELBankNameView *)view
@@ -114,20 +116,47 @@
         bankName = NSLocalizedString(ELNBUBankFullName, nil);
     }
     
+    //Chenge color of the calendar icon
     [ELUtils changeTintColor:[ELTheme iconInActiveStateColor]
               forImageInView:view.calendarIconImageView];
     
+    //Show date picker view controller
     ELDatePicker *datePicker = [[ELDatePicker alloc] initWithPresentingController:self startingDate:view.date andBankName:bankName];
     
     [datePicker showDatePickerWithConfirmDataBlock:^(BOOL confirm, BOOL sync, NSDate *date) {
         [ELUtils changeTintColor:[ELTheme iconInPassiveStateColor] forImageInView:view.calendarIconImageView];
         if (confirm) {
-            if (sync) {
-                self.privatBankActivityView.date = date;
-                self.nbuActivityView.date = date;
-            } else {
-                view.date = date;
-            }
+            [[ELDataManager sharedManager] currenciesWithDate:date success:^(NSArray *currencies) {
+                if (sync) {
+                    self.privatBankActivityView.date = date;
+                    self.nbuActivityView.date = date;
+                    
+                    //Table views data reloading
+                    self.pbViewController.currenciesArray = currencies;
+                    self.nbuViewController.currenciesArray = currencies;
+
+                } else {
+                    view.date = date;
+                    
+                    //Table view data reloading
+                    if ([view isEqual:self.privatBankActivityView]) {
+                        self.pbViewController.currenciesArray = currencies;
+                    } else {
+                        self.nbuViewController.currenciesArray = currencies;
+                    }
+                    
+                    //Table view data must be reloaded
+                    self.pbViewController.currenciesArray = currencies;
+                    self.nbuViewController.currenciesArray = currencies;
+                }
+                
+            } failure:^(NSError *error, NSInteger statusCode) {
+                
+                //If device is not connected to internet - show alert and set last date
+                if (statusCode == NO_CONNECT_ERROR_STATUS_CODE) {
+                    [self showAlertForNoConnectError];
+                }
+            }];
         }
     }];
 }
@@ -160,5 +189,17 @@
     }
 }
 
+#pragma mark - Alerts
+
+- (void) showAlertForNoConnectError
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Connect", nil) message:NSLocalizedString(@"Data can`t be downloaded because connection is lost.", nil) preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    });
+}
 
 @end
