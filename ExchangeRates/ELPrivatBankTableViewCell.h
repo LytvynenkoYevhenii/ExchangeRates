@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *currencyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *purchaseRateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *saleRateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
 
 @end

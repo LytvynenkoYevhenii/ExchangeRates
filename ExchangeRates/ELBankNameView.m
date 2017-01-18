@@ -29,7 +29,7 @@ NSString * const ELBankNameViewNibName = @"ELBankNameView";
         [self addSubview:self.xibView];
         self.xibView.frame = self.bounds;
         self.xibView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        self.date = [NSDate dateWithTimeIntervalSinceNow:0];
+        self.date = [NSDate date];
     }
     return self;
 }
@@ -47,7 +47,7 @@ NSString * const ELBankNameViewNibName = @"ELBankNameView";
 - (NSDate *)date
 {
     if (!_date) {
-        _date = [NSDate dateWithTimeIntervalSinceNow:0];
+        _date = [NSDate date];
     }
     return _date;
 }

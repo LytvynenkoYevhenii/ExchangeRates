@@ -11,6 +11,13 @@
 extern NSString * const ELNBUBankFullName;
 extern NSString * const ELNBUBankShortName;
 
-@interface ELNBUTableViewController : UITableViewController 
+@class ELCurrency;
+
+
+@interface ELNBUTableViewController : UITableViewController
+
+@property (strong, nonatomic) NSArray <ELCurrency *>*currenciesArray;
+
 - (void)selectRowWithCurrency:(NSString *)code;
+
 @end

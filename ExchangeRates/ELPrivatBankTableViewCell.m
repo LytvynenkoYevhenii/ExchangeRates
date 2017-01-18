@@ -23,6 +23,10 @@
     
     bgColorView.backgroundColor = [ELTheme selectedCellBackgroundColor];
     
+    self.flagImageView.layer.cornerRadius = 3.f;
+    self.flagImageView.layer.borderColor = [ELTheme iconInPassiveStateColor].CGColor;
+    self.flagImageView.layer.borderWidth = 1.f;
+    
     [self setSelectedBackgroundView:bgColorView];
 }
 

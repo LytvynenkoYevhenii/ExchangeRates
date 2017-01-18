@@ -17,7 +17,6 @@ NSString * const ELNBUBankFullName = @"National Bank";
 NSString * const ELNBUBankShortName = @"NBU";
 
 @interface ELNBUTableViewController ()
-@property (strong, nonatomic) NSArray *currenciesArray;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @end
 
@@ -92,8 +91,6 @@ static NSString * const basicCurrencyCode = @"UAH";
     cell.exchangeСoefficientLabel.text = [NSString stringWithFormat:@"%d%@", coefficient, basicCurrencyCode] ;
     cell.currencyNameLabel.text = [ELUtils currencyLocalizedNameWithCode:currency.code];
 
-    
-//    cell.contentView.layer.cornerRadius = 22.f;
     return cell;
 }
 
@@ -102,7 +99,7 @@ static NSString * const basicCurrencyCode = @"UAH";
     if ([indexPath isEqual:self.selectedIndexPath]) {
         cell.contentView.backgroundColor = [ELTheme selectedCellBackgroundColor];
     } else {
-        //Regarding to all non selected cells
+        //Regards to all non selected cells
         if (indexPath.row % 2) {
             cell.contentView.backgroundColor = [ELTheme pairedCellBackgroundColor];
         } else {

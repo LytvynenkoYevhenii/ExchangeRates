@@ -10,18 +10,19 @@
 #import "ELPrivatBankTableViewCell.h"
 #import "ELCurrency+CoreDataProperties.h"
 
-NSString * const ELPrivatBankFullName = @"PrivatBank";
-NSString * const ELPrivatBankShortName = @"PB";
+NSString * const ELPrivatBankFullName   = @"PrivatBank";
+NSString * const ELPrivatBankShortName  = @"PB";
 
 @interface ELPrivatBankViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *currenciesArray;
 @end
 
 @implementation ELPrivatBankViewController
 
+@synthesize currenciesArray = _currenciesArray;
+
 static NSString * const cellReuseIdentifier = @"ELPrivatBankTableViewCell";
-static NSString * const cellNibName = @"ELPrivatBankTableViewCell";
+static NSString * const cellNibName         = @"ELPrivatBankTableViewCell";
 
 #pragma mark - Life cycle
 
@@ -50,6 +51,13 @@ static NSString * const cellNibName = @"ELPrivatBankTableViewCell";
     return _currenciesArray;
 }
 
+- (void) setCurrenciesArray:(NSArray<ELCurrency *> *)currenciesArray
+{
+    _currenciesArray = currenciesArray;
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -60,10 +68,10 @@ static NSString * const cellNibName = @"ELPrivatBankTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELPrivatBankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];
     
-    ELCurrency *currency = [self.currenciesArray objectAtIndex:indexPath.row];
-    cell.currencyLabel.text = currency.code;
+    ELCurrency *currency        = [self.currenciesArray objectAtIndex:indexPath.row];
+    cell.currencyLabel.text     = currency.code;
     cell.purchaseRateLabel.text = [NSString stringWithFormat:@"%1.3f", currency.purchaseRate];
-    cell.saleRateLabel.text = [NSString stringWithFormat:@"%1.3f", currency.saleRate];
+    cell.saleRateLabel.text     = [NSString stringWithFormat:@"%1.3f", currency.saleRate];
     
     return cell;
 }
@@ -72,7 +80,6 @@ static NSString * const cellNibName = @"ELPrivatBankTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     ELCurrency *currency = [self.currenciesArray objectAtIndex:indexPath.row];
     [self.delegate privatBankViewController:self didSelectCurrencyWithCode:currency.code];
 }

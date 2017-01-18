@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,21 +12,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ELPrivatBankTableViewCell" rowHeight="57" id="FaH-c9-DZP" customClass="ELPrivatBankTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="354" height="57"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ELPrivatBankTableViewCell" rowHeight="74" id="FaH-c9-DZP" customClass="ELPrivatBankTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="618" height="74"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FaH-c9-DZP" id="py4-vd-4Vt">
-                <rect key="frame" x="0.0" y="0.0" width="354" height="56"/>
+                <rect key="frame" x="0.0" y="0.0" width="618" height="74"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.300" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="CD4-zd-gG5">
-                        <rect key="frame" x="141.5" y="13.5" width="72" height="30.5"/>
+                        <rect key="frame" x="273" y="21.5" width="72" height="30.5"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="22"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.425" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="3oc-0t-JaY">
-                        <rect key="frame" x="266" y="13.5" width="72" height="30.5"/>
+                        <rect key="frame" x="530" y="21.5" width="72" height="30.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="3oc-0t-JaY" secondAttribute="height" multiplier="26:11" id="eEM-rG-jt7"/>
                         </constraints>
@@ -34,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="N5J-un-F0R">
-                        <rect key="frame" x="16" y="13.5" width="45" height="30.5"/>
+                        <rect key="frame" x="16" y="21.5" width="45" height="30.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="N5J-un-F0R" secondAttribute="height" multiplier="49:33" id="Ogz-Kc-ZAK"/>
                         </constraints>
@@ -62,7 +63,7 @@
                 <outlet property="purchaseRateLabel" destination="CD4-zd-gG5" id="35h-4W-UEJ"/>
                 <outlet property="saleRateLabel" destination="3oc-0t-JaY" id="gBg-yn-MO5"/>
             </connections>
-            <point key="canvasLocation" x="-205" y="-38.5"/>
+            <point key="canvasLocation" x="-333" y="-14"/>
         </tableViewCell>
     </objects>
 </document>
