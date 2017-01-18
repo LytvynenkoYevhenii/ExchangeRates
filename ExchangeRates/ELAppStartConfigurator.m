@@ -30,6 +30,9 @@
     //If device is connected to the network than data for past year will be fetched from server, otherwise data for 01.01.2013 will be created locally
     if (![[ELServerManager sharedManager] connected]) {
         [self createCurrenciesManually];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"ELManuallyDataBaseKey"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
@@ -42,8 +45,7 @@
     
     NSData *responseData = [content dataUsingEncoding:NSUTF8StringEncoding];
     
-    [[ELServerManager sharedManager]syncCreateNewCurrenciesFromPrivatArchiveAPIWithResponseData:responseData];
+    [[ELServerManager sharedManager] syncCreateNewCurrenciesFromPrivatArchiveAPIWithResponseData:responseData];
 }
-
 
 @end

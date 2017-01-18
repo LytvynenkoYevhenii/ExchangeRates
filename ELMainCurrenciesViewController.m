@@ -35,7 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self addTestCurrencies];
     
     //Child view controllers
     NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"class == %@", [ELPrivatBankViewController class]];
@@ -63,7 +62,6 @@
                                              selector:@selector(orientationChanged:)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,26 +83,6 @@
 }
 
 #pragma mark - Private methods
-
-- (void)addTestCurrencies
-{
-   
-//    [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
-//        NSArray *currencyCodes = @[@"USD", @"EUR", @"RUR", @"CHF", @"GBP", @"PLZ", @"SEC", @"XAU", @"CAD"];
-//        NSArray *bankNames = @[ELPrivatBankFullName, ELNBUBankFullName];
-//        
-//        for (NSString *bankName in bankNames) {
-//           
-//            for (NSString *key in currencyCodes) {
-//                ELCurrency *currency = [ELCurrency MR_createEntityInContext:localContext];
-//                currency.code = key;
-//                currency.saleRate = arc4random() % 40001 /1000.f + 10.f; //10.f...50.f
-//                currency.purchaseRate = currency.saleRate * ((arc4random() % 21) / 100.f + 0.8f); //0.8...1.0
-//                currency.bankName = bankName;
-//            }
-//        }
-//    }];
-}
 
 - (void) changeDateForBankNameView:(ELBankNameView *)view
 {
@@ -156,6 +134,16 @@
                 if (statusCode == NO_CONNECT_ERROR_STATUS_CODE) {
                     [self showAlertForNoConnectError];
                 }
+                
+                //If DB is empty -> set max and min date to date picker equals to 01.12.2014 (templates date) set date for BankNameViews equals to 01.12.2014
+                if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ELManuallyDataBaseKey"]) {
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    [formatter setDateFormat:@"dd.MM.yyyy"];
+                    self.privatBankActivityView.date = [formatter dateFromString:@"01.12.2014"];
+                    self.nbuActivityView.date = [formatter dateFromString:@"01.12.2014"];
+                    self.
+                }
+                
             }];
         }
     }];

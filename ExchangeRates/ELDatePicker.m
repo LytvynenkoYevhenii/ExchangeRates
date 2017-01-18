@@ -12,6 +12,9 @@
 @property (nonatomic, strong) UIViewController *presentingViewController;
 @property (nonatomic, strong) NSString  *bankName;
 @property (nonatomic, strong) NSDate *startingDate;
+@property (nonatomic, strong) NSDate *minDate;
+@property (nonatomic, strong) NSDate *maxDate;
+
 @end
 
 @implementation ELDatePicker
@@ -29,8 +32,18 @@
     return self;
 }
 
-#pragma mark - Show date picker
+-(instancetype)initWithPresentingController:(UIViewController *)controller startingDate:(NSDate *)date minDate:(NSDate *)minDate maxDate:(NSDate *)maxDate andBankName:(NSString *)bankName
+{
+    self = [self initWithPresentingController:controller startingDate:date andBankName:bankName];
+    
+    self.minDate = minDate;
+    self.maxDate = maxDate;
+    
+    return self;
+}
 
+
+#pragma mark - Show date picker
 
 -(void)showDatePickerWithConfirmDataBlock:(ELDatePickerCompletionBlock)block
 {
