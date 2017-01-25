@@ -26,5 +26,13 @@ extern NSString * const ELNBUBankShortName;
 extern NSString * const ELPrivatBankArchiveTemplateName;
 extern NSString * const ELMainStoryboardName;
 extern NSString * const ELStandardDateFormat;
+extern NSString * const ELNbuApiDateFormat;
 
+//Global keys
 extern NSString * const kELManuallyDataBase;
+
+//Notifications
+extern NSString* const ELServerManagerPrivatBankCurrenciesDidLoadNotification;
+
+//Notification user info keys
+extern NSString* const ELServerManagerPrivatBankCurrencyDateUserInfoKey;

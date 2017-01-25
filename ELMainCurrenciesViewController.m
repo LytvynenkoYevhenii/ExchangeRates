@@ -57,11 +57,14 @@
     //Set nav bar title
     self.navigationItem.title = NSLocalizedString(@"Exchange Rate", nil);
     
-    //Add observer
+    //Add observers
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(orientationChanged:)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currenciesDidLoad:) name:ELServerManagerPrivatBankCurrenciesDidLoadNotification object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,6 +76,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:ELServerManagerPrivatBankCurrenciesDidLoadNotification object:nil];
 }
 
 #pragma mark - <ELPrivatBankViewControllerDelegate>
@@ -161,22 +165,6 @@
     [self changeDateForBankNameView:self.nbuActivityView];
 }
 
-#pragma mark - Rotation
-
-- (void)orientationChanged:(NSNotification *)notification
-{
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    
-    if (orientation == UIDeviceOrientationPortrait) {
-        self.privatBankActivityView.bankNameLabel.text = NSLocalizedString(ELPrivatBankFullName, nil);
-        self.nbuActivityView.bankNameLabel.text = NSLocalizedString(ELNBUBankFullName, nil);
-
-    } else {
-        self.privatBankActivityView.bankNameLabel.text = NSLocalizedString(ELPrivatBankShortName, nil);
-        self.nbuActivityView.bankNameLabel.text = NSLocalizedString(ELNBUBankShortName, nil);
-    }
-}
-
 #pragma mark - Alerts
 
 - (void) showAlertForNoConnectError
@@ -188,6 +176,31 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self dismissViewControllerAnimated:YES completion:nil];
     });
+}
+
+#pragma mark - Observing
+
+- (void)orientationChanged:(NSNotification *)notification
+{
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    if (orientation == UIDeviceOrientationPortrait) {
+        self.privatBankActivityView.bankNameLabel.text = NSLocalizedString(ELPrivatBankFullName, nil);
+        self.nbuActivityView.bankNameLabel.text = NSLocalizedString(ELNBUBankFullName, nil);
+        
+    } else {
+        self.privatBankActivityView.bankNameLabel.text = NSLocalizedString(ELPrivatBankShortName, nil);
+        self.nbuActivityView.bankNameLabel.text = NSLocalizedString(ELNBUBankShortName, nil);
+    }
+}
+
+- (void) currenciesDidLoad:(NSNotification *)notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    
+    NSDate *loadedCurrenciesDate = [userInfo valueForKey:ELServerManagerPrivatBankCurrencyDateUserInfoKey];
+    
+    NSLog(@"%@", loadedCurrenciesDate);
 }
 
 @end

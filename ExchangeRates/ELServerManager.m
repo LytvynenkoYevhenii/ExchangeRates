@@ -15,7 +15,7 @@
 
 @implementation ELServerManager
 
-static NSString * const privatBankArchiveApiBaseURL = @"https://api.privatbank.ua/p24api/";
+static NSString * const privatBankArchiveApiBaseURL = @"https://api.privatbank.ua/p24api/exchange_rates?json&date=";
 static NSString * const privatBankTodayApiURL       = @"https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=4";
 static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?";
 
@@ -143,6 +143,16 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
             
             blockCallNumber++;
             
+            //Create notification for loading process
+            
+            if (success) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSDictionary *userInfo = @{ELServerManagerPrivatBankCurrencyDateUserInfoKey : currentDate};
+                    NSNotification *loadNotification = [NSNotification notificationWithName:ELServerManagerPrivatBankCurrenciesDidLoadNotification object:nil userInfo:userInfo];
+                    [[NSNotificationCenter defaultCenter] postNotification:loadNotification];
+                });
+            }
+            
             if (blockCallNumber == components.day) {
                 
                 //Last calling of the block
@@ -152,7 +162,6 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
                         NSError *error = nil;
                         
                         if (![contextForSaving save:&error]) {
-                            NSLog(@"ERROR with saving the context : %@", [error localizedDescription]);
                             completionBlock(NO, error, CONTEXT_SAVING_ERROR_STATUS_CODE);
                         } else {
                             completionBlock(YES, nil, 0);
@@ -192,8 +201,7 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
 - (NSURL *)privatBankArchiveApiURLWithDate:(NSDate *)date
 {
     NSString    *formattedDate  = [[ELUtils standardFormatter] stringFromDate:date];
-    NSString    *parameters     = [NSString stringWithFormat:@"exchange_rates?json&date=%@", formattedDate];
-    NSString    *urlString      = [privatBankArchiveApiBaseURL stringByAppendingString:parameters];
+    NSString    *urlString      = [privatBankArchiveApiBaseURL stringByAppendingString:formattedDate];
     NSURL       *url            = [NSURL URLWithString:urlString];
     
     return url;
@@ -204,7 +212,7 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
     //Date format YYYYMMDD
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYYMMDD"];
+    [formatter setDateFormat:ELNbuApiDateFormat];
     
     NSString    *formattedDate  = [formatter stringFromDate:date];
     NSString    *parameters     = [NSString stringWithFormat:@"date=%@&json", formattedDate];
