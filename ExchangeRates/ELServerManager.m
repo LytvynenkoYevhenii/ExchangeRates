@@ -134,6 +134,8 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
 
     NSManagedObjectContext *contextForSaving = [NSManagedObjectContext MR_rootSavingContext];
     
+    NSDate *start = [NSDate dateWithTimeIntervalSinceNow:0];
+    
     for (int i = 0; i < components.day; i++) {
         
         ELApiType apiType = [self apiTypeForBankType:bankType withDate:toDate];
@@ -146,9 +148,14 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
             //Create notification for loading process
             
             if (success) {
+
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    NSDictionary *userInfo = @{ELServerManagerPrivatBankCurrencyDateUserInfoKey : currentDate};
-                    NSNotification *loadNotification = [NSNotification notificationWithName:ELServerManagerPrivatBankCurrenciesDidLoadNotification object:nil userInfo:userInfo];
+                    NSDictionary *userInfo = @{ELServerManagerCurrencyDateUserInfoKey : currentDate,
+                                               ELServerManagerStartDateUserInfoKey : fromDate,
+                                               ELServerManagerEndDateUserInfoKey : toDate,
+                                               ELServerManagerCurrencyBankNameInfoKey : ELPrivatBankFullName};
+                    
+                    NSNotification *loadNotification = [NSNotification notificationWithName:ELServerManagerCurrenciesDidLoadNotification object:nil userInfo:userInfo];
                     [[NSNotificationCenter defaultCenter] postNotification:loadNotification];
                 });
             }
@@ -165,6 +172,9 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
                             completionBlock(NO, error, CONTEXT_SAVING_ERROR_STATUS_CODE);
                         } else {
                             completionBlock(YES, nil, 0);
+                            NSDate *finish = [NSDate dateWithTimeIntervalSinceNow:0];
+                            NSInteger timeInterval = [finish timeIntervalSinceDate:start];
+                            NSLog(@"TIME INTERVAL = %d", timeInterval);
                         }
                     });
                 }

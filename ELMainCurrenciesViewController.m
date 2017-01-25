@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet ELBankNameView *nbuActivityView;
 @property (weak, nonatomic) IBOutlet UIView *pbSectorView;
 @property (weak, nonatomic) IBOutlet UIView *nbuSectorView;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 //Child view controllers
 @property (strong, nonatomic) ELPrivatBankViewController *pbViewController;
@@ -63,7 +64,10 @@
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currenciesDidLoad:) name:ELServerManagerPrivatBankCurrenciesDidLoadNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(currenciesDidLoad:)
+                                                 name:ELServerManagerCurrenciesDidLoadNotification
+                                               object:nil];
     
 }
 
@@ -76,7 +80,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:ELServerManagerPrivatBankCurrenciesDidLoadNotification object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:ELServerManagerCurrenciesDidLoadNotification object:nil];
 }
 
 #pragma mark - <ELPrivatBankViewControllerDelegate>
@@ -197,10 +201,18 @@
 - (void) currenciesDidLoad:(NSNotification *)notification
 {
     NSDictionary *userInfo = [notification userInfo];
+    NSDate *startDate = [userInfo valueForKey:ELServerManagerStartDateUserInfoKey];
+    NSDate *loadedCurrenciesDate = [userInfo valueForKey:ELServerManagerCurrencyDateUserInfoKey];
+    NSDate *endDate = [userInfo valueForKey:ELServerManagerEndDateUserInfoKey];
+    CGFloat fullTimeInterval = [endDate timeIntervalSinceDate:startDate];
+    CGFloat currentTimeInterval = [loadedCurrenciesDate timeIntervalSinceDate:startDate];
+    CGFloat progress = currentTimeInterval / fullTimeInterval;
     
-    NSDate *loadedCurrenciesDate = [userInfo valueForKey:ELServerManagerPrivatBankCurrencyDateUserInfoKey];
+    if (self.progressView.progress >= progress) {
+        return;
+    }
     
-    NSLog(@"%@", loadedCurrenciesDate);
+    [self.progressView setProgress:progress];
 }
 
 @end

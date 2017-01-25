@@ -105,18 +105,27 @@
                             <constraint firstAttribute="trailing" secondItem="0Cl-37-ITV" secondAttribute="trailing" id="vIh-IG-oID"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yya-EI-Fm1"/>
+                    <navigationItem key="navigationItem" id="yya-EI-Fm1">
+                        <nil key="title"/>
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressImage="cancelButton" trackImage="cancelButton" id="2bl-6c-mFo">
+                            <rect key="frame" x="12" y="21" width="390" height="2"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="progressTintColor" red="1" green="0.3149772488" blue="0.39276309710000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </progressView>
+                    </navigationItem>
                     <connections>
                         <outlet property="nbuActivityView" destination="4E7-bi-aXY" id="3q4-Gv-B4p"/>
                         <outlet property="nbuSectorView" destination="v7E-gM-Snb" id="SoY-Jw-Lzg"/>
                         <outlet property="pbSectorView" destination="PF8-17-R4t" id="Dvm-cn-KRc"/>
                         <outlet property="privatBankActivityView" destination="aUK-4B-ZBU" id="1am-sE-xhI"/>
+                        <outlet property="progressView" destination="2bl-6c-mFo" id="0J9-3X-zK7"/>
                         <outlet property="stackView" destination="0Cl-37-ITV" id="76X-UZ-AgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1077.5999999999999" y="138.0809595202399"/>
+            <point key="canvasLocation" x="1076.8115942028987" y="137.77173913043478"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n6c-fq-b8w">
@@ -168,14 +177,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7d-w4-Klz" customClass="ELPrivatBankTableHeaderView">
-                                <rect key="frame" x="0.0" y="0.0" width="364" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="25"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="9U8-ta-epS"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F8L-Eo-jMH">
-                                <rect key="frame" x="0.0" y="25" width="364" height="281"/>
+                                <rect key="frame" x="0.0" y="25" width="414" height="132"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="mCN-1V-4Ew" id="DTd-e3-IS5"/>

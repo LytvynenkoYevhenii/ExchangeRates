@@ -21,7 +21,10 @@ NSString * const ELNbuApiDateFormat                 = @"YYYYMMDD";
 NSString * const kELManuallyDataBase                = @"ELManuallyDataBaseKey";
 
 //Notifications
-NSString* const ELServerManagerPrivatBankCurrenciesDidLoadNotification = @"ELServerManagerPrivatBankCurrenciesDidLoadNotification";
+NSString* const ELServerManagerCurrenciesDidLoadNotification = @"ELServerManagerCurrenciesDidLoadNotification";
 
 //Notification user info keys
-NSString* const ELServerManagerPrivatBankCurrencyDateUserInfoKey = @"ELServerManagerPrivatBankCurrencyDateUserInfoKey";
+NSString* const ELServerManagerCurrencyDateUserInfoKey = @"ELServerManagerCurrencyDateUserInfoKey";
+NSString* const ELServerManagerStartDateUserInfoKey = @"ELServerManagerStartDateUserInfoKey";
+NSString* const ELServerManagerEndDateUserInfoKey = @"ELServerManagerEndDateUserInfoKey";
+NSString* const ELServerManagerCurrencyBankNameInfoKey = @"ELServerManagerCurrencyBankNameInfoKey";

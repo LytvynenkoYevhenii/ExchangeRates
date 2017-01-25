@@ -32,7 +32,10 @@ extern NSString * const ELNbuApiDateFormat;
 extern NSString * const kELManuallyDataBase;
 
 //Notifications
-extern NSString* const ELServerManagerPrivatBankCurrenciesDidLoadNotification;
+extern NSString* const ELServerManagerCurrenciesDidLoadNotification;
 
 //Notification user info keys
-extern NSString* const ELServerManagerPrivatBankCurrencyDateUserInfoKey;
+extern NSString* const ELServerManagerCurrencyDateUserInfoKey;
+extern NSString* const ELServerManagerStartDateUserInfoKey;
+extern NSString* const ELServerManagerEndDateUserInfoKey;
+extern NSString* const ELServerManagerCurrencyBankNameInfoKey;
