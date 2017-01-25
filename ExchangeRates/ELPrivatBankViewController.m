@@ -10,9 +10,6 @@
 #import "ELPrivatBankTableViewCell.h"
 #import "ELCurrency+CoreDataProperties.h"
 
-NSString * const ELPrivatBankFullName   = @"PrivatBank";
-NSString * const ELPrivatBankShortName  = @"PB";
-
 @interface ELPrivatBankViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

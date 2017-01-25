@@ -27,4 +27,38 @@
     *coefficient = coefficientValue;
 }
 
++ (NSDate *)dateByAddingYears:(NSInteger)years months:(NSInteger)months days:(NSInteger)days toDate:(NSDate *)date
+{
+    NSDateComponents *component = [[NSDateComponents alloc] init];
+    [component setYear:years];
+    [component setMonth:months];
+    [component setDay:days];
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *resultDate = [gregorianCalendar dateByAddingComponents:component toDate:date options:0];
+    
+    return resultDate;
+}
+
++ (NSDate *)maxDateForCurrenciesArchive
+{
+    static NSDate *resultDate = nil;
+    
+    if (!resultDate) {
+        resultDate = [NSDate date];
+    }
+    return resultDate;
+}
+
++ (NSDate *)minDateForCurrenciesArchive
+{
+    static NSDate *resultDate = nil;
+    
+    if (!resultDate) {
+        NSDate *today = [NSDate date];
+        resultDate = [self dateByAddingYears:-4 months:0 days:0 toDate:today];
+    }
+    return resultDate;
+}
+
 @end

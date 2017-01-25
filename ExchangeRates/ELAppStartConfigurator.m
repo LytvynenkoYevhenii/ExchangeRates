@@ -7,7 +7,9 @@
 //
 
 #import "ELAppStartConfigurator.h"
+#import "ELParser.h"
 #import "ELServerManager.h"
+
 #import "ELCurrency+CoreDataProperties.h"
 
 @implementation ELAppStartConfigurator
@@ -40,12 +42,15 @@
 
 - (void)createCurrenciesManually
 {
+    //Parse currencies from local saved template JSON to default context
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"ResponseData_01.12.2014" ofType:@"json"];
     NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     
     NSData *responseData = [content dataUsingEncoding:NSUTF8StringEncoding];
-    
-    [[ELServerManager sharedManager] syncCreateNewCurrenciesFromPrivatArchiveAPIWithResponseData:responseData];
+
+    [[ELParser  sharedInstance] parseCurrenciesFromAPIWithType:ELApiTypePrivatBankArchive responseData:responseData
+                                                                          inContext:[NSManagedObjectContext MR_defaultContext]];
 }
 
 @end

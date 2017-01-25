@@ -8,16 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-//typedef NS_ENUM(NSInteger, ELBankType) {
-//    ELBankTypePrivat,
-//    ELBankTypeNBU
-//};
-
 @interface ELDataManager : NSObject
 
 + (ELDataManager *)sharedManager;
 
 - (void)currenciesWithDate:(NSDate *)date
+                  bankType:(ELBankType)bankType
                    success:(void(^)(NSArray* currencies))success
                    failure:(void(^)(NSError *error, NSInteger statusCode))failure;
 

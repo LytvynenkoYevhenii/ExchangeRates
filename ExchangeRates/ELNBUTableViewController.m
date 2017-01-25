@@ -13,9 +13,6 @@
 
 #import "ELCurrency+CoreDataProperties.h"
 
-NSString * const ELNBUBankFullName = @"National Bank";
-NSString * const ELNBUBankShortName = @"NBU";
-
 @interface ELNBUTableViewController ()
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @end

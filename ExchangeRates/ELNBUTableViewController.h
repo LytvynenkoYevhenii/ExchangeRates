@@ -8,11 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const ELNBUBankFullName;
-extern NSString * const ELNBUBankShortName;
-
 @class ELCurrency;
-
 
 @interface ELNBUTableViewController : UITableViewController
 

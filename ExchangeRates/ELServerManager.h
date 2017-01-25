@@ -18,13 +18,16 @@
 //Check the network connection
 - (BOOL)connected;
 
-//Fetch methods
-- (void)getCurrenciesWithDate:(NSDate *)date
-                    inSuccess:(void(^)(NSArray <ELCurrency *>* currencies))success
-                    inFailure:(void(^)(NSError *error, NSInteger statusCode))failure;
+//Get currencies
+- (void) getCurrenciesWithDate:(NSDate *)date
+                      bankType:(ELBankType)bankType
+                     inSuccess:(void (^)(NSArray<ELCurrency *> *currencies))success
+                     inFailure:(void (^)(NSError *error, NSInteger statusCode))failure;
 
-//Parse currencies and add to DB
-- (void)asyncCreateNewCurrenciesFromPrivatArchiveAPIWithResponseData:(NSData *)data withCompletion:(void(^)(BOOL success, NSError *error))completion;
-- (void)syncCreateNewCurrenciesFromPrivatArchiveAPIWithResponseData:(NSData *)data;
+//Background dowmloading the currency archive
+- (void) loadCurrenciesFromDate:(NSDate *)fromDate
+                         toDate:(NSDate *)toDate
+                       bankType:(ELBankType)bankType
+                     completion:(void(^)(BOOL succes, NSError *error, NSInteger statusCode))completionBlock;
 
 @end

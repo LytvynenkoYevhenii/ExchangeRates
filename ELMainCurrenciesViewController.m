@@ -87,11 +87,14 @@
 - (void) changeDateForBankNameView:(ELBankNameView *)view
 {
     NSString *bankName = nil;
+    ELBankType bankType = 0;
     
     if ([view isEqual:self.privatBankActivityView]) {
         bankName = NSLocalizedString(ELPrivatBankFullName, nil);
+        bankType = ELBankTypePrivatBank;
     } else {
         bankName = NSLocalizedString(ELNBUBankFullName, nil);
+        bankType = ELBankTypeNBU;
     }
     
     //Chenge color of the calendar icon
@@ -104,7 +107,7 @@
     [datePicker showDatePickerWithConfirmDataBlock:^(BOOL confirm, BOOL sync, NSDate *date) {
         [ELUtils changeTintColor:[ELTheme iconInPassiveStateColor] forImageInView:view.calendarIconImageView];
         if (confirm) {
-            [[ELDataManager sharedManager] currenciesWithDate:date success:^(NSArray *currencies) {
+            [[ELDataManager sharedManager] currenciesWithDate:date bankType:bankType success:^(NSArray *currencies) {
                 if (sync) {
                     self.privatBankActivityView.date = date;
                     self.nbuActivityView.date = date;
@@ -112,7 +115,7 @@
                     //Table views data reloading
                     self.pbViewController.currenciesArray = currencies;
                     self.nbuViewController.currenciesArray = currencies;
-
+                    
                 } else {
                     view.date = date;
                     
@@ -127,9 +130,8 @@
                     self.pbViewController.currenciesArray = currencies;
                     self.nbuViewController.currenciesArray = currencies;
                 }
-                
+
             } failure:^(NSError *error, NSInteger statusCode) {
-                
                 //If device is not connected to internet - show alert and set last date
                 if (statusCode == NO_CONNECT_ERROR_STATUS_CODE) {
                     [self showAlertForNoConnectError];
@@ -141,9 +143,7 @@
                     [formatter setDateFormat:@"dd.MM.yyyy"];
                     self.privatBankActivityView.date = [formatter dateFromString:@"01.12.2014"];
                     self.nbuActivityView.date = [formatter dateFromString:@"01.12.2014"];
-                    self.
                 }
-                
             }];
         }
     }];

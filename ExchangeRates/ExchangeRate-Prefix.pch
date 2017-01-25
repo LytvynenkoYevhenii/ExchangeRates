@@ -10,8 +10,15 @@
 #define ExchangeRate_Prefix_pch
 
 #import <MagicalRecord/MagicalRecord.h>
+
 #import "ELTheme.h"
 #import "ELUtils.h"
+#import "ELConstants.h"
+
+#define NO_CONNECT_ERROR_STATUS_CODE 123
+#define CONTEXT_SAVING_ERROR_STATUS_CODE 124
+#define INVALID_DATE_STATUS_CODE 125
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

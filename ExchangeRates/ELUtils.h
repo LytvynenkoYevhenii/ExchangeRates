@@ -24,4 +24,7 @@
 //String generation
 + (NSString *)currencyLocalizedNameWithCode:(NSString *)currencyCode;
 
+//Date formatter with format 01.01.2016
++ (NSDateFormatter *)standardFormatter;
+
 @end

@@ -68,12 +68,19 @@
     return localizedName;
 }
 
++ (NSDateFormatter *)standardFormatter
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:ELStandardDateFormat];
+    return formatter;
+}
+
 #pragma mark - Private methods
 
 + (NSAttributedString *)attributedTitleWithDate:(NSDate *)date andColor:(UIColor *)color
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd.MM.yyyy"];
+    [formatter setDateFormat:ELStandardDateFormat];
     
     NSString *title = [formatter stringFromDate:date];
     UIFont *font = [UIFont fontWithName:ELMainFontName size:16.f];

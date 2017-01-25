@@ -24,6 +24,8 @@
 		B6A077511E2913A50058676D /* ELCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A0774C1E2913A50058676D /* ELCalculator.m */; };
 		B6A077521E2913A50058676D /* ELTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A0774E1E2913A50058676D /* ELTheme.m */; };
 		B6A077531E2913A50058676D /* ELUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077501E2913A50058676D /* ELUtils.m */; };
+		B6A68BD71E355A2E004F59DD /* ELParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A68BD61E355A2E004F59DD /* ELParser.m */; };
+		B6A68BDA1E355A84004F59DD /* ELConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A68BD91E355A84004F59DD /* ELConstants.m */; };
 		B6E0E7431E290A0B002A53F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E0E7421E290A0B002A53F8 /* main.m */; };
 		B6E0E74E1E290A0B002A53F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */; };
 		B6E0E7511E290A0B002A53F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E0E74F1E290A0B002A53F8 /* LaunchScreen.storyboard */; };
@@ -69,6 +71,10 @@
 		B6A0774E1E2913A50058676D /* ELTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELTheme.m; sourceTree = "<group>"; };
 		B6A0774F1E2913A50058676D /* ELUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELUtils.h; sourceTree = "<group>"; };
 		B6A077501E2913A50058676D /* ELUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELUtils.m; sourceTree = "<group>"; };
+		B6A68BD51E355A2E004F59DD /* ELParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELParser.h; sourceTree = "<group>"; };
+		B6A68BD61E355A2E004F59DD /* ELParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELParser.m; sourceTree = "<group>"; };
+		B6A68BD81E355A84004F59DD /* ELConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELConstants.h; sourceTree = "<group>"; };
+		B6A68BD91E355A84004F59DD /* ELConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELConstants.m; sourceTree = "<group>"; };
 		B6E0E73E1E290A0B002A53F8 /* ExchangeRates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E0E7421E290A0B002A53F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -208,6 +214,7 @@
 		B6E0E7411E290A0B002A53F8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B6E0E7581E290CCA002A53F8 /* ExchangeRate-Prefix.pch */,
 				B6FDACAA1E2E341600C83C58 /* ELAppStartConfigurator.h */,
 				B6FDACAB1E2E341600C83C58 /* ELAppStartConfigurator.m */,
 				B6FDACB31E2E42F000C83C58 /* ResponseData_01.12.2014.json */,
@@ -215,7 +222,6 @@
 				B6EB34CC1E2C670F00A389E2 /* Reachability.m */,
 				B6E0E7591E290DFE002A53F8 /* AppDelegate.h */,
 				B6E0E75A1E290DFE002A53F8 /* AppDelegate.m */,
-				B6E0E7581E290CCA002A53F8 /* ExchangeRate-Prefix.pch */,
 				B6E0E7521E290A0B002A53F8 /* Info.plist */,
 				B6E0E75C1E290E14002A53F8 /* ExchangeRate.xcdatamodel */,
 				B6E0E74D1E290A0B002A53F8 /* Assets.xcassets */,
@@ -227,6 +233,10 @@
 		B6EB34C51E2C402F00A389E2 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				B6A68BD81E355A84004F59DD /* ELConstants.h */,
+				B6A68BD91E355A84004F59DD /* ELConstants.m */,
+				B6A68BD51E355A2E004F59DD /* ELParser.h */,
+				B6A68BD61E355A2E004F59DD /* ELParser.m */,
 				B6EB34CE1E2C67C000A389E2 /* ELServerManager.h */,
 				B6EB34CF1E2C67C000A389E2 /* ELServerManager.m */,
 				B6EB34C61E2C622100A389E2 /* ELDataManager.h */,
@@ -378,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6A68BDA1E355A84004F59DD /* ELConstants.m in Sources */,
 				B6A077531E2913A50058676D /* ELUtils.m in Sources */,
 				B6A077511E2913A50058676D /* ELCalculator.m in Sources */,
 				B6A077291E29116A0058676D /* ELBankNameView.m in Sources */,
@@ -385,6 +396,7 @@
 				B6EB34C81E2C622100A389E2 /* ELDataManager.m in Sources */,
 				B6A077521E2913A50058676D /* ELTheme.m in Sources */,
 				B646DBAC1E2B0F0A000A5BDF /* ELDatePicker.m in Sources */,
+				B6A68BD71E355A2E004F59DD /* ELParser.m in Sources */,
 				B6A077391E29122B0058676D /* ELNBUTableViewCell.m in Sources */,
 				B6A0773E1E29126E0058676D /* ELPrivatBankTableViewCell.m in Sources */,
 				B6E0E75B1E290DFE002A53F8 /* AppDelegate.m in Sources */,
