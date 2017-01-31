@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class ELCurrency;
+
 @interface ELDataManager : NSObject
 
 + (ELDataManager *)sharedManager;
 
 - (void)currenciesWithDate:(NSDate *)date
                   bankType:(ELBankType)bankType
-                   success:(void(^)(NSArray* currencies))success
-                   failure:(void(^)(NSError *error, NSInteger statusCode))failure;
+                completion:(void(^)(NSArray <ELCurrency *>*currencies, NSError *error, NSInteger statusCode))completion;
 
 @end

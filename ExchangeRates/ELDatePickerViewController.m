@@ -25,6 +25,7 @@ NSString * const ELDatePickerViewControllerStoryboardID = @"ELDatePickerViewCont
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.datePicker.maximumDate = [NSDate date];
+    self.datePicker.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     self.datePicker.date = self.startingDate;
     self.bankNameLabel.text = self.bankName;
 }

@@ -36,7 +36,7 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
 
 - (BOOL)connected
 {
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    Reachability *reachability  = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     
     return networkStatus != NotReachable;
@@ -46,135 +46,84 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
 
 - (void) getCurrenciesWithDate:(NSDate *)date
                       bankType:(ELBankType)bankType
-                     inSuccess:(void (^)(NSArray<ELCurrency *> *currencies))successBlock
-                     inFailure:(void (^)(NSError *error, NSInteger statusCode))failureBlock
+                     inContext:(NSManagedObjectContext *)context
+                    completion:(void(^)(NSArray <ELCurrency *>*currencies, NSError *error, NSInteger statusCode))completion
 {
-    //Get from server and parse the Currencies with date in default context
     ELApiType apiType = [self apiTypeForBankType:bankType withDate:date];
-    NSURL *apiURL = [self apiURLWithApiType:apiType withDate:date];
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:apiURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURL *url = [self apiURLWithApiType:apiType withDate:date];
+    
+    if (bankType == ELBankTypeNBU) {
+        NSLog(@"%@", url);
+    }
+    
+    NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (data) {
-            NSArray *currencies = [[ELParser sharedInstance] parseCurrenciesFromAPIWithType:apiType responseData:data inContext:[NSManagedObjectContext MR_defaultContext]];
-            if (successBlock) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    successBlock(currencies);
-                });
+            
+            //Parse data to currencies and save to data base on private queue
+            NSArray *currencies = [[ELParser sharedInstance] parseCurrenciesFromAPIWithType:apiType responseData:data inContext:context];
+            
+            if (completion) {
+                completion(currencies, nil, 0);
             }
+            
         } else {
-            if (failureBlock) {
-                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    failureBlock(error, httpResponse.statusCode);
-                });
-            }
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+            completion(nil, error, httpResponse.statusCode);
         }
     }];
-
-    [dataTask resume];
+    
+    [task resume];
 }
 
 #pragma mark - LOAD methods
-
-- (void) loadCurrenciesWithDate:(NSDate *)date apiType:(ELApiType)apiType inContext:(NSManagedObjectContext *)context completionBlock:(void(^)(BOOL success, NSError *error, NSInteger statusCode))completion
-{
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [self apiURLWithApiType:apiType withDate:date];
-    NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        if (completion) {
-            
-            if (data) {
-                
-                //Parse data to currencies and save to data base on private queue
-                [[ELParser sharedInstance] parseCurrenciesFromAPIWithType:apiType responseData:data inContext:context];
-                
-                if (completion) {
-                    completion(YES, nil, 0);
-                }
-                
-            } else {
-                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                completion(NO, error, httpResponse.statusCode);
-            }
-        }
-    }];
-    [task resume];
-}
 
 - (void) loadCurrenciesFromDate:(NSDate *)fromDate
                          toDate:(NSDate *)toDate
                        bankType:(ELBankType)bankType
                      completion:(void(^)(BOOL succes, NSError *error, NSInteger statusCode))completionBlock
 {
-    //If date is fail - it will be corrected
-    
-    NSDate *minDate = [ELCalculator minDateForCurrenciesArchive];
-    if ([fromDate compare:minDate] == NSOrderedAscending) {
-        fromDate = minDate;
-    }
-    
-    NSDate *maxDate = [ELCalculator maxDateForCurrenciesArchive];
-    if ([toDate compare:maxDate] == NSOrderedDescending) {
-        toDate = maxDate;
-    }
-    
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:fromDate
-                                                          toDate:toDate
-                                                         options:0];
+    NSDateComponents *components = [ELCalculator dateComponentsFromDate:fromDate toDate:toDate];
     
     NSDate *currentDate = [fromDate copy];
     
     __block NSInteger blockCallNumber = 0;
-
-    NSManagedObjectContext *contextForSaving = [NSManagedObjectContext MR_rootSavingContext];
     
-    NSDate *start = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSManagedObjectContext *contextForSaving    = [NSManagedObjectContext MR_newPrivateQueueContext];
+    contextForSaving.persistentStoreCoordinator = [NSManagedObjectContext MR_defaultContext].persistentStoreCoordinator;
     
     for (int i = 0; i < components.day; i++) {
         
-        ELApiType apiType = [self apiTypeForBankType:bankType withDate:toDate];
         currentDate = [ELCalculator dateByAddingYears:0 months:0 days:1 toDate:currentDate];
         
-        [self loadCurrenciesWithDate:currentDate apiType:apiType inContext:contextForSaving completionBlock:^(BOOL success, NSError *error, NSInteger statusCode) {
+        [[ELServerManager sharedManager] getCurrenciesWithDate:currentDate bankType:bankType inContext:contextForSaving completion:^(NSArray<ELCurrency *> *currencies, NSError *error, NSInteger statusCode) {
             
             blockCallNumber++;
             
-            //Create notification for loading process
-            
-            if (success) {
-
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSDictionary *userInfo = @{ELServerManagerCurrencyDateUserInfoKey : currentDate,
-                                               ELServerManagerStartDateUserInfoKey : fromDate,
-                                               ELServerManagerEndDateUserInfoKey : toDate,
-                                               ELServerManagerCurrencyBankNameInfoKey : ELPrivatBankFullName};
-                    
-                    NSNotification *loadNotification = [NSNotification notificationWithName:ELServerManagerCurrenciesDidLoadNotification object:nil userInfo:userInfo];
-                    [[NSNotificationCenter defaultCenter] postNotification:loadNotification];
-                });
-            }
+            //Post notification for loading process
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSDictionary *userInfo = @{ELServerManagerCurrencyDateUserInfoKey   : currentDate,
+                                           ELServerManagerStartDateUserInfoKey      : fromDate,
+                                           ELServerManagerEndDateUserInfoKey        : toDate,
+                                           ELServerManagerCurrencyBankNameInfoKey   : ELPrivatBankFullName};
+                
+                NSNotification *loadNotification = [NSNotification notificationWithName:ELServerManagerCurrenciesDidLoadNotification object:nil userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotification:loadNotification];
+            });
             
             if (blockCallNumber == components.day) {
                 
                 //Last calling of the block
                 if (completionBlock) {
-
+                    
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSError *error = nil;
-                        
                         if (![contextForSaving save:&error]) {
                             completionBlock(NO, error, CONTEXT_SAVING_ERROR_STATUS_CODE);
                         } else {
                             completionBlock(YES, nil, 0);
-                            NSDate *finish = [NSDate dateWithTimeIntervalSinceNow:0];
-                            NSInteger timeInterval = [finish timeIntervalSinceDate:start];
-                            NSLog(@"TIME INTERVAL = %d", timeInterval);
                         }
                     });
                 }
@@ -236,9 +185,12 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
 {
     ELApiType apiType = 0;
     
+    NSString *maxDate = [[ELUtils standardFormatter] stringFromDate:[ELCalculator maxDateForCurrenciesArchive]];
+    NSString *currentDate = [[ELUtils standardFormatter] stringFromDate:date];
+    
     switch (bankType) {
         case ELBankTypePrivatBank:
-            if ([date isEqualToDate:[ELCalculator maxDateForCurrenciesArchive]]) {
+            if ([currentDate isEqualToString:maxDate]) {
                 apiType = ELApiTypePrivatBankToday;
             } else {
                 apiType = ELApiTypePrivatBankArchive;

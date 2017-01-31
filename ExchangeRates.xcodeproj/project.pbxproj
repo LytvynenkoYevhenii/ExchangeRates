@@ -10,6 +10,7 @@
 		88E56A60D25E80522E332134 /* libPods-ExchangeRates.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C1E12045F10EA753316AB6 /* libPods-ExchangeRates.a */; };
 		B646DBA61E2B0521000A5BDF /* ELDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B646DBA51E2B0521000A5BDF /* ELDatePickerViewController.m */; };
 		B646DBAC1E2B0F0A000A5BDF /* ELDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B646DBAB1E2B0F0A000A5BDF /* ELDatePicker.m */; };
+		B69480581E40CDF4004AD7B0 /* ELCurrencyListRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69480571E40CDF4004AD7B0 /* ELCurrencyListRootViewController.m */; };
 		B6A077291E29116A0058676D /* ELBankNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077271E29116A0058676D /* ELBankNameView.m */; };
 		B6A0772A1E29116A0058676D /* ELBankNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A077281E29116A0058676D /* ELBankNameView.xib */; };
 		B6A077331E2911D50058676D /* ELPrivatBankTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077311E2911D50058676D /* ELPrivatBankTableHeaderView.m */; };
@@ -19,7 +20,7 @@
 		B6A0773E1E29126E0058676D /* ELPrivatBankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A0773C1E29126E0058676D /* ELPrivatBankTableViewCell.m */; };
 		B6A0773F1E29126E0058676D /* ELPrivatBankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A0773D1E29126E0058676D /* ELPrivatBankTableViewCell.xib */; };
 		B6A077421E2912B80058676D /* ELMainCurrenciesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */; };
-		B6A077471E2913360058676D /* ELNBUTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077461E2913360058676D /* ELNBUTableViewController.m */; };
+		B6A077471E2913360058676D /* ELNBUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077461E2913360058676D /* ELNBUViewController.m */; };
 		B6A0774A1E29135C0058676D /* ELPrivatBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A077491E29135C0058676D /* ELPrivatBankViewController.m */; };
 		B6A077511E2913A50058676D /* ELCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A0774C1E2913A50058676D /* ELCalculator.m */; };
 		B6A077521E2913A50058676D /* ELTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A0774E1E2913A50058676D /* ELTheme.m */; };
@@ -47,6 +48,8 @@
 		B646DBA51E2B0521000A5BDF /* ELDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELDatePickerViewController.m; sourceTree = "<group>"; };
 		B646DBAA1E2B0F0A000A5BDF /* ELDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELDatePicker.h; sourceTree = "<group>"; };
 		B646DBAB1E2B0F0A000A5BDF /* ELDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELDatePicker.m; sourceTree = "<group>"; };
+		B69480561E40CDF4004AD7B0 /* ELCurrencyListRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCurrencyListRootViewController.h; sourceTree = "<group>"; };
+		B69480571E40CDF4004AD7B0 /* ELCurrencyListRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCurrencyListRootViewController.m; sourceTree = "<group>"; };
 		B6A077261E29116A0058676D /* ELBankNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELBankNameView.h; sourceTree = "<group>"; };
 		B6A077271E29116A0058676D /* ELBankNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELBankNameView.m; sourceTree = "<group>"; };
 		B6A077281E29116A0058676D /* ELBankNameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELBankNameView.xib; sourceTree = "<group>"; };
@@ -61,8 +64,8 @@
 		B6A0773D1E29126E0058676D /* ELPrivatBankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELPrivatBankTableViewCell.xib; sourceTree = "<group>"; };
 		B6A077401E2912B80058676D /* ELMainCurrenciesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELMainCurrenciesViewController.h; path = ../ELMainCurrenciesViewController.h; sourceTree = "<group>"; };
 		B6A077411E2912B80058676D /* ELMainCurrenciesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ELMainCurrenciesViewController.m; path = ../ELMainCurrenciesViewController.m; sourceTree = "<group>"; };
-		B6A077451E2913360058676D /* ELNBUTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELNBUTableViewController.h; sourceTree = "<group>"; };
-		B6A077461E2913360058676D /* ELNBUTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELNBUTableViewController.m; sourceTree = "<group>"; };
+		B6A077451E2913360058676D /* ELNBUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELNBUViewController.h; sourceTree = "<group>"; };
+		B6A077461E2913360058676D /* ELNBUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELNBUViewController.m; sourceTree = "<group>"; };
 		B6A077481E29135C0058676D /* ELPrivatBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELPrivatBankViewController.h; sourceTree = "<group>"; };
 		B6A077491E29135C0058676D /* ELPrivatBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELPrivatBankViewController.m; sourceTree = "<group>"; };
 		B6A0774B1E2913A50058676D /* ELCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCalculator.h; sourceTree = "<group>"; };
@@ -171,10 +174,12 @@
 		B6A077441E2912FB0058676D /* Composite view controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B6A077451E2913360058676D /* ELNBUTableViewController.h */,
-				B6A077461E2913360058676D /* ELNBUTableViewController.m */,
+				B6A077451E2913360058676D /* ELNBUViewController.h */,
+				B6A077461E2913360058676D /* ELNBUViewController.m */,
 				B6A077481E29135C0058676D /* ELPrivatBankViewController.h */,
 				B6A077491E29135C0058676D /* ELPrivatBankViewController.m */,
+				B69480561E40CDF4004AD7B0 /* ELCurrencyListRootViewController.h */,
+				B69480571E40CDF4004AD7B0 /* ELCurrencyListRootViewController.m */,
 			);
 			name = "Composite view controllers";
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 				B6A077291E29116A0058676D /* ELBankNameView.m in Sources */,
 				B6A077331E2911D50058676D /* ELPrivatBankTableHeaderView.m in Sources */,
 				B6EB34C81E2C622100A389E2 /* ELDataManager.m in Sources */,
+				B69480581E40CDF4004AD7B0 /* ELCurrencyListRootViewController.m in Sources */,
 				B6A077521E2913A50058676D /* ELTheme.m in Sources */,
 				B646DBAC1E2B0F0A000A5BDF /* ELDatePicker.m in Sources */,
 				B6A68BD71E355A2E004F59DD /* ELParser.m in Sources */,
@@ -404,7 +410,7 @@
 				B6A077421E2912B80058676D /* ELMainCurrenciesViewController.m in Sources */,
 				B646DBA61E2B0521000A5BDF /* ELDatePickerViewController.m in Sources */,
 				B6A0774A1E29135C0058676D /* ELPrivatBankViewController.m in Sources */,
-				B6A077471E2913360058676D /* ELNBUTableViewController.m in Sources */,
+				B6A077471E2913360058676D /* ELNBUViewController.m in Sources */,
 				B6EB34D01E2C67C000A389E2 /* ELServerManager.m in Sources */,
 				B6EB34CD1E2C670F00A389E2 /* Reachability.m in Sources */,
 				B6FDACAC1E2E341600C83C58 /* ELAppStartConfigurator.m in Sources */,

@@ -22,4 +22,8 @@
 //Max archive date 
 + (NSDate *)maxDateForCurrenciesArchive;
 
+//Components with date correction
++ (NSDateComponents *)dateComponentsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
+
+
 @end

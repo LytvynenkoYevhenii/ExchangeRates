@@ -10,13 +10,7 @@
 #import "ELPrivatBankTableViewCell.h"
 #import "ELCurrency+CoreDataProperties.h"
 
-@interface ELPrivatBankViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@end
-
 @implementation ELPrivatBankViewController
-
-@synthesize currenciesArray = _currenciesArray;
 
 static NSString * const cellReuseIdentifier = @"ELPrivatBankTableViewCell";
 static NSString * const cellNibName         = @"ELPrivatBankTableViewCell";
@@ -37,30 +31,7 @@ static NSString * const cellNibName         = @"ELPrivatBankTableViewCell";
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Custom accessor
-
-- (NSArray *)currenciesArray
-{
-    if (!_currenciesArray) {
-        NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"bankName == %@", ELPrivatBankFullName];
-        _currenciesArray = [ELCurrency MR_findAllWithPredicate:pbPredicate];
-    }
-    return _currenciesArray;
-}
-
-- (void) setCurrenciesArray:(NSArray<ELCurrency *> *)currenciesArray
-{
-    _currenciesArray = currenciesArray;
-    
-    [self.tableView reloadData];
-}
-
 #pragma mark - <UITableViewDataSource>
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.currenciesArray count];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELPrivatBankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier forIndexPath:indexPath];

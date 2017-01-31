@@ -61,4 +61,26 @@
     return resultDate;
 }
 
++ (NSDateComponents *)dateComponentsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
+{
+    NSDate *minDate = [ELCalculator minDateForCurrenciesArchive];
+    if ([fromDate compare:minDate] == NSOrderedAscending) {
+        fromDate = minDate;
+    }
+    
+    NSDate *maxDate = [ELCalculator maxDateForCurrenciesArchive];
+    if ([toDate compare:maxDate] == NSOrderedDescending) {
+        toDate = maxDate;
+    }
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:fromDate
+                                                          toDate:toDate
+                                                         options:0];
+    
+    return components;
+}
+
 @end

@@ -6,18 +6,18 @@
 //  Copyright © 2017 Lytvynenko Yevhenii. All rights reserved.
 //
 
-#import "ELNBUTableViewController.h"
+#import "ELNBUViewController.h"
 #import "ELNBUTableViewCell.h"
 #import "ELCalculator.h"
 #import "ELPrivatBankViewController.h"
 
 #import "ELCurrency+CoreDataProperties.h"
 
-@interface ELNBUTableViewController ()
+@interface ELNBUViewController ()
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @end
 
-@implementation ELNBUTableViewController
+@implementation ELNBUViewController
 
 static NSString * const cellReuseIdentifier = @"ELNBUTableViewCell";
 static NSString * const cellNibName = @"ELNBUTableViewCell";
@@ -41,15 +41,6 @@ static NSString * const basicCurrencyCode = @"UAH";
 
 #pragma mark - Custom accessor
 
-- (NSArray *)currenciesArray
-{
-    if (!_currenciesArray) {
-        NSPredicate *nbuPredicate = [NSPredicate predicateWithFormat:@"bankName == %@", ELNBUBankFullName];
-        _currenciesArray = [ELCurrency MR_findAllWithPredicate:nbuPredicate];
-    }
-    return _currenciesArray;
-}
-
 - (void)setSelectedIndexPath:(NSIndexPath *)selectedIndexPath
 {
     NSArray *selectedIndexPaths = nil;
@@ -63,15 +54,9 @@ static NSString * const basicCurrencyCode = @"UAH";
     _selectedIndexPath = selectedIndexPath;
 
     [self.tableView reloadRowsAtIndexPaths:selectedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-    
 }
 
 #pragma mark - <UITableViewDataSource>
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.currenciesArray count];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -103,7 +88,6 @@ static NSString * const basicCurrencyCode = @"UAH";
             cell.contentView.backgroundColor = [UIColor whiteColor];
         }
     }
-
 }
 
 #pragma mark - <UITableViewDelegate>
@@ -127,7 +111,5 @@ static NSString * const basicCurrencyCode = @"UAH";
         [self.tableView scrollToRowAtIndexPath:newSelectedIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
 }
-
-
 
 @end

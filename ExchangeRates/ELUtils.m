@@ -43,28 +43,10 @@
 {
     NSString *localizedName = currencyCode;
     
-    static NSDictionary *currencyCodeToNameDictionary = nil;
-    
-    if (!currencyCodeToNameDictionary) {
-        currencyCodeToNameDictionary = @{@"USD" : @"U.S. Dollar",
-                                         @"EUR" : @"Euro",
-                                         @"RUR" : @"Russian Ruble",
-                                         @"RUB" : @"Russian Ruble",
-                                         @"CHF" : @"Swiss Frank",
-                                         @"GBP" : @"British Pound",
-                                         @"PLZ" : @"Polish Zloty",
-                                         @"SEC" : @"Swedish Krona",
-                                         @"XAU" : @"Gold",
-                                         @"CAD" : @"Canadian Dollar",
-                                         @"HUF" : @"Hungarian Forint"};
+    if ([[NSLocale ISOCurrencyCodes] containsObject:currencyCode]) {
+        NSLocale *locale = [NSLocale currentLocale];
+        localizedName = [locale displayNameForKey:NSLocaleCurrencyCode value:currencyCode];
     }
-    
-    NSString *name = [currencyCodeToNameDictionary objectForKey:currencyCode];
-    
-    if (name) {
-        localizedName = NSLocalizedString(name, nil);
-    }
-    
     return localizedName;
 }
 

@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ELCurrencyListRootViewController.h"
+
 @class ELCurrency;
 
-@interface ELNBUTableViewController : UITableViewController
-
-@property (strong, nonatomic) NSArray <ELCurrency *>*currenciesArray;
+@interface ELNBUViewController : ELCurrencyListRootViewController
 
 - (void)selectRowWithCurrency:(NSString *)code;
 

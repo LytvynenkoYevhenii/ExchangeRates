@@ -87,7 +87,7 @@
         pbCurrency.code         = [currencyDict objectForKey:codeKey];
         pbCurrency.purchaseRate = [[currencyDict objectForKey:purchaseRateKey] floatValue];
         pbCurrency.saleRate     = [[currencyDict objectForKey:saleRateKey] floatValue];
-        pbCurrency.date         = currencyDate;
+        pbCurrency.date         = [[ELUtils standardFormatter] stringFromDate:currencyDate];
         
         [resultArray addObject:pbCurrency];
     }
@@ -116,7 +116,7 @@
         pbCurrency.code            = [currencyDict objectForKey:codeKey];
         pbCurrency.purchaseRate    = [[currencyDict objectForKey:purchaseRateKey] floatValue];
         pbCurrency.saleRate        = [[currencyDict objectForKey:saleRateKey] floatValue];
-        pbCurrency.date            = [NSDate date];
+        pbCurrency.date            = [[ELUtils standardFormatter] stringFromDate:[NSDate date]];
         
         [resultArray addObject:pbCurrency];
     }
@@ -135,7 +135,17 @@
     static NSString * const saleRateKey     = @"rate";
     static NSString * const dateKey         = @"exchangedate";
 
-    NSArray *currenciesArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//    NSArray *currenciesArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    NSError *error = nil;
+    
+    NSArray *currenciesArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
+
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+        return nil;
+    }
+    
     
     NSMutableArray *resultArray = [NSMutableArray array];
     

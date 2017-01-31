@@ -9,7 +9,7 @@
 #import "ELMainCurrenciesViewController.h"
 #import "ELBankNameView.h"
 #import "ELPrivatBankViewController.h"
-#import "ELNBUTableViewController.h"
+#import "ELNBUViewController.h"
 #import "ELDatePicker.h"
 #import "ELDataManager.h"
 
@@ -25,7 +25,7 @@
 
 //Child view controllers
 @property (strong, nonatomic) ELPrivatBankViewController *pbViewController;
-@property (strong, nonatomic) ELNBUTableViewController *nbuViewController;
+@property (strong, nonatomic) ELNBUViewController *nbuViewController;
 
 @end
 
@@ -41,7 +41,7 @@
     NSPredicate *pbPredicate = [NSPredicate predicateWithFormat:@"class == %@", [ELPrivatBankViewController class]];
     self.pbViewController = [[self.childViewControllers filteredArrayUsingPredicate:pbPredicate]firstObject];
     
-    NSPredicate *nbuPredicate = [NSPredicate predicateWithFormat:@"class == %@", [ELNBUTableViewController class]];
+    NSPredicate *nbuPredicate = [NSPredicate predicateWithFormat:@"class == %@", [ELNBUViewController class]];
     self.nbuViewController = [[self.childViewControllers filteredArrayUsingPredicate:nbuPredicate]firstObject];
     
     //Set self as delegate of the PB view controller for sync selection
@@ -69,6 +69,8 @@
                                                  name:ELServerManagerCurrenciesDidLoadNotification
                                                object:nil];
     
+    //Source array for today
+    [self getAllCurrenciesWithDate:[NSDate date]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,7 +107,7 @@
         bankType = ELBankTypeNBU;
     }
     
-    //Chenge color of the calendar icon
+    //Change color of the calendar icon
     [ELUtils changeTintColor:[ELTheme iconInActiveStateColor]
               forImageInView:view.calendarIconImageView];
     
@@ -113,49 +115,54 @@
     ELDatePicker *datePicker = [[ELDatePicker alloc] initWithPresentingController:self startingDate:view.date andBankName:bankName];
     
     [datePicker showDatePickerWithConfirmDataBlock:^(BOOL confirm, BOOL sync, NSDate *date) {
+        
         [ELUtils changeTintColor:[ELTheme iconInPassiveStateColor] forImageInView:view.calendarIconImageView];
-        if (confirm) {
-            [[ELDataManager sharedManager] currenciesWithDate:date bankType:bankType success:^(NSArray *currencies) {
-                if (sync) {
-                    self.privatBankActivityView.date = date;
-                    self.nbuActivityView.date = date;
-                    
-                    //Table views data reloading
-                    self.pbViewController.currenciesArray = currencies;
-                    self.nbuViewController.currenciesArray = currencies;
-                    
-                } else {
-                    view.date = date;
-                    
-                    //Table view data reloading
-                    if ([view isEqual:self.privatBankActivityView]) {
-                        self.pbViewController.currenciesArray = currencies;
-                    } else {
-                        self.nbuViewController.currenciesArray = currencies;
-                    }
-                    
-                    //Table view data must be reloaded
-                    self.pbViewController.currenciesArray = currencies;
-                    self.nbuViewController.currenciesArray = currencies;
-                }
-
-            } failure:^(NSError *error, NSInteger statusCode) {
-                //If device is not connected to internet - show alert and set last date
-                if (statusCode == NO_CONNECT_ERROR_STATUS_CODE) {
-                    [self showAlertForNoConnectError];
-                }
-                
-                //If DB is empty -> set max and min date to date picker equals to 01.12.2014 (templates date) set date for BankNameViews equals to 01.12.2014
-                if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ELManuallyDataBaseKey"]) {
-                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-                    [formatter setDateFormat:@"dd.MM.yyyy"];
-                    self.privatBankActivityView.date = [formatter dateFromString:@"01.12.2014"];
-                    self.nbuActivityView.date = [formatter dateFromString:@"01.12.2014"];
-                }
-            }];
+        
+        if (sync) {
+            self.nbuActivityView.date = date;
+            self.privatBankActivityView.date = date;
+            [self getAllCurrenciesWithDate:date];
+        } else {
+            view.date = date;
+            [self getCurrenciesWithDate:date bankType:bankType];
         }
     }];
 }
+
+- (void)getAllCurrenciesWithDate:(NSDate *)date
+{
+    [self getCurrenciesWithDate:date bankType:ELBankTypePrivatBank];
+    [self getCurrenciesWithDate:date bankType:ELBankTypeNBU];
+}
+
+- (void) getCurrenciesWithDate:(NSDate *)date bankType:(ELBankType)bankType
+{
+    [[ELDataManager sharedManager] currenciesWithDate:date bankType:bankType completion:^(NSArray<ELCurrency *> *currencies, NSError *error, NSInteger statusCode) {
+        if ([currencies count]) {
+           
+            //Table view data reloading
+            if (bankType == ELBankTypePrivatBank) {
+                self.pbViewController.currenciesArray = currencies;
+            } else {
+                self.nbuViewController.currenciesArray = currencies;
+            }
+
+        } else {
+            
+            //If device is not connected to internet - show alert and set last date
+            if (statusCode == NO_CONNECT_ERROR_STATUS_CODE) {
+                [self showAlertForNoConnectError];
+            }
+            
+            //If DB is empty -> set max and min date to date picker equals to 01.12.2014 (templates date) set date for BankNameViews equals to 01.12.2014
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:kELManuallyDataBase]) {
+                self.privatBankActivityView.date = [[ELUtils standardFormatter] dateFromString:ELTemplateJSONDate];
+                self.nbuActivityView.date = [[ELUtils standardFormatter] dateFromString:ELTemplateJSONDate];
+            }
+        }
+    }];
+}
+
 
 #pragma mark - Actions
 

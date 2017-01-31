@@ -77,7 +77,7 @@
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-iR-mZM">
                                                 <rect key="frame" x="0.0" y="44" width="414" height="419"/>
                                                 <connections>
-                                                    <segue destination="5Q5-tT-xfW" kind="embed" id="lpW-sW-f8z"/>
+                                                    <segue destination="4DL-XL-Pmi" kind="embed" id="33c-Zb-L9F"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
@@ -127,6 +127,43 @@
             </objects>
             <point key="canvasLocation" x="1076.8115942028987" y="137.77173913043478"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="XrK-5N-ad7">
+            <objects>
+                <viewController id="4DL-XL-Pmi" customClass="ELNBUViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JOC-1Z-Zhz"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hzd-lh-w7G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qem-NI-0ot">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kI2-cd-cw9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4DL-XL-Pmi" id="lRE-45-qwR"/>
+                                    <outlet property="delegate" destination="4DL-XL-Pmi" id="554-dZ-7a2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hzd-lh-w7G" firstAttribute="top" secondItem="kI2-cd-cw9" secondAttribute="bottom" id="AhO-nR-vpj"/>
+                            <constraint firstItem="kI2-cd-cw9" firstAttribute="leading" secondItem="qem-NI-0ot" secondAttribute="leading" id="JwH-f8-RYd"/>
+                            <constraint firstAttribute="trailing" secondItem="kI2-cd-cw9" secondAttribute="trailing" id="XxN-c3-Onq"/>
+                            <constraint firstItem="kI2-cd-cw9" firstAttribute="top" secondItem="JOC-1Z-Zhz" secondAttribute="bottom" id="z2C-US-HXY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="kI2-cd-cw9" id="3a8-DD-qyS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OAn-sf-28Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076.8115942028987" y="846.60326086956525"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="n6c-fq-b8w">
             <objects>
@@ -145,24 +182,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0w-fq-HIw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="138.98050974512745"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="Sou-y8-ILe">
-            <objects>
-                <tableViewController storyboardIdentifier="ELNBUTableViewController" id="5Q5-tT-xfW" customClass="ELNBUTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="43Z-vu-3mI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="5Q5-tT-xfW" id="fob-C2-Ej8"/>
-                            <outlet property="delegate" destination="5Q5-tT-xfW" id="HJm-tI-Yxc"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Th1-Zo-oJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1078" y="1123"/>
         </scene>
         <!--Privat Bank View Controller-->
         <scene sceneID="Fy9-yj-Qge">
@@ -204,12 +223,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="F8L-Eo-jMH" id="NJA-1G-scd"/>
+                        <outlet property="tableView" destination="F8L-Eo-jMH" id="sn3-US-Tio"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTg-kb-jHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1106" y="-656"/>
+            <point key="canvasLocation" x="1077" y="-467"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="tqw-V6-IXG">

@@ -15,7 +15,8 @@ NSString * const ELNBUBankShortName                 = @"NBU";
 NSString * const ELPrivatBankArchiveTemplateName    = @"ResponseData_01.12.2014.json";
 NSString * const ELMainStoryboardName               = @"Main";
 NSString * const ELStandardDateFormat               = @"dd.MM.yyyy";
-NSString * const ELNbuApiDateFormat                 = @"YYYYMMDD";
+NSString * const ELNbuApiDateFormat                 = @"YYYYMMdd";
+NSString * const ELTemplateJSONDate                 = @"01.12.2014";
 
 //Global keys
 NSString * const kELManuallyDataBase                = @"ELManuallyDataBaseKey";

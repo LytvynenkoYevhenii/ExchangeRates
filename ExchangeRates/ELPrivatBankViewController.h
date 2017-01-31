@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ELCurrencyListRootViewController.h"
+
 @class ELCurrency;
 
 @protocol ELPrivatBankViewControllerDelegate;
 
-@interface ELPrivatBankViewController : UIViewController
+
+@interface ELPrivatBankViewController : ELCurrencyListRootViewController
 
 @property (weak, nonatomic) id <ELPrivatBankViewControllerDelegate> delegate;
-@property (strong, nonatomic) NSArray <ELCurrency *>*currenciesArray;
 
 @end
 

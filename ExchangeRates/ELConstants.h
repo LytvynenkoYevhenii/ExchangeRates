@@ -27,6 +27,7 @@ extern NSString * const ELPrivatBankArchiveTemplateName;
 extern NSString * const ELMainStoryboardName;
 extern NSString * const ELStandardDateFormat;
 extern NSString * const ELNbuApiDateFormat;
+extern NSString * const ELTemplateJSONDate;
 
 //Global keys
 extern NSString * const kELManuallyDataBase;
