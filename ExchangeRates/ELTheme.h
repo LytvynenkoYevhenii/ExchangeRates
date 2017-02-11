@@ -16,6 +16,7 @@ extern NSString * const ELMainFontName;
 
 @interface ELTheme : NSObject
 
+//colors
 + (UIColor *)navigationBarBackgroundColor;
 + (UIColor *)interactiveTextColor;
 + (UIColor *)passiveInteractTextColor;

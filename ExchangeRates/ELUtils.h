@@ -18,13 +18,13 @@
 //Attributed title for date button when user interaction disabled
 + (NSAttributedString *)attributedTitleForUnactiveStateWithDate:(NSDate *)date;
 
-//Image changing
-+ (void)changeTintColor:(UIColor *)color forImageInView:(UIImageView *)imageView;
-
 //String generation
 + (NSString *)currencyLocalizedNameWithCode:(NSString *)currencyCode;
 
 //Date formatter with format 01.01.2016
 + (NSDateFormatter *)standardFormatter;
+
+//Image changing
++ (void)changeTintColor:(UIColor *)color forImageInView:(UIImageView *)imageView;
 
 @end

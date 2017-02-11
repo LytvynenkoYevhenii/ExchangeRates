@@ -24,20 +24,7 @@
     return [self attributedTitleWithDate:date andColor:unactiveStateColor];
 }
 
-#pragma mark - Image operations
-
-+ (void)changeTintColor:(UIColor *)color forImageInView:(UIImageView *)imageView
-{
-    if (imageView.image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
-        imageView.image = [imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    }
-    
-    if ([imageView.tintColor isEqual:color]) {
-        return;
-    }
-    
-    [imageView setTintColor:color];
-}
+#pragma mark - 
 
 + (NSString *)currencyLocalizedNameWithCode:(NSString *)currencyCode
 {
@@ -55,6 +42,21 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:ELStandardDateFormat];
     return formatter;
+}
+
+#pragma mark - Image operations
+
++ (void)changeTintColor:(UIColor *)color forImageInView:(UIImageView *)imageView
+{
+    if (imageView.image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
+        imageView.image = [imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+    
+    if ([imageView.tintColor isEqual:color]) {
+        return;
+    }
+    
+    [imageView setTintColor:color];
 }
 
 #pragma mark - Private methods

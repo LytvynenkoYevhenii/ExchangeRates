@@ -13,19 +13,21 @@
 + (void) optimizeRate:(CGFloat*)rate withExchangeCoefficient:(NSInteger*)coefficient
 {
     CGFloat rateValue           = *rate;
-    NSInteger coefficientValue   = 1;
+    NSInteger coefficientValue  = 1;
     
     if (rateValue == 0) {
         return;
     }
     
     while (rateValue < 10) {
-        coefficientValue *= 10;
-        rateValue       *= 10;
+        coefficientValue    *= 10;
+        rateValue           *= 10;
     }
     *rate       = rateValue;
     *coefficient = coefficientValue;
 }
+
+#pragma mark - Date calculations
 
 + (NSDate *)dateByAddingYears:(NSInteger)years months:(NSInteger)months days:(NSInteger)days toDate:(NSDate *)date
 {
