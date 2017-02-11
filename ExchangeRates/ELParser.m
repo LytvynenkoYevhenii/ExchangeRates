@@ -30,6 +30,9 @@
 
 - (NSArray <ELCurrency*>*)parseCurrenciesFromAPIWithType:(ELApiType)apiType responseData:(NSData *)data inContext:(NSManagedObjectContext *)context
 {
+    if (!context || !data) {
+        return nil;
+    }
     NSArray *resultArray = nil;
     
     switch (apiType) {
@@ -56,10 +59,6 @@
 
 - (NSArray <ELCurrency*>*)parseCurrenciesFromPrivatArchiveAPIWithResponseData:(NSData *)data inContext:(NSManagedObjectContext *)context
 {
-    if (!context || !data) {
-        return nil;
-    }
-    
     static NSString * const codeKey         = @"currency";
     static NSString * const purchaseRateKey = @"purchaseRate";
     static NSString * const saleRateKey     = @"saleRate";
@@ -69,73 +68,30 @@
     NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
     NSString *dateString = [responseDict objectForKey:dateKey];
-    NSDate *currencyDate = [[ELUtils standardFormatter] dateFromString:dateString];
     
-    NSArray *exchangeRates = [responseDict objectForKey:exchangeRateKey];
+    NSArray *currenciesArray = [responseDict objectForKey:exchangeRateKey];
     
-    NSMutableArray *resultArray = [NSMutableArray array];
-    
-    for (NSDictionary *currencyDict in exchangeRates) {
-        
-        if (![currencyDict valueForKey:saleRateKey]) {
-            continue;
-        }
-        
-        //Create PB currency
-        ELCurrency *pbCurrency  = [ELCurrency MR_createEntityInContext:context];
-        pbCurrency.bankName     = ELPrivatBankFullName;
-        pbCurrency.code         = [currencyDict objectForKey:codeKey];
-        pbCurrency.purchaseRate = [[currencyDict objectForKey:purchaseRateKey] floatValue];
-        pbCurrency.saleRate     = [[currencyDict objectForKey:saleRateKey] floatValue];
-        pbCurrency.date         = [[ELUtils standardFormatter] stringFromDate:currencyDate];
-        
-        [resultArray addObject:pbCurrency];
-    }
-    return [NSArray arrayWithArray:resultArray];
+    return [self createCurrenciesFromArray:currenciesArray withCodeKey:codeKey purchaseRateKey:purchaseRateKey saleRateKey:saleRateKey formattedDate:dateString inContext:context];
 }
 
 - (NSArray <ELCurrency*>*)parseCurrenciesFromPrivatBankTodayAPIWithResponseData:(NSData *)data inContext:(NSManagedObjectContext *)context
 {
-    if (!context || !data) {
-        return nil;
-    }
-    
     static NSString * const codeKey         = @"ccy";
     static NSString * const purchaseRateKey = @"buy";
     static NSString * const saleRateKey     = @"sale";
     
-    NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    NSArray* currenciesArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    NSString *date = [[ELUtils standardFormatter] stringFromDate:[NSDate date]];
     
-    NSMutableArray *resultArray = [NSMutableArray array];
-    
-    for (NSDictionary *currencyDict in responseDict) {
-        
-        //Create PB currency
-        ELCurrency *pbCurrency = [ELCurrency MR_createEntityInContext:context];
-        pbCurrency.bankName        = ELPrivatBankFullName;
-        pbCurrency.code            = [currencyDict objectForKey:codeKey];
-        pbCurrency.purchaseRate    = [[currencyDict objectForKey:purchaseRateKey] floatValue];
-        pbCurrency.saleRate        = [[currencyDict objectForKey:saleRateKey] floatValue];
-        pbCurrency.date            = [[ELUtils standardFormatter] stringFromDate:[NSDate date]];
-        
-        [resultArray addObject:pbCurrency];
-    }
-
-    return [NSArray arrayWithArray:resultArray];
+    return [self createCurrenciesFromArray:currenciesArray withCodeKey:codeKey purchaseRateKey:purchaseRateKey saleRateKey:saleRateKey formattedDate:date inContext:context];
 }
 
 - (NSArray <ELCurrency *>*)parseCurrenciesFromNbuApiWithResponseData:(NSData *)data inContext:(NSManagedObjectContext *)context
 {
-    if (!context || !data) {
-        return nil;
-    }
-    
     static NSString * const codeKey         = @"cc";
     static NSString * const purchaseRateKey = @"rate";
     static NSString * const saleRateKey     = @"rate";
     static NSString * const dateKey         = @"exchangedate";
-
-//    NSArray *currenciesArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     NSError *error = nil;
     
@@ -146,10 +102,21 @@
         return nil;
     }
     
+    NSDictionary *firstCurrencyDict = [currenciesArray firstObject];
+    NSString *date = [firstCurrencyDict valueForKey:dateKey];
     
+    return [self createCurrenciesFromArray:currenciesArray withCodeKey:codeKey purchaseRateKey:purchaseRateKey saleRateKey:saleRateKey formattedDate:date inContext:context];
+}
+
+- (NSArray *)createCurrenciesFromArray:(NSArray *)currenciesArray withCodeKey:(NSString *)codeKey purchaseRateKey:(NSString *)purchaseRateKey saleRateKey:(NSString *)saleRateKey formattedDate:(NSString *)date inContext:(NSManagedObjectContext *)context
+{
     NSMutableArray *resultArray = [NSMutableArray array];
     
     for (NSDictionary *currencyDict in currenciesArray) {
+        
+        if (![currencyDict valueForKey:codeKey]) {
+            continue;
+        }
         
         //Create PB currency
         ELCurrency *nbuCurrency = [ELCurrency MR_createEntityInContext:context];
@@ -157,7 +124,7 @@
         nbuCurrency.code = [currencyDict valueForKey:codeKey];
         nbuCurrency.purchaseRate = [[currencyDict valueForKey:purchaseRateKey] floatValue];
         nbuCurrency.saleRate = [[currencyDict valueForKey:saleRateKey] floatValue];
-        nbuCurrency.date = [currencyDict valueForKey:dateKey];
+        nbuCurrency.date = date;
         
         [resultArray addObject:nbuCurrency];
     }
