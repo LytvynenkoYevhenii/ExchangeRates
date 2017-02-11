@@ -46,7 +46,7 @@ static NSString * const cellNibName         = @"ELPrivatBankTableViewCell";
 
 #pragma mark - <UITableViewDelegate>
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
 {
     ELCurrency *currency = [self.currenciesArray objectAtIndex:indexPath.row];
     [self.delegate privatBankViewController:self didSelectCurrencyWithCode:currency.code];

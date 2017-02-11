@@ -108,8 +108,8 @@ static NSString * const basicCurrencyCode = @"UAH";
 
     if (![newSelectedIndexPath isEqual:self.selectedIndexPath]) {
         self.selectedIndexPath = newSelectedIndexPath;
-        [self.tableView scrollToRowAtIndexPath:newSelectedIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
+    [self.tableView scrollToRowAtIndexPath:newSelectedIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 @end
