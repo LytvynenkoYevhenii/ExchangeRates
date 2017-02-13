@@ -114,7 +114,7 @@
     
     for (NSDictionary *currencyDict in currenciesArray) {
         
-        if (![currencyDict valueForKey:codeKey]) {
+        if (![currencyDict valueForKey:codeKey] || ![currencyDict valueForKey:saleRateKey]) {
             continue;
         }
         

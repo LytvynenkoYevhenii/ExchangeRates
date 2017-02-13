@@ -13,6 +13,10 @@
 
 #import "ELCurrency+CoreDataProperties.h"
 
+@interface ELServerManager()
+@property (strong, nonatomic)NSMutableArray *sessions;
+@end
+
 @implementation ELServerManager
 
 static NSString * const privatBankArchiveApiBaseURL = @"https://api.privatbank.ua/p24api/exchange_rates?json&date=";
@@ -49,14 +53,19 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
                      inContext:(NSManagedObjectContext *)context
                     completion:(void(^)(NSArray <ELCurrency *>*currencies, NSError *error, NSInteger statusCode))completion
 {
+    NSURLSession *session = [NSURLSession sharedSession];
+    [self getCurrenciesWithDate:date bankType:bankType inContext:context urlSession:session completion:completion];
+}
+
+- (void)getCurrenciesWithDate:(NSDate *)date
+                     bankType:(ELBankType)bankType
+                    inContext:(NSManagedObjectContext *)context
+                   urlSession:(NSURLSession *)session
+                   completion:(void(^)(NSArray <ELCurrency *>*currencies, NSError *error, NSInteger statusCode))completion
+{
     ELApiType apiType = [self apiTypeForBankType:bankType withDate:date];
     
-    NSURLSession *session = [NSURLSession sharedSession];
     NSURL *url = [self apiURLWithApiType:apiType withDate:date];
-    
-    if (bankType == ELBankTypeNBU) {
-        NSLog(@"%@", url);
-    }
     
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
@@ -78,6 +87,8 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
     [task resume];
 }
 
+
+
 #pragma mark - LOAD methods
 
 - (void) loadCurrenciesFromDate:(NSDate *)fromDate
@@ -93,13 +104,15 @@ static NSString * const nbuApiURL                   = @"https://bank.gov.ua/NBUS
     
     NSManagedObjectContext *contextForSaving    = [NSManagedObjectContext MR_newPrivateQueueContext];
     contextForSaving.persistentStoreCoordinator = [NSManagedObjectContext MR_defaultContext].persistentStoreCoordinator;
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+
+    NSURLSession *newSession = [NSURLSession sessionWithConfiguration:configuration];
     
     for (int i = 0; i < components.day; i++) {
         
         currentDate = [ELCalculator dateByAddingYears:0 months:0 days:1 toDate:currentDate];
         
-        [[ELServerManager sharedManager] getCurrenciesWithDate:currentDate bankType:bankType inContext:contextForSaving completion:^(NSArray<ELCurrency *> *currencies, NSError *error, NSInteger statusCode) {
-            
+        [[ELServerManager sharedManager] getCurrenciesWithDate:currentDate bankType:bankType inContext:contextForSaving urlSession:newSession completion:^(NSArray<ELCurrency *> *currencies, NSError *error, NSInteger statusCode) {
             blockCallNumber++;
             
             //Post notification for loading process

@@ -70,7 +70,7 @@ static NSString * const basicCurrencyCode = @"UAH";
     [ELCalculator optimizeRate:&rate withExchangeCoefficient:&coefficient];
     
     cell.saleRateLabel.text = [NSString stringWithFormat:@"%1.3f", rate];
-    cell.exchangeСoefficientLabel.text = [NSString stringWithFormat:@"%d%@", coefficient, basicCurrencyCode] ;
+    cell.exchangeСoefficientLabel.text = [NSString stringWithFormat:@"%ld%@", (long)coefficient, basicCurrencyCode] ;
     cell.currencyNameLabel.text = [ELUtils currencyLocalizedNameWithCode:currency.code];
 
     return cell;

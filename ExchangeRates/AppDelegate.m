@@ -21,15 +21,15 @@
     //Start app configure
     ELAppStartConfigurator *configurator = [[ELAppStartConfigurator alloc]init];
     [configurator configureApp];
-//    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-//    NSSortDescriptor *descriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"code" ascending:YES];
-//    NSSortDescriptor *descriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"bankName" ascending:YES];
-//
-//    NSArray *array = [[ELCurrency MR_findAll] sortedArrayUsingDescriptors:@[descriptor, descriptor1, descriptor2]];
-//    
-//    for (ELCurrency *currency in array) {
-//        NSLog(@"Currency code: %@, Bank: %@, date: %@", currency.code, currency.bankName, [[ELUtils standardFormatter] stringFromDate:currency.date]);
-//    }
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    NSSortDescriptor *descriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"code" ascending:YES];
+    NSSortDescriptor *descriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"bankName" ascending:YES];
+
+    NSArray *array = [[ELCurrency MR_findAll] sortedArrayUsingDescriptors:@[descriptor, descriptor1, descriptor2]];
+    
+    for (ELCurrency *currency in array) {
+        NSLog(@"Currency code: %@, Bank: %@, date: %@", currency.code, currency.bankName, currency.date);
+    }
     
     return YES;
 }
